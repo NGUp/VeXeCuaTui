@@ -1,0 +1,157 @@
+.page-container {
+    display: table;
+    width: 100%;
+    height: 100%;
+    vertical-align: top;
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+}
+
+.main-contain {
+    display: table-cell;
+    position: relative;
+    z-index: 1;
+    padding: 30px;
+    padding-bottom: 0;
+    vertical-align: top;
+    word-break: break-word;
+    width: 100%;
+    -webkit-transition: opacity 100ms ease-in-out;
+       -moz-transition: opacity 100ms ease-in-out;
+         -o-transition: opacity 100ms ease-in-out;
+            transition: opacity 100ms ease-in-out;
+}
+
+.backend-side-bar {
+    display: table-cell;
+    position: relative;
+    width: 340px;
+    z-index: 1;
+    height: 100%;
+}
+
+.backend-side-bar-inner {
+    position: fixed;
+    background: #2c2e2f;
+    margin-top: 60px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: inherit;
+    overflow: hidden;
+}
+
+.backend-side-bar-header {
+    border-bottom: 1px solid rgba(221, 221, 221, 0.2);
+    height: 70px;
+    text-align: center;
+}
+
+.backend-side-bar-logo {
+    height: 60px;
+    margin-top: 5px;
+}
+
+.backend-side-bar-dropdown-menu {
+    list-style: none;
+    width: 300px;
+    margin-top: 30px;
+}
+
+.backend-side-bar-dropdown-menu li {
+    color: #979898;
+    display: block;
+    padding: 13px 5px;
+    cursor: pointer;
+    border-bottom: 1px solid #313437;
+}
+
+.backend-side-bar-dropdown-menu li:hover {
+    color: #fff;
+}
+
+.backend-side-bar-active {
+    background: #333;
+}
+
+.backend-is-admin {
+    border-radius: 5px;
+}
+
+.profile-panel {
+    background: #2c2e2f;
+    height: 520px;
+    width: 400px;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.profile-panel ul {
+    list-style: none;
+    padding-right: 40px;
+    padding-top: 30px;
+    color: #ddd;
+}
+
+.profile-title {
+    padding-top: 10px;
+    padding-bottom: 5px;
+    font-size: 16px;
+}
+
+.profile-buttons {
+    margin-top: 20px;
+}
+
+.col-function {
+    width: 85px;
+}
+
+.col-route-id {
+    width: 105px;
+}
+
+
+.bootstrap-tagsinput {
+    width: 100%;
+}
+
+
+.tt-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    list-style: none;
+    font-size: 14px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    background-clip: padding-box;
+}
+.tt-suggestion > p {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.428571429;
+    color: #333333;
+    white-space: nowrap;
+}
+.tt-suggestion > p:hover,
+.tt-suggestion > p:focus,
+.tt-suggestion.tt-cursor p {
+    color: #ffffff;
+    text-decoration: none;
+    outline: 0;
+    background-color: #428bca;
+}

@@ -1,0 +1,40 @@
+<div id="step-2" hidden>
+    <div class="col-md-5">
+        <fieldset>
+            <legend>Sơ đồ vị trí</legend>
+            <?php include __DIR__ . '/../trip/book-seat.phtml' ?>
+            <?php include __DIR__ . '/../trip/book-bed.phtml' ?>
+        </fieldset>
+    </div>
+    <div class="col-md-7">
+        <fieldset>
+            <legend class="book-information">Thông tin khách hàng</legend>
+            <ul class="book-customer-information">
+                <li>Tên khách hàng (<abbr title="Bắt buộc">*</abbr>)</li>
+                <li>
+                    <input type="text" class="form-control" required="Tên khách hàng không được bỏ trống"/>
+                </li>
+                <li>Điện thoại (<abbr title="Bắt buộc">*</abbr>)</li>
+                <li>
+                    <input type="text" class="form-control" required="Số điện thoại không được bỏ trống"/>
+                </li>
+                <li>Email (<abbr title="Bắt buộc">*</abbr>)</li>
+                <li>
+                    <input type="text" class="form-control" required="Email không được bỏ trống"/>
+                </li>
+                <li>Danh sách vé</li>
+                <li>
+                    <input type="text" data-role="tagsinput" />
+                </li>
+            </ul>
+        </fieldset>
+        <ul class="book-buttons">
+            <li>
+                <button class="btn btn-default">Hủy</button>
+            </li>
+            <li class="btn-book-ticket-bound">
+                <button class="btn btn-primary"><span class="glyphicon glyphicon-credit-card icon-credit-card"></span>Thanh toán</button>
+            </li>
+        </ul>
+    </div>
+</div>

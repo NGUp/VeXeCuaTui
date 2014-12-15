@@ -1,0 +1,45 @@
+body {
+    font-family: "Open Sans", "lucida grande", "Segoe UI", arial, verdana, "lucida sans unicode", tahoma, sans-serif;
+    color: #3D464D;
+    font-weight: normal;
+}
+
+.app-standard {
+    width: 900px;
+}
+
+.center-screen {
+    margin: 0 auto;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.center {
+    text-align: center;
+}
+
+.green {
+    color: #5cb85c;
+}
+
+.red {
+    color: #d9534f;
+}
+
+.popover {
+    color: #d9534f;
+}

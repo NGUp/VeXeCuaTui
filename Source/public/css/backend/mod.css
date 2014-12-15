@@ -1,0 +1,50 @@
+.management-operator {
+    width: 550px;
+}
+
+.management-operator ul {
+    list-style: none;
+}
+
+.management-operator-title {
+    font-size: 13pt;
+    padding-bottom: 5px;
+    margin-top: 10px;
+}
+
+.management-operator-button {
+    margin-top: 15px;
+    float: right;
+}
+
+.distance-contain {
+    background: #2c2e2f;
+    width: 650px;
+    height: 90px;
+    border-radius: 5px;
+    color: #ddd;
+}
+
+.table-space {
+    margin-top: 30px;
+}
+
+.distance-buttons {
+    padding-top: 34px;
+}
+
+.distance-buttons span {
+    margin-right: 5px;
+}
+
+.schedule-contain {
+    background: #2c2e2f;
+    height: 90px;
+    width: 500px;
+    border-radius: 5px;
+    color: #ddd;
+}
+
+.pagination {
+    margin: 0;
+}

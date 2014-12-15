@@ -1,0 +1,23 @@
+<header ng-controller="headerController as headerCtrl">
+    <a href="<?php echo $this->basePath() ?>/admin">
+        <img src="<?php echo $this->basePath() ?>/img/logo.png" alt="Logo" class="header-logo"/>
+    </a>
+    <ul class="right">
+        <li>
+            <?php echo $permission ?>
+        </li>
+        <li>
+            <span class="glyphicon glyphicon-chevron-down header-settings-button" ng-click="headerCtrl.showDropdownMenu()"></span>
+        </li>
+    </ul>
+    <div id="header-dropdown-menu" class="header-dropdown-menu">
+        <div class="header-dropdown-menu-cover">
+            <img src="<?php echo $this->basePath() ?>/img/administrator.jpg" alt="Avatar"/>
+            <p>{{headerCtrl.name}}</p>
+        </div>
+        <div class="header-btn-exit">
+            <button type="button" class="btn btn-info" ng-click="headerCtrl.setting()">Cài đặt</button>
+            <button type="button" class="btn btn-primary" ng-click="headerCtrl.exit()">Thoát</button>
+        </div>
+    </div>
+</header>

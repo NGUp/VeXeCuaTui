@@ -1,0 +1,23 @@
+<div class="backend-login">
+    <div class="backend-login-panel center-screen">
+        <div class="col-md-4 backend-login-avatar">
+            <img src="<?php echo $this->basePath() ?>/img/lock.png" class="backend-icon" alt="Administrator"/>
+        </div>
+        <div class="col-md-8">
+            <form action="/admin/login" method="post" ng-controller="LoginController as loginCtrl" ng-submit="loginCtrl.login()">
+                <ul class="center-screen backend-login-form">
+                    <li>
+                        <input type="text" name="admin_login_user" ng-model="admin_login_user" class="form-control" autocomplete="off" placeholder="Tên đăng nhập"/>
+                    </li>
+                    <li>
+                        <input type="password" ng-model="admin_login_password" class="form-control" autocomplete="off" placeholder="Mật khẩu"/>
+                        <input type="hidden" name="admin_login_hash" value="{{ admin_login_hash }}"/>
+                    </li>
+                    <li class="center">
+                        <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="main-contain" ng-controller="editRouteController as EditRouteCtrl">
+    <div class="sub-contain center-screen">
+        <form action="/admin/route/edit" method="post">
+            <ul>
+                <li class="sub-contain-title">Ngày đi</li>
+                <li>
+                    <div class="form-group">
+                        <div class="input-group date datetimepicker">
+                            <input type="text" class="form-control" id="edit-route-start-date" name="route_start_date" value="<?php echo $route[0]['NgayDi'] ?>" data-date-format="DD/MM/YYYY"/>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                        </div>
+                    </div>
+                </li>
+                <li class="sub-contain-title">Giờ đi</li>
+                <li>
+                    <div class="form-group">
+                        <div class="input-group date" id="datetimepicker-time">
+                            <input type="text" class="form-control" id="edit-route-start-time" name="route_start_time" value="<?php echo $route[0]['GioDi'] ?>" />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+                    </span>
+                        </div>
+                    </div>
+                </li>
+                <li class="sub-contain-title">Nơi đi</li>
+                <li id="start-location">
+                    <select class="combobox" id="edit-route-start-location" name="route_start_location">
+                        <?php foreach ($provinces as $province) : ?>
+                            <option value="<?php echo trim($province['TenTinh']) ?>"><?php echo trim($province['TenTinh']) ?></option>
+                        <?php endforeach ?>
+                    </select>
+                </li>
+                <li class="sub-contain-title">Nơi đến</li>
+                <li id="end-location">
+                    <select class="combobox" id="edit-route-end-location" name="route_end_location">
+                        <?php foreach ($provinces as $province) : ?>
+                            <option value="<?php echo trim($province['TenTinh']) ?>"><?php echo trim($province['TenTinh']) ?></option>
+                        <?php endforeach ?>
+                    </select>
+                </li>
+                <li class="sub-contain-title">Giá vé</li>
+                <li>
+                    <input type="text" class="form-control" id="edit-route-price" name="route_price" autocomplete="off" value="<?php echo $route[0]['GiaVe'] ?>" />
+                </li>
+                <li class="sub-contain-title">Các điểm dừng</li>
+                <li>
+                    <input type="text" id="edit-route-stop" class="form-control" name="route_stop" data-role="tagsinput" value="<?php echo $route[0]['CacDiemDung'] ?>" />
+                </li>
+                <li class="sub-contain-button">
+                    <input type="hidden" name="route_id" id="route-id" value="<?php echo trim($route[0]['MaLT']) ?>" />
+                    <button type="button" class="btn btn-default" ng-click="editRouteCtrl.back()">Trở về</button>
+                    <button type="button" id="btn-submit" class="btn btn-primary" ng-click="EditRouteCtrl.submit()">Hoàn tất</button>
+                    <input type="hidden" name="is_edit_route" value="1"/>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Thông báo</h4>
+            </div>
+            <div class="modal-body">
+                <h5 id="error-content"></h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>

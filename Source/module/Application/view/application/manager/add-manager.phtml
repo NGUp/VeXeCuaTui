@@ -1,0 +1,40 @@
+<div class="main-contain" ng-controller="addManagerController as AddManagerCtrl">
+    <div class="center-screen profile-panel admin-panel">
+        <form action="/admin/manager/add" method="post">
+            <ul>
+                <li class="profile-title">CMND</li>
+                <li>
+                    <input type="text" class="form-control" id="add-manager-id" ng-model="AddManagerCtrl.manager_id" name="manager_id" autocomplete="off"/>
+                </li>
+                <li class="profile-title">Họ tên</li>
+                <li>
+                    <input type="text" class="form-control" id="add-manager-name" ng-model="AddManagerCtrl.manager_name" name="manager_name" autocomplete="off"/>
+                </li>
+                <li class="profile-title">Tên đăng nhập</li>
+                <li>
+                    <input type="text" class="form-control" id="add-manager-user" ng-model="AddManagerCtrl.manager_user" name="manager_user" autocomplete="off"/>
+                </li>
+                <li class="profile-title">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-click="AddManagerCtrl.toggleMenu()" ng-model="AddManagerCtrl.manager_is_admin" name="manager_is_admin" /> Là Administrator
+                        </label>
+                    </div>
+                </li>
+                <li class="profile-title" ng-show="AddManagerCtrl.show">Hãng xe</li>
+                <li ng-show="AddManagerCtrl.show">
+                    <select class="combobox" name="manager_operator">
+                        <?php foreach($operators as $operator) : ?>
+                            <option value="<?php echo $operator['MaHangXe'] ?>"><?php echo $operator['TenHangXe'] ?></option>
+                        <?php endforeach ?>
+                    </select>
+                </li>
+                <li class="center profile-buttons">
+                    <button type="button" class="btn btn-default" ng-click="AddManagerCtrl.back()">Trở về</button>
+                    <button type="button" id="btn-submit" ng-click="AddManagerCtrl.submit()" class="btn btn-primary">Đồng ý</button>
+                    <input type="hidden" name="is_add_manager" value="1"/>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>

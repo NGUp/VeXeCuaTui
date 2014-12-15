@@ -1,0 +1,36 @@
+<div id="book-seat" hidden>
+    <label class="book-title-type">Loại xe ghế ngồi</label>
+    <table class="book-seat">
+        <?php
+        for ($i = 0; $i < 10; $i++) {
+
+            echo '<tr>';
+
+            for ($j = 0; $j < 5; $j++) {
+                if ($j === 2) {
+                    echo '<td></td>';
+                } else {
+                    if ($j > 2) {
+                        $t = $j - 1;
+                        echo "<td class='seat-available' id='$t$i'>$t$i</td>";
+                    } else {
+                        echo "<td class='seat-available' id='$j$i'>$j$i</td>";
+                    }
+                }
+            }
+        }
+
+        echo '</tr>';
+        ?>
+    </table>
+    <div>
+        <ul class="book-seat-information">
+            <li>
+                <span>Tổng số ghế:</span> 40
+            </li>
+            <li>
+                <span>Số ghế trống:</span> 20
+            </li>
+        </ul>
+    </div>
+</div>

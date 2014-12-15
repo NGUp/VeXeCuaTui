@@ -1,0 +1,19 @@
+.cover-image {
+    width: 100%;
+}
+
+.cover-advertisment {
+    height: 70px;
+    box-shadow: 0 0 5px 2px rgba(99, 99, 99, 0.5);
+}
+
+.cover-logos {
+    padding-top: 10px;
+    text-align: center;
+}
+
+.cover-logos img {
+    height: 50px;
+    margin-left: 5%;
+}
+

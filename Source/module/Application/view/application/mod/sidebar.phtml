@@ -1,0 +1,13 @@
+<div class="backend-side-bar" ng-controller="sidebarController as sidebarCtrl">
+    <div class="backend-side-bar-inner">
+        <div class="backend-side-bar-header">
+            <img src="<?php echo $this->basePath() ?>/img/Operators/MaiLinhExpress.jpg" class="backend-side-bar-logo" alt="Mai Linh Express"/>
+        </div>
+        <ul class="backend-side-bar-dropdown-menu">
+            <li class="grow backend-side-bar-active" ng-click="sidebarCtrl.editOperator()">Thông tin hãng xe</li>
+            <li class="grow" ng-click="sidebarCtrl.routeManagement()">Quản lý lộ trình</li>
+            <li class="grow" ng-click="sidebarCtrl.routeCar()">Quản lý xe</li>
+            <li class="grow">Điều hành lịch trình</li>
+        </ul>
+    </div>
+</div>

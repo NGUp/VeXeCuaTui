@@ -1,0 +1,44 @@
+.payment-panel {
+    width: 600px;
+    background: #b62e00;
+    border-radius: 10px;
+    height: 150px;
+    color: #fff;
+    padding-top: 20px;
+}
+
+.list-tickets {
+    margin-top: 30px;
+}
+
+.payment-list-credit-card-title {
+    list-style: none;
+    padding-left: 0;
+    font-size: 13pt;
+}
+
+.payment-list-credit-card-title li {
+    margin-top: 13px;
+}
+
+.col-md-8 {
+    padding-left: 0;
+}
+
+.payment-list-credit-card-form {
+    list-style: none;
+    padding-left: 0;
+}
+
+.payment-list-credit-card-form li {
+    margin-top: 5px;
+}
+
+.payment-total {
+    list-style: none;
+    font-size: 16pt;
+}
+
+.payment-list-credit-card-form .dropdown-menu {
+    width: 163px;
+}

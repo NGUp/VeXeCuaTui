@@ -1,0 +1,47 @@
+<div class="main-contain" ng-controller="editRegulationController as EditRegulationCtrl">
+    <div class="sub-contain center-screen">
+        <form action="/admin/regulation/edit" method="post">
+            <ul>
+                <li class="sub-contain-title">Mã điều tiết</li>
+                <li>
+                    <input type="text" id="edit-regulation-id" class="form-control" name="regulation_id" ng-model="EditRegulationCtrl.regulation_id" ng-init="EditRegulationCtrl.regulation_id='<?php echo trim($regulation[0]['MaDT']) ?>'" autocomplete="off"/>
+                </li>
+                <li class="sub-contain-title">Ngày bắt đầu</li>
+                <li>
+                    <div class="form-group">
+                        <div class="input-group date datetimepicker">
+                            <input type="text" class="form-control" name="regulation_date_from" id="edit-regulation-date-from" ng-model="EditRegulationCtrl.regulation_date_from" ng-init="EditRegulationCtrl.regulation_date_from='<?php echo $regulation[0]['NgayBatDau']->format('d/m/Y') ?>'" data-date-format="DD/MM/YYYY"/>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                        </div>
+                    </div>
+                </li>
+                <li class="sub-contain-title">Ngày kết thúc</li>
+                <li>
+                    <div class="form-group">
+                        <div class="input-group date datetimepicker">
+                            <input type="text" class="form-control" name="regulation_date_to" id="edit-regulation-date-to" ng-model="EditRegulationCtrl.regulation_date_to" ng-init="EditRegulationCtrl.regulation_date_to='<?php echo $regulation[0]['NgayKetThuc']->format('d/m/Y') ?>'" data-date-format="DD/MM/YYYY"/>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                        </div>
+                    </div>
+                </li>
+                <li class="sub-contain-title">Phần trăm</li>
+                <li>
+                    <input type="text" id="edit-regulation-percent" class="form-control" name="regulation_percent" ng-model="EditRegulationCtrl.regulation_percent" ng-init="EditRegulationCtrl.regulation_percent='<?php echo $regulation[0]['PhanTram'] ?>'" autocomplete="off"/>
+                </li>
+                <li class="sub-contain-title">Lý do</li>
+                <li>
+                    <input type="text" id="edit-regulation-reason" class="form-control" name="regulation_reason" ng-model="EditRegulationCtrl.regulation_reason" ng-init="EditRegulationCtrl.regulation_reason='<?php echo $regulation[0]['LyDo'] ?>'" autocomplete="off"/>
+                </li>
+                <li class="sub-contain-button">
+                    <button type="button" class="btn btn-default" ng-click="EditRegulationCtrl.back()">Trở về</button>
+                    <button type="button" id="btn-submit" class="btn btn-primary" ng-click="EditRegulationCtrl.submit()">Hoàn tất</button>
+                    <input type="hidden" name="is_edit_regulation" value="1"/>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>

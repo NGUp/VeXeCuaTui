@@ -1,0 +1,28 @@
+<div class="main-contain" ng-controller="editOperatorController as EditOperatorCtrl">
+    <div class="sub-contain center-screen">
+        <form action="/admin/operator/edit" enctype="multipart/form-data" method="post">
+            <ul>
+                <li class="sub-contain-title">Mã hãng xe</li>
+                <li>
+                    <input type="text" id="edit-operator-id" class="form-control" name="operator_id" ng-model="EditOperatorCtrl.operator_id" ng-init="EditOperatorCtrl.operator_id='<?php echo trim($operator['id']) ?>'" autocomplete="off"/>
+                </li>
+                <li class="sub-contain-title">Tên hãng xe</li>
+                <li>
+                    <input type="text" id="edit-operator-name" class="form-control" name="operator_name" ng-model="EditOperatorCtrl.operator_name" ng-init="EditOperatorCtrl.operator_name='<?php echo trim($operator['name']) ?>'" autocomplete="off"/>
+                </li>
+                <li class="sub-contain-title">Logo</li>
+                <li>
+                    <div>
+                        <input id="input-id" type="file" class="file" data-show-upload="false" name="logo" ng-model="EditOperatorCtrl.operator_logo" ng-init="EditOperatorCtrl.operator_logo='<?php echo $operator['logo'] ?>'" data-preview-file-type="text" >
+                        <input type="hidden" value="<?php echo $operator['logo'] ?>" name="operator_tmp_logo" id="tmp_logo"/>
+                    </div>
+                </li>
+                <li class="sub-contain-button">
+                    <button type="button" class="btn btn-default" ng-click="EditOperatorCtrl.back()">Trở về</button>
+                    <button type="button" id="btn-submit" class="btn btn-primary" ng-click="EditOperatorCtrl.submit()">Hoàn tất</button>
+                    <input type="hidden" name="is_edit_operator" value="1"/>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>

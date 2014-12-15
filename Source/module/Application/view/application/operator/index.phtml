@@ -1,0 +1,93 @@
+<div class="main-contain" ng-controller="operatorController as OperatorCtrl">
+    <div class="contain center-screen" ng-controller="searchManagerController as searchCtrl">
+        <div class="col-md-6">
+            <h5>Từ khóa</h5>
+            <input type="text" class="form-control" autocomplete="off" ng-model="searchCtrl.search_keyword" name="search_keyword"/>
+        </div>
+        <div class="col-md-3">
+            <h5>Tiêu chí</h5>
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdown-search" data-toggle="dropdown">
+                    Tìm kiếm
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-search">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0)" ng-click="searchCtrl.searchID()">Mã hãng xe</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0)" ng-click="searchCtrl.searchName()">Tên hãng xe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-3 buttons">
+            <button type="button" class="btn btn-info" ng-click="OperatorCtrl.addOperator()">
+                <span class="glyphicon glyphicon-plus"></span>Thêm
+            </button>
+        </div>
+    </div>
+    <form action="/admin/operator/edit" method="post">
+        <input type="hidden" name="operator_id" class="operator-id"/>
+        <div class="table-responsive table-space">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>Mã hãng xe</th>
+                    <th>Tên hãng xe</th>
+                    <th>Logo</th>
+                    <th class="col-function">#</th> <!-- Remove Column -->
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($operators as $operator) : ?>
+                    <tr>
+                        <td class="col-id">
+                            <?php echo $operator['MaHangXe'] ?>
+                        </td>
+                        <td class="col-name">
+                            <?php echo $operator['TenHangXe'] ?>
+                        </td>
+                        <td class="col-logo">
+                            <?php echo $operator['Logo'] ?>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger btn-function" data-toggle="modal" data-target="#remove-operator-modal">
+                                <span class="glyphicon glyphicon-remove"></span>Xóa
+                            </button>
+                        </td>
+                    </tr>
+                <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
+    </form>
+    <nav class="center" ">
+    <ul class="pagination">
+        <li><a href="#">&laquo;</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+    </ul>
+    </nav>
+</div>
+
+<div class="modal fade" id="remove-operator-modal" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <form action="/admin/operator/delete" method="post">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="modal-title">Thông báo</h4>
+                </div>
+                <div class="modal-body">
+                    Bạn có chắc chắn muốn xóa chứ?
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="operator_id" class="operator-id"/>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
+                    <button type="submit" class="btn btn-primary">Đồng ý</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

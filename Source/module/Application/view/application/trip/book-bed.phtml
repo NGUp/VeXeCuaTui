@@ -1,0 +1,59 @@
+<div id="book-bed">
+    <label class="book-title-type">Loại xe giường nằm</label>
+    <div class="boot-seat-floor">
+        <label>Tầng 1</label>
+        <table class="book-seat">
+            <?php
+            for ($i = 0; $i < 5; $i++) {
+
+                echo '<tr>';
+
+                $k = 0;
+                for ($j = 0; $j < 5; $j++) {
+                    if ($j % 2 == 0) {
+                        echo "<td class='seat-available' id='1$j$i'>1$k$i</td>";
+                        $k++;
+                    } else {
+                        echo '<td></td>';
+                    }
+                }
+            }
+
+            echo '</tr>';
+            ?>
+        </table>
+    </div>
+    <div class="boot-seat-floor">
+        <label>Tầng 2</label>
+        <table class="book-seat">
+            <?php
+            for ($i = 0; $i < 5; $i++) {
+
+                echo '<tr>';
+
+                $k = 0;
+                for ($j = 0; $j < 5; $j++) {
+                    if ($j % 2 == 0) {
+                        echo "<td class='seat-available' id='2$j$i'>2$k$i</td>";
+                        $k++;
+                    } else {
+                        echo '<td></td>';
+                    }
+                }
+            }
+
+            echo '</tr>';
+            ?>
+        </table>
+    </div>
+    <div>
+        <ul class="book-seat-information">
+            <li>
+                <span>Tổng số ghế:</span> 30
+            </li>
+            <li>
+                <span>Số ghế trống:</span> 20
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+.contain {
+    background: #2c2e2f;
+    width: 650px;
+    height: 90px;
+    border-radius: 5px;
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    margin-top: 34px;
+}
+
+.buttons span {
+    margin-right: 5px;
+}
+
+.dropdown-menu {
+    width: 285px;
+    padding-right: 0;
+}
+
+.btn-function span {
+    margin-right: 5px;
+}
+
+.sub-contain {
+    width: 550px;
+}
+
+.sub-contain ul {
+    list-style: none;
+}
+
+.sub-contain-title {
+    font-size: 13pt;
+    padding-bottom: 5px;
+    margin-top: 10px;
+}
+
+.sub-contain-button {
+    margin-top: 15px;
+    float: right;
+}

@@ -1,0 +1,44 @@
+<div class="main-contain" ng-controller="editManagerController as EditManagerCtrl">
+    <div class="center-screen profile-panel admin-panel">
+        <form action="/admin/manager/edit" method="post">
+            <ul>
+                <li class="profile-title">CMND</li>
+                <li>
+                    <input type="text" class="form-control disabled" id="edit-manager-id" ng-model="EditManagerCtrl.manager_id" ng-init="EditManagerCtrl.manager_id='<?php echo $profile['id'] ?>'" value="<?php echo $profile['id'] ?>" name="manager_id" autocomplete="off"/>
+                </li>
+                <li class="profile-title">Họ tên</li>
+                <li>
+                    <input type="text" class="form-control" id="edit-manager-name" ng-model="EditManagerCtrl.manager_name" ng-init="EditManagerCtrl.manager_name='<?php echo $profile['name'] ?>'" value="<?php echo $profile['name'] ?>" name="manager_name" autocomplete="off"/>
+                </li>
+                <li class="profile-title">Tên đăng nhập</li>
+                <li>
+                    <input type="text" class="form-control" id="edit-manager-user" ng-model="EditManagerCtrl.manager_user" ng-init="EditManagerCtrl.manager_user='<?php echo $profile['user'] ?>'" value="<?php echo $profile['user'] ?>" name="manager_user" autocomplete="off"/>
+                </li>
+                <li class="profile-title">Mật khẩu</li>
+                <li>
+                    <input type="password" class="form-control" id="edit-manager-pass" ng-model="EditManagerCtrl.manager_pass" name="manager_pass"/>
+                </li>
+                <li class="profile-title">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-click="EditManagerCtrl.toggleMenu()" checked="<?php echo $profile['isAdmin'] ?>" ng-model="EditManagerCtrl.manager_is_admin"  name="manager_is_admin" /> Là Administrator
+                        </label>
+                    </div>
+                </li>
+                <li class="profile-title" ng-show="EditManagerCtrl.show">Hãng xe</li>
+                <li ng-show="EditManagerCtrl.show">
+                    <select class="combobox" id="manager_operator" name="manager_operator">
+                        <?php foreach($operators as $operator) : ?>
+                            <option value="<?php echo $operator['MaHangXe'] ?>"><?php echo $operator['TenHangXe'] ?></option>
+                        <?php endforeach ?>
+                    </select>
+                </li>
+                <li class="center profile-buttons">
+                    <button type="button" class="btn btn-default" ng-click="EditManagerCtrl.back()">Trở về</button>
+                    <button type="button" id="btn-submit" ng-click="EditManagerCtrl.submit()" class="btn btn-primary">Đồng ý</button>
+                    <input type="hidden" name="is_edit_manager" value="1"/>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>

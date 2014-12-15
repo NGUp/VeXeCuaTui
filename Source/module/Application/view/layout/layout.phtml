@@ -1,0 +1,53 @@
+<?php if (!isset($ajax)) { ?>
+
+<?php echo $this->doctype(); ?>
+
+<html lang="en" ng-app="<?php echo $this->angular ?>">
+    <head>
+        <meta charset="utf-8">
+
+        <?php
+            echo $this->headTitle($this->title);
+
+            echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0')->appendHttpEquiv('X-UA-Compatible', 'IE=edge');
+
+            echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'));
+
+            if (isset($css)) {
+                foreach ($css as $style)
+                {
+                    echo '<link rel="stylesheet" href="' . $this->basePath() . '/css/' . $style . '.css">';
+                }
+            }
+        ?>
+
+        <style>
+            @font-face {
+                font-family: "Open Sans", "lucida grande", "Segoe UI", arial, verdana, "lucida sans unicode", tahoma, sans-serif;
+                src: url('<?php echo $this->basePath() ?>/fonts/OpenSans-Regular.ttf');
+            }
+        </style>
+
+    </head>
+    <body>
+
+        <?php echo $this->content ?>
+
+        <?php $this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',)); ?>
+
+        <script><?php echo $this->script ?></script>
+
+        <?php
+            if (isset($js)) {
+                foreach ($js as $script)
+                {
+                    echo '<script src="' . $this->basePath() . '/js/' . $script . '.js"></script>';
+                }
+            }
+        ?>
+    </body>
+</html>
+
+<?php } else { ?>
+    <?php echo $content ?>
+<?php } ?>

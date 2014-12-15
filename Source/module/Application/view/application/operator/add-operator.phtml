@@ -1,0 +1,27 @@
+<div class="main-contain" ng-controller="addOperatorController as AddOperatorCtrl">
+    <div class="sub-contain center-screen">
+        <form action="/admin/operator/add" enctype="multipart/form-data" method="post">
+            <ul>
+                <li class="sub-contain-title">Mã hãng xe</li>
+                <li>
+                    <input type="text" id="add-operator-id" class="form-control" name="operator_id" ng-model="AddOperatorCtrl.operator_id" autocomplete="off"/>
+                </li>
+                <li class="sub-contain-title">Tên hãng xe</li>
+                <li>
+                    <input type="text" id="add-operator-name" class="form-control" name="operator_name" ng-model="AddOperatorCtrl.operator_name" autocomplete="off"/>
+                </li>
+                <li class="sub-contain-title">Logo</li>
+                <li>
+                    <div>
+                        <input id="input-id" type="file" class="file" data-show-upload="false" name="logo" data-preview-file-type="text" >
+                    </div>
+                </li>
+                <li class="sub-contain-button">
+                    <button type="button" class="btn btn-default" ng-click="AddOperatorCtrl.back()">Trở về</button>
+                    <button type="button" id="btn-submit" class="btn btn-primary" ng-click="AddOperatorCtrl.submit()">Hoàn tất</button>
+                    <input type="hidden" name="is_add_operator" value="1"/>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>

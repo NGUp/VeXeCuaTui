@@ -1,0 +1,75 @@
+header {
+    height: 60px;
+    padding-right: 40px;
+    padding-left: 40px;
+    position: relative;
+    background: #fff !important;
+    border-bottom: 1px solid #ddd;
+}
+
+.header-dropdown-menu {
+    height: 200px;
+    width: 300px;
+    margin-right: 40px;
+    position: fixed;
+    right: 0;
+    z-index: 99;
+    background: #fff;
+    display: none;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 0 4px 10px 0 rgba(99, 99, 99, 0.5);
+}
+
+.header-logo {
+    height: 60px;
+    border-bottom: 1px solid #ddd;
+}
+
+header ul {
+    list-style: none;
+    display: inline-flex;
+    font-size: 16pt;
+    margin-top: 15px;
+    color: #333;
+}
+
+header ul li {
+    margin-left: 20px;
+}
+
+.header-dropdown-menu-cover {
+    height: 125px;
+    background: #f2f2f2;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.header-dropdown-menu-cover img {
+    width: 60px;
+    border-radius: 18px;
+}
+
+.header-dropdown-menu-cover p {
+    font-size: 24px;
+    font-weight: 400;
+    margin-top: 5px;
+}
+
+.header-btn-exit {
+    text-align: center;
+    padding-top: 20px;
+    background: #fff;
+}
+
+.header-settings-button {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.header-settings-button:hover {
+    background: #f2f2f2;
+    border-radius: 15px;
+}

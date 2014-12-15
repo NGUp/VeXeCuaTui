@@ -1,0 +1,26 @@
+.search-form-panel {
+    height: 40px;
+    margin-top: 20px;
+}
+
+.search-form-components {
+    list-style: none;
+    display: inline-flex;
+    padding-left: 0;
+}
+
+.search-form-form {
+    width: 32%;
+    margin-right: 10px;
+}
+
+.dropdown-menu {
+    width: 242px;
+}
+
+.search-step-active {
+    font-size: 15px;
+    font-weight: normal;
+    background: #428bca;
+    padding: 5px 10px;
+}

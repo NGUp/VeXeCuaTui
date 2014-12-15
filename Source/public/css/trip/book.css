@@ -1,0 +1,66 @@
+legend {
+    padding-bottom: 10px;
+}
+
+abbr[title] {
+    border-bottom: #fff;
+    color: red;
+}
+
+.book-information {
+    padding-left: 35px;
+}
+
+.book-customer-information {
+    list-style: none;
+}
+
+.book-customer-information li {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.book-buttons {
+    list-style: none;
+    display: inline-flex;
+    margin-top: 10px;
+}
+
+.book-seat td {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #aaa;
+}
+
+.seat-available {
+    text-align: center;
+    background: #ddd;
+    cursor: pointer;
+}
+
+.btn-book-ticket-bound {
+    margin-left: 10px;
+}
+
+.icon-credit-card {
+    margin-right: 10px;
+}
+
+.book-title-type {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.book-seat-information {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.book-seat-information span {
+    font-weight: 500;
+}
+
+.boot-seat-floor {
+    margin-top: 10px;
+}

@@ -1,0 +1,47 @@
+<div class="main-contain" ng-controller="addRegulationController as AddRegulationCtrl">
+    <div class="sub-contain center-screen">
+        <form action="/admin/regulation/add" method="post">
+            <ul>
+                <li class="sub-contain-title">Mã điều tiết</li>
+                <li>
+                    <input type="text" id="add-regulation-id" class="form-control" name="regulation_id" ng-model="AddRegulationCtrl.regulation_id" autocomplete="off"/>
+                </li>
+                <li class="sub-contain-title">Ngày bắt đầu</li>
+                <li>
+                    <div class="form-group">
+                        <div class="input-group date datetimepicker">
+                            <input type="text" class="form-control" name="regulation_date_from" id="add-regulation-date-from" ng-model="AddRegulationCtrl.regulation_date_from" data-date-format="DD/MM/YYYY"/>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                        </div>
+                    </div>
+                </li>
+                <li class="sub-contain-title">Ngày kết thúc</li>
+                <li>
+                    <div class="form-group">
+                        <div class="input-group date datetimepicker">
+                            <input type="text" class="form-control" name="regulation_date_to" id="add-regulation-date-to" ng-model="AddRegulationCtrl.regulation_date_to" data-date-format="DD/MM/YYYY"/>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                        </div>
+                    </div>
+                </li>
+                <li class="sub-contain-title">Phần trăm</li>
+                <li>
+                    <input type="text" id="add-regulation-percent" class="form-control" name="regulation_percent" ng-model="AddRegulationCtrl.regulation_percent" autocomplete="off"/>
+                </li>
+                <li class="sub-contain-title">Lý do</li>
+                <li>
+                    <input type="text" id="add-regulation-reason" class="form-control" name="regulation_reason" ng-model="AddRegulationCtrl.regulation_reason" autocomplete="off"/>
+                </li>
+                <li class="sub-contain-button">
+                    <button type="button" class="btn btn-default" ng-click="AddRegulationCtrl.back()">Trở về</button>
+                    <button type="button" id="btn-submit" class="btn btn-primary" ng-click="AddRegulationCtrl.submit()">Hoàn tất</button>
+                    <input type="hidden" name="is_add_regulation" value="1"/>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>

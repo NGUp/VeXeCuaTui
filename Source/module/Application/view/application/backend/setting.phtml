@@ -1,0 +1,40 @@
+<?php include __DIR__ . '/../gen/admin-header.phtml' ?>
+
+<div class="page-container">
+    <?php
+
+    if ($permission == 'Administrator') {
+        include __DIR__ . '/../admin/sidebar.phtml';
+    } else {
+        include __DIR__ . '/../mod/sidebar.phtml';
+    }
+
+    ?>
+
+    <div class="main-contain" ng-controller="settingController as settingCtrl">
+        <div class="profile-panel center-screen">
+            <form action="/admin/setting" method="post">
+                <ul>
+                    <li class="profile-title">Mật khẩu cũ</li>
+                    <li>
+                        <input type="password" class="form-control" id="setting-pass-old" name="user_pass_old" ng-model="settingCtrl.pass_old" />
+                    </li>
+                    <li class="profile-title">Mật khẩu mới</li>
+                    <li>
+                        <input type="password" class="form-control" id="setting-pass-new" name="user_pass_new" ng-model="settingCtrl.pass_new" />
+                    </li>
+                    <li class="profile-title">Xác nhận mật khẩu</li>
+                    <li>
+                        <input type="password" class="form-control" id="setting-pass-confirm" name="user_pass_confirm" ng-model="settingCtrl.pass_confirm" />
+                    </li>
+                    <li class="center profile-buttons">
+                        <input type="hidden" name="setting_id" value="{{settingCtrl.id}}" />
+                        <input type="hidden" name="setting_user" ng-model="settingCtrl.user" ng-init="settingCtrl.user='<?php echo $user ?>'"/>
+                        <button type="button" class="btn btn-default" ng-click="settingCtrl.back()">Trở về</button>
+                        <button type="button" id="btn-submit" class="btn btn-primary" ng-click="settingCtrl.submit()">Đồng ý</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>

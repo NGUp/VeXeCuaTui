@@ -1,0 +1,39 @@
+.backend-login {
+    padding-top: 150px;
+}
+
+.backend-login-panel {
+    width: 500px;
+    height: 200px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 5px 2px rgba(99, 99, 99, 0.5);
+}
+
+.backend-login-form {
+    list-style: none;
+    padding-left: 0;
+    padding-top: 30px;
+}
+
+.backend-login-form li {
+    margin-top: 10px;
+}
+
+.backend-icon {
+    width: 100px;
+}
+
+.backend-login-avatar {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.grow a {
+    color: #979898;
+}
+
+.grow a:hover {
+    text-decoration: none;
+    color: #fff;
+}

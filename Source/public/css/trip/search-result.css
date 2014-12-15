@@ -1,0 +1,41 @@
+.book-panel {
+    height: 700px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.search-information-trip {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.search-information-trip-panel {
+    height: 200px;
+    background: #ddd;
+    border-radius: 4px;
+}
+
+.search-information-content-layout {
+    padding-top: 35px;
+    color: #444;
+}
+
+.search-information-content {
+    list-style: none;
+    text-align: center;
+    padding-left: 0;
+}
+
+.search-information-time {
+    display: inline-flex;
+}
+
+.search-information-time-icon {
+    margin-top: 9px;
+    margin-right: 10px;
+}
+
+.icon-time {
+    margin-top: 9px;
+    margin-right: 5px;
+}
