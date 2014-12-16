@@ -98,6 +98,11 @@ class AjaxController extends BaseController
         }
     }
 
+    /**
+     * Add manager
+     *
+     * @throws CustomException SqlException
+     */
     public function addManagerAction()
     {
         try {
@@ -109,6 +114,23 @@ class AjaxController extends BaseController
             $operator = $this->post('manager_operator');
 
             $admin->createManager($id, $name, $user, $operator);
+            die();
+        } catch (CustomException $e) {
+            $e->getError();
+        }
+    }
+
+    public function editManagerAction()
+    {
+        try {
+            $admin = new AdminModel();
+
+            $id = $this->post('manager_id');
+            $oldPass = $this->post('manager_old_password');
+            $newPass = $this->post('manager_new_password');
+            $confirm = $this->post('manager_confirm_password');
+
+            $admin->updateManager($id, $oldPass, $newPass, $confirm);
             die();
         } catch (CustomException $e) {
             $e->getError();

@@ -163,35 +163,22 @@ class AdminController extends BaseController
             $this->error(403, 'Forbidden');
         }
 
-        $id = $this->post('setting_id');
+        $page = $this->createPage('setting');
 
-        if (is_null($id)) {
-            $page = $this->createPage('setting');
+        $view = $this->getContentView($page);
 
-            $view = $this->getContentView($page);
-
-            if ($this->auth->admin) {
-                $view->permission = 'Administrator';
-            } else {
-                $view->permission = 'Moderator';
-            }
-
-            $this->js('operator', $this->admin->getOperator(), true);
-            $view->user = $this->admin->getUsername();
-            $this->setInformation();
-            $this->angular('backend-setting');
-
-            return $page;
-
+        if ($this->auth->admin) {
+            $view->permission = 'Administrator';
         } else {
-            // Bug
-            $pass_old = $this->post('user_pass_old');
-            $pass_new = $this->post('user_pass_new');
-            $pass_confirm = $this->post('user_pass_confirm');
-
-            echo $pass_old . ' ~ ' . $pass_new . ' ~ ' . $pass_confirm;
-            die();
+            $view->permission = 'Moderator';
         }
+
+        $this->js('operator', $this->admin->getOperator(), true);
+        $view->user = $this->admin->getUsername();
+        $this->setInformation();
+        $this->angular('backend-setting');
+
+        return $page;
     }
 
     /**

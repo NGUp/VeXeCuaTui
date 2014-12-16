@@ -83,22 +83,19 @@ class AdminModel extends Model
     }
 
     /**
-     * Update manager profile
-     *
-     * If $isAdmin is true, this is Administrator. Else, this is Moderator
+     * Update password
      *
      * @param $id string
-     * @param $name string
-     * @param $user string
-     * @param $pass string
-     * @param $operator string
+     * @param $oldPass string
+     * @param $newPass string
+     * @param $confirmPass string
      * @throws CustomException SqlException
      * @throws \Exception
      */
-    public function updateManager($id, $name, $user, $pass, $operator)
+    public function updateManager($id, $oldPass, $newPass, $confirmPass)
     {
         try {
-            $this->non('usp_updateManager', array("'$id'", "N'$name'", "'$user'", "'$pass'", "'$operator'"));
+            $this->non('usp_updateManager', array("'$id'", "'$oldPass'", "'$newPass'", "'$confirmPass'"));
         } catch (CustomException $e) {
             throw $e;
         }

@@ -34,7 +34,35 @@
             }
 
             if (flag) {
-                $('#btn-submit').prop('type', 'submit');
+                var hash = function(password) {
+                    return md5(sha1(password) + '0d26906343c06781b068027f55a868c4');
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "/syn/editmanager",
+                    data: {
+                        manager_id: id,
+                        manager_old_password: hash(this.pass_old),
+                        manager_new_password: hash(this.pass_new),
+                        manager_confirm_password: hash(this.pass_confirm)
+                    }
+                }).done(function(message) {
+                    var pattern, reg_err, match, index;
+
+                    pattern = /\[(.*?)\]/igm;
+                    reg_err = new RegExp(pattern);
+
+                    if (reg_err.test(message)) {
+                        while (match = pattern.exec(message)) {
+                            index = pattern.lastIndex;
+                        }
+                        $('#error-content').html(message.substring(index, message.length).trim());
+                        $('#edit-modal').modal();
+                    } else {
+                        window.location.href = '/admin/manager';
+                    }
+                });
             }
         };
     });
