@@ -10,6 +10,7 @@
  */
 namespace Application\Controller;
 
+use Application\Model\AdminModel;
 use Application\Model\AjaxModel;
 use Application\Model\RouteModel;
 use Application\System\CustomException;
@@ -91,6 +92,23 @@ class AjaxController extends BaseController
             $stop = $this->post('route_stop');
 
             $route->updateRoute($id, $start_date, $start_time, $start_location, $end_location, $price, $stop);
+            die();
+        } catch (CustomException $e) {
+            $e->getError();
+        }
+    }
+
+    public function addManagerAction()
+    {
+        try {
+            $admin = new AdminModel();
+
+            $id = $this->post('manager_id');
+            $name = $this->post('manager_name');
+            $user = $this->post('manager_user');
+            $operator = $this->post('manager_operator');
+
+            $admin->createManager($id, $name, $user, $operator);
             die();
         } catch (CustomException $e) {
             $e->getError();

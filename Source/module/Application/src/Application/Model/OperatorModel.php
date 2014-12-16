@@ -108,4 +108,14 @@ class OperatorModel extends Model
     public function deleteOperator($id) {
         $this->non('usp_deleteOperator', array("'$id'"));
     }
+
+    /**
+     * Get available operators
+     *
+     * @return \Application\System\matrix|null
+     */
+    public function getAvailableOperators()
+    {
+        return $this->more('usp_getAvailableOperator');
+    }
 }

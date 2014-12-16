@@ -11,12 +11,7 @@
         $('#tab-manager').addClass('backend-side-bar-active');
         $('#tab-operator').removeClass('backend-side-bar-active');
 
-        this.show = true;
-
-        this.toggleMenu = function() {
-            this.show = !this.show;
-            removeNotification('.combobox-container');
-        };
+        this.show = true
 
         this.back = function() {
             window.location = '/admin/manager';
@@ -50,13 +45,37 @@
                 flag = false;
             }
 
-            if ((this.manager_is_admin == undefined || this.manager_is_admin == false)  && angular.element('.combobox-container').children(0).val() == '') {
+            if ($('.combobox-container').children(0).val() == '') {
                 showNotification('.combobox-container', 'Vui lòng chọn hãng xe');
                 flag = false;
             }
 
             if (flag) {
-                angular.element('#btn-submit').prop('type', 'submit');
+                $.ajax({
+                    type: "POST",
+                    url: "/syn/addmanager",
+                    data: {
+                        manager_id: this.manager_id,
+                        manager_name: this.manager_name,
+                        manager_user: this.manager_user,
+                        manager_operator: $('.combobox-container').children(0).val()
+                    }
+                }).done(function(message) {
+                    var pattern, reg_err, match, index;
+
+                    pattern = /\[(.*?)\]/igm;
+                    reg_err = new RegExp(pattern);
+
+                    if (reg_err.test(message)) {
+                        while (match = pattern.exec(message)) {
+                            index = pattern.lastIndex;
+                        }
+                        $('#error-content').html(message.substring(index, message.length).trim());
+                        $('#add-modal').modal();
+                    } else {
+                        window.location.href = '/admin/manager';
+                    }
+                });
             }
         };
     })

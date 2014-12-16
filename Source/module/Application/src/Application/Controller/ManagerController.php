@@ -111,32 +111,17 @@ class ManagerController extends BaseController
      */
     public function addAction()
     {
-        $permission = $this->post('is_add_manager');
+        $page = $this->createPage('add-manager');
+        $page->permission = 'Administrator';
 
-        if (!is_null($permission)) {
-            $id = $this->post('manager_id');
-            $name = $this->post('manager_name');
-            $user = $this->post('manager_user');
-            $isAdmin = $this->post('manager_is_admin');
-            $operator = $this->post('manager_operator');
+        $view = $this->getContentView($page);
+        $operator = new OperatorModel();
+        $view->operators = $operator->getAvailableOperators();
 
-            $this->admin->createManager($id, $name, $user, $isAdmin, $operator);
+        $this->setInformation();
+        $this->angular('administrator-add-manager');
 
-            $this->go('/admin/manager');
-
-        } else {
-            $page = $this->createPage('add-manager');
-            $page->permission = 'Administrator';
-
-            $view = $this->getContentView($page);
-            $operator = new OperatorModel();
-            $view->operators = $operator->getAll();
-
-            $this->setInformation();
-            $this->angular('administrator-add-manager');
-
-            return $page;
-        }
+        return $page;
     }
 
     /**

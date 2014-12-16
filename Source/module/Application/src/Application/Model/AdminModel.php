@@ -10,6 +10,7 @@
  */
 namespace Application\Model;
 
+use Application\System\CustomException;
 use Application\System\Model;
 
 /**
@@ -68,15 +69,16 @@ class AdminModel extends Model
      * @param $id string
      * @param $name string
      * @param $user string
-     * @param $isAdmin bool
      * @param $operator string
+     * @throws CustomException SqlException
+     * @throws \Exception
      */
-    public function createManager($id, $name, $user, $isAdmin, $operator)
+    public function createManager($id, $name, $user, $operator)
     {
-        if (is_null($isAdmin)) {
-            $this->non('usp_createManager', array("'$id'", "N'$name'", "'$user'", 'NULL', "'$operator'"));
-        } else {
-            $this->non('usp_createManager', array("'$id'", "N'$name'", "'$user'", "'$isAdmin'", "'$operator'"));
+        try {
+            $this->non('usp_createManager', array("'$id'", "N'$name'", "'$user'", "'$operator'"));
+        } catch (CustomException $e) {
+            throw $e;
         }
     }
 
@@ -89,15 +91,16 @@ class AdminModel extends Model
      * @param $name string
      * @param $user string
      * @param $pass string
-     * @param $isAdmin bool
      * @param $operator string
+     * @throws CustomException SqlException
+     * @throws \Exception
      */
-    public function updateManager($id, $name, $user, $pass, $isAdmin, $operator)
+    public function updateManager($id, $name, $user, $pass, $operator)
     {
-        if (is_null($isAdmin)) {
-            $this->non('usp_updateManager', array("'$id'", "N'$name'", "'$user'", "'$pass'", 'NULL', "'$operator'"));
-        } else {
-            $this->non('usp_updateManager', array("'$id'", "N'$name'", "'$user'", "'$pass'", "'$isAdmin'", "'$operator'"));
+        try {
+            $this->non('usp_updateManager', array("'$id'", "N'$name'", "'$user'", "'$pass'", "'$operator'"));
+        } catch (CustomException $e) {
+            throw $e;
         }
     }
 

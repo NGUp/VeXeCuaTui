@@ -14,13 +14,6 @@
                 <li>
                     <input type="text" class="form-control" id="add-manager-user" ng-model="AddManagerCtrl.manager_user" name="manager_user" autocomplete="off"/>
                 </li>
-                <li class="profile-title">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" ng-click="AddManagerCtrl.toggleMenu()" ng-model="AddManagerCtrl.manager_is_admin" name="manager_is_admin" /> Là Administrator
-                        </label>
-                    </div>
-                </li>
                 <li class="profile-title" ng-show="AddManagerCtrl.show">Hãng xe</li>
                 <li ng-show="AddManagerCtrl.show">
                     <select class="combobox" name="manager_operator">
@@ -36,5 +29,22 @@
                 </li>
             </ul>
         </form>
+    </div>
+</div>
+
+<div class="modal fade" id="add-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Thông báo</h4>
+            </div>
+            <div class="modal-body">
+                <h5 id="error-content"></h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">OK</button>
+            </div>
+        </div>
     </div>
 </div>

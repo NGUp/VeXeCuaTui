@@ -34,6 +34,8 @@ abstract class Model extends App
      * @return bool
      * @throws \Exception SqlException
      */
+
+
     public function non($sp, $parameters = null)
     {
         // Initialize query string
