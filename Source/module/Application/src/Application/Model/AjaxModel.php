@@ -25,6 +25,11 @@ class AjaxModel extends Model
 {
     private static $static_ajax;
 
+    /**
+     * Singleton Pattern
+     *
+     * @return AjaxModel
+     */
     public static function getInstance()
     {
         if (!self::$static_ajax)
@@ -32,5 +37,10 @@ class AjaxModel extends Model
             self::$static_ajax = new AjaxModel();
         }
         return self::$static_ajax;
+    }
+
+    public function checkAvailableOperatorName($name)
+    {
+        return $this->one('uf_checkAvailableOperatorName', array("N'$name'"));
     }
 }

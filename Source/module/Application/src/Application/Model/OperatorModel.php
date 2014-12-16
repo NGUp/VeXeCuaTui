@@ -71,16 +71,15 @@ class OperatorModel extends Model
     /**
      * Create operator
      *
-     * @param $id string
      * @param $name string
      * @param $logo string
      */
-    public function createOperator($id, $name, $logo)
+    public function createOperator($name, $logo)
     {
         if (is_null($logo)) {
-            $this->non('usp_createOperator', array("'$id'", "N'$name'", 'NULL'));
+            $this->non('usp_createOperator', array("N'$name'", 'NULL'));
         } else {
-            $this->non('usp_createOperator', array("'$id'", "N'$name'", "'$logo'"));
+            $this->non('usp_createOperator', array("N'$name'", "'$logo'"));
         }
     }
 

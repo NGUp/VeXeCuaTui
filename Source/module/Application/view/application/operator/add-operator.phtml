@@ -1,11 +1,7 @@
 <div class="main-contain" ng-controller="addOperatorController as AddOperatorCtrl">
     <div class="sub-contain center-screen">
-        <form action="/admin/operator/add" enctype="multipart/form-data" method="post">
+        <form action="/admin/operator/add" id="add-operator-form" enctype="multipart/form-data" method="post">
             <ul>
-                <li class="sub-contain-title">Mã hãng xe</li>
-                <li>
-                    <input type="text" id="add-operator-id" class="form-control" name="operator_id" ng-model="AddOperatorCtrl.operator_id" autocomplete="off"/>
-                </li>
                 <li class="sub-contain-title">Tên hãng xe</li>
                 <li>
                     <input type="text" id="add-operator-name" class="form-control" name="operator_name" ng-model="AddOperatorCtrl.operator_name" autocomplete="off"/>
@@ -23,5 +19,22 @@
                 </li>
             </ul>
         </form>
+    </div>
+</div>
+
+<div class="modal fade" id="add-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Thông báo</h4>
+            </div>
+            <div class="modal-body">
+                <h5 id="error-content"></h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">OK</button>
+            </div>
+        </div>
     </div>
 </div>

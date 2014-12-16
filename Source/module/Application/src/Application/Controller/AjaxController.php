@@ -120,6 +120,11 @@ class AjaxController extends BaseController
         }
     }
 
+    /**
+     * Change password manager
+     *
+     * @throws CustomException SqlException
+     */
     public function editManagerAction()
     {
         try {
@@ -133,6 +138,25 @@ class AjaxController extends BaseController
             $admin->updateManager($id, $oldPass, $newPass, $confirm);
             die();
         } catch (CustomException $e) {
+            $e->getError();
+        }
+    }
+
+    /**
+     * Check Available Operator Name
+     *
+     * @return bool
+     * @throws CustomException SqlException
+     */
+    public function checkAvailableOperatorNameAction()
+    {
+        try {
+            $name = $this->post('operator_name');
+
+            $result = $this->ajax->checkAvailableOperatorName($name);
+            print_r($result[0]);
+            die();
+        } catch(CustomException $e) {
             $e->getError();
         }
     }

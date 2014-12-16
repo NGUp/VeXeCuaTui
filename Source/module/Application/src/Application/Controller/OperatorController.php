@@ -119,7 +119,6 @@ class OperatorController extends BaseController
         $permission = $this->post('is_add_operator');
 
         if (!is_null($permission)) {
-            $id = $this->post('operator_id');
             $name = $this->post('operator_name');
             $file_name = null;
 
@@ -129,7 +128,7 @@ class OperatorController extends BaseController
                 move_uploaded_file($_FILES['logo']['tmp_name'], $file);
             }
 
-            $this->operator->createOperator($id, $name, $file_name);
+            $this->operator->createOperator($name, $file_name);
 
             $this->go('/admin/operator');
 
