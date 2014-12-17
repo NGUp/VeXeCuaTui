@@ -11,6 +11,8 @@
 namespace Application\Controller;
 
 use Application\Model\CarModel;
+use Application\Model\OperatorModel;
+use Application\Model\RouteModel;
 use Application\System\Auth;
 
 /**
@@ -50,6 +52,7 @@ use Application\System\Auth;
              'backend/header',
              'backend/admin',
              'car/search-car',
+             'car/add-car',
              'car/car'
          );
 
@@ -66,8 +69,17 @@ use Application\System\Auth;
          $this->setLayout($layout, $css, $js);
      }
 
+     /**
+      * Add Car Page
+      *
+      * @return array|\Zend\View\Model\ViewModel
+      */
      public function indexAction()
      {
+         if ($this->getMethod() != 'POST') {
+             $this->error('405', 'Method Not Allowed');
+         }
+
          $id = $this->post('operator_id');
 
          $page = $this->createPage('index');
@@ -76,6 +88,27 @@ use Application\System\Auth;
          $view->cars = $this->car->getAllCars($id);
 
          $this->angular('moderator-car');
+         $this->js('operator', "'$id'");
+
+         return $page;
+     }
+
+     public function addAction()
+     {
+         $page = $this->createPage('add-car');
+
+         $page->permission = 'Moderator';
+         $id = $this->post('operator_id');
+         $view = $this->getContentView($page);
+
+         $operator = new OperatorModel();
+         $view->operators = $operator->getAll();
+
+         $route = new RouteModel();
+         $view->routes = $route->getAll();
+
+         $this->angular('moderator-add-car');
+         $this->js('operator', "'$id'");
 
          return $page;
      }

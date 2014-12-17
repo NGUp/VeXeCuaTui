@@ -12,6 +12,7 @@ namespace Application\Controller;
 
 use Application\Model\AdminModel;
 use Application\Model\AjaxModel;
+use Application\Model\CarModel;
 use Application\Model\RegulationModel;
 use Application\Model\RouteModel;
 use Application\System\CustomException;
@@ -201,6 +202,23 @@ class AjaxController extends BaseController
             $reason = $this->post('regulation_reason');
 
             $regulation->updateRegulation($id, $date_from, $date_to, $percent, $reason);
+            die();
+        } catch (CustomException $e) {
+            $e->getError();
+        }
+    }
+
+    public function addCarAction()
+    {
+        try {
+            $car = new CarModel();
+
+            $id = $this->post('car_id');
+            $type = $this->post('car_type');
+            $operator = $this->post('car_operator');
+            $route = $this->post('car_route');
+
+            $car->createCar($id, $type, $operator, $route);
             die();
         } catch (CustomException $e) {
             $e->getError();

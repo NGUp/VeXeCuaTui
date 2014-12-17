@@ -15,7 +15,7 @@
                     <input type="text" class="form-control" id="add-manager-user" ng-model="AddManagerCtrl.manager_user" name="manager_user" autocomplete="off"/>
                 </li>
                 <li class="profile-title" ng-show="AddManagerCtrl.show">Hãng xe</li>
-                <li ng-show="AddManagerCtrl.show">
+                <li>
                     <select class="combobox" name="manager_operator">
                         <?php foreach($operators as $operator) : ?>
                             <option value="<?php echo $operator['MaHangXe'] ?>"><?php echo $operator['TenHangXe'] ?></option>

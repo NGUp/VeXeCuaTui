@@ -10,6 +10,7 @@
  */
 namespace Application\Model;
 
+use Application\System\CustomException;
 use Application\System\Model;
 
 /**
@@ -23,8 +24,33 @@ use Application\System\Model;
  */
  class CarModel extends Model
  {
+     /**
+      * Get all cars by ID
+      *
+      * @param $id string
+      * @return \Application\System\matrix|null
+      */
      public function getAllCars($id)
      {
          return $this->more('usp_getAllCars', array("'$id'"));
+     }
+
+     /**
+      * Create new car
+      *
+      * @param $id string
+      * @param $type int
+      * @param $operator string
+      * @param $route string
+      * @throws CustomException SqlException
+      * @throws \Exception
+      */
+     public function createCar($id, $type, $operator, $route)
+     {
+         try {
+             $this->non('usp_createCar', array("'$id'", "$type", "'$operator'", "'$route'"));
+         } catch (CustomException $e) {
+             throw $e;
+         }
      }
  }

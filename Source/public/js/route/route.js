@@ -17,8 +17,6 @@
                 "type": "hidden"
             }));
 
-            var url = "/search.php?q=" + $('#key-word').val();
-
             newForm.submit();
         };
 
