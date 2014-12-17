@@ -61,7 +61,32 @@
             }
 
             if (flag) {
-                $('#btn-submit').prop('type', 'submit');
+                $.ajax({
+                    type: "POST",
+                    url: "/syn/editregulation",
+                    data: {
+                        regulation_id: this.regulation_id,
+                        regulation_date_from: date_from,
+                        regulation_date_to: date_to,
+                        regulation_percent: this.regulation_percent,
+                        regulation_reason: this.regulation_reason
+                    }
+                }).done(function(message) {
+                    var pattern, reg_err, match, index;
+
+                    pattern = /\[(.*?)\]/igm;
+                    reg_err = new RegExp(pattern);
+
+                    if (reg_err.test(message)) {
+                        while (match = pattern.exec(message)) {
+                            index = pattern.lastIndex;
+                        }
+                        $('#error-content').html(message.substring(index, message.length).trim());
+                        $('#add-modal').modal();
+                    } else {
+                        window.location.href = '/admin/regulation';
+                    }
+                });
             }
         };
     });

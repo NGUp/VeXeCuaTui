@@ -162,6 +162,11 @@ class AjaxController extends BaseController
         }
     }
 
+    /**
+     * Add Regulation
+     *
+     * @throws CustomException SqlException
+     */
     public function addRegulationAction()
     {
         try {
@@ -173,6 +178,29 @@ class AjaxController extends BaseController
             $reason = $this->post('regulation_reason');
 
             $regulation->createRegulation($date_from, $date_to, $percent, $reason);
+            die();
+        } catch (CustomException $e) {
+            $e->getError();
+        }
+    }
+
+    /**
+     * Edit Regulation
+     *
+     * @throws CustomException SqlException
+     */
+    public function editRegulationAction()
+    {
+        try {
+            $regulation = new RegulationModel();
+
+            $id = $this->post('regulation_id');
+            $date_from = $this->post('regulation_date_from');
+            $date_to = $this->post('regulation_date_to');
+            $percent = $this->post('regulation_percent');
+            $reason = $this->post('regulation_reason');
+
+            $regulation->updateRegulation($id, $date_from, $date_to, $percent, $reason);
             die();
         } catch (CustomException $e) {
             $e->getError();

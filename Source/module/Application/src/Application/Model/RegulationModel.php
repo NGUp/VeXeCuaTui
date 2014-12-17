@@ -61,7 +61,11 @@ class RegulationModel extends Model
      */
     public function updateRegulation($id, $dateFrom, $dateTo, $percent, $reason)
     {
-        $this->non('usp_updateRegulation', array("'$id'", "'$dateFrom'", "'$dateTo'", "$percent", "N'$reason'"));
+        try {
+            $this->non('usp_updateRegulation', array("'$id'", "'$dateFrom'", "'$dateTo'", "$percent", "N'$reason'"));
+        } catch(CustomException $e) {
+            $e->getError();
+        }
     }
 
     /**

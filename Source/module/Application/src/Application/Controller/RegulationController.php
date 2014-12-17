@@ -126,28 +126,14 @@ class RegulationController extends BaseController
     public function editAction()
     {
         $id = $this->post('regulation_id');
-        $permission = $this->post('is_edit_regulation');
+        $page = $this->createPage('edit-regulation');
+        $page->permission = 'Administrator';
+        $view = $this->getContentView($page);
+        $view->regulation = $this->regulation->findRegulation('MaDT', $id);
 
-        if (!is_null($permission)) {
-            $date_from = $this->post('regulation_date_from');
-            $date_to = $this->post('regulation_date_to');
-            $percent = $this->post('regulation_percent');
-            $reason = $this->post('regulation_reason');
+        $this->angular('administrator-edit-regulation');
 
-            $this->regulation->updateRegulation($id, $date_from, $date_to, $percent, $reason);
-
-            $this->go('/admin/regulation');
-
-        } else {
-            $page = $this->createPage('edit-regulation');
-            $page->permission = 'Administrator';
-            $view = $this->getContentView($page);
-            $view->regulation = $this->regulation->findRegulation('MaDT', $id);
-
-            $this->angular('administrator-edit-regulation');
-
-            return $page;
-        }
+        return $page;
     }
 
     /**
