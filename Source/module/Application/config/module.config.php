@@ -133,6 +133,28 @@ return array(
                     ),
                 )
             ),
+            'car' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'     => '/admin/car',
+                    'defaults'  => array(
+                        'controller' => 'Application\Controller\Car',
+                        'action'     => 'index'
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'page' => array(
+                        'type' => 'segment',
+                        'options' => array(
+                            'route' => '/[:action]',
+                            'constraints' => array(
+                                'action' => '[a-z]+'
+                            )
+                        )
+                    ),
+                )
+            ),
             'ajax' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
@@ -188,6 +210,7 @@ return array(
             'Application\Controller\Operator'   => 'Application\Controller\OperatorController',
             'Application\Controller\Regulation' => 'Application\Controller\RegulationController',
             'Application\Controller\Route'      => 'Application\Controller\RouteController',
+            'Application\Controller\Car'      => 'Application\Controller\CarController',
             'Application\Controller\Ajax'       => 'Application\Controller\AjaxController',
         ),
     ),

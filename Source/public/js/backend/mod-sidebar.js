@@ -21,7 +21,17 @@
         };
 
         this.routeCar = function() {
-            window.location.href = "/admin/car";
+            event.preventDefault();
+
+            var newForm = jQuery("<form>", {
+                "action": "/admin/car",
+                "method": "post"
+            }).append(jQuery("<input>", {
+                "name": "operator_id",
+                "value": operator,
+                "type": "hidden"
+            }));
+            newForm.submit();
         };
     });
 })();

@@ -1,0 +1,104 @@
+<div class="main-contain" ng-controller="carController as CarCtrl">
+    <div class="contain center-screen" ng-controller="searchCarController as searchCtrl">
+        <div class="col-md-6">
+            <h5>Từ khóa</h5>
+            <input type="text" class="form-control" autocomplete="off" ng-model="searchCtrl.search_keyword" name="search_keyword"/>
+        </div>
+        <div class="col-md-3">
+            <h5>Tiêu chí</h5>
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdown-search" data-toggle="dropdown">
+                    Tìm kiếm
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-search">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0)" ng-click="searchCtrl.searchId()">Mã lịch trình</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0)" ng-click="searchCtrl.searchTime()">Thời gian</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0)" ng-click="searchCtrl.searchRoute()">Tuyến</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-3 buttons">
+            <button type="button" class="btn btn-info" ng-click="CarCtrl.addCar()">
+                <span class="glyphicon glyphicon-plus"></span>Thêm
+            </button>
+        </div>
+    </div>
+    <form action="/admin/car/edit" method="post">
+        <input type="hidden" name="car_id" class="car-id"/>
+        <div class="table-responsive table-space">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>Bảng số xe</th>
+                    <th>Loại xe</th>
+                    <th>Hãng xe</th>
+                    <th>Tuyến</th>
+                    <th class="col-function">#</th> <!-- Edit Column -->
+                    <th class="col-function">#</th> <!-- Remove Column -->
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($cars as $car) : ?>
+                    <tr>
+                        <td class="col-id">
+                            <?php echo $car['BangSoXe'] ?>
+                        </td>
+                        <td class="col-type">
+                            <?php echo $car['TenLoai'] ?>
+                        </td>
+                        <td class="col-operator">
+                            <?php echo $car['TenHangXe'] ?>
+                        </td>
+                        <td class="col-route">
+                            <?php echo $car['NoiDi'] . ' - ' . $car['NoiDen'] ?>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-warning btn-function">
+                                <span class="glyphicon glyphicon-edit"></span>Chi tiết/Sửa
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger btn-function" data-toggle="modal" data-target="#remove-car-modal">
+                                <span class="glyphicon glyphicon-remove"></span>Xóa
+                            </button>
+                        </td>
+                    </tr>
+                <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
+    </form>
+    <nav class="center" ">
+    <ul class="pagination">
+        <li><a href="#">&laquo;</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+    </ul>
+    </nav>
+</div>
+
+<div class="modal fade" id="remove-car-modal" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <form action="/admin/car/delete" method="post">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="modal-title">Thông báo</h4>
+                </div>
+                <div class="modal-body">
+                    Bạn có chắc chắn muốn xóa chứ?
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="car_id" class="car-id"/>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                    <button type="submit" class="btn btn-primary">Đồng ý</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

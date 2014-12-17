@@ -24,7 +24,6 @@
 
         $('.btn-function').click(function() {
             $('.route-id').val($($(this).parents()[1]).find('.col-id')[0].innerHTML.trim());
-            console.log($('.route-id').val());
         });
     });
 })();
