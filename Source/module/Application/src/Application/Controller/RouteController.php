@@ -147,6 +147,8 @@ class RouteController extends BaseController
         $view = $this->getContentView($page);
         $view->provinces = $provinces->getAll();
         $view->route = $this->route->findRoute('MaLT', $id);
+        $admin = new AdminModel();
+        $this->js('operator', $admin->getOperator(), true);
 
         $this->angular('moderator-edit-route');
 

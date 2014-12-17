@@ -2,9 +2,8 @@
     <div class="sub-contain center-screen">
         <form action="/admin/operator/edit" enctype="multipart/form-data" method="post">
             <ul>
-                <li class="sub-contain-title">Mã hãng xe</li>
-                <li>
-                    <input type="text" id="edit-operator-id" class="form-control" name="operator_id" ng-model="EditOperatorCtrl.operator_id" ng-init="EditOperatorCtrl.operator_id='<?php echo trim($operator['id']) ?>'" autocomplete="off"/>
+                <li class="center">
+                    <img class="operator-logo" src="/img/operators/<?php echo $operator['logo'] ?>" alt="{{ EditOperatorCtrl.operator_name }}"/>
                 </li>
                 <li class="sub-contain-title">Tên hãng xe</li>
                 <li>
@@ -21,6 +20,7 @@
                     <button type="button" class="btn btn-default" ng-click="EditOperatorCtrl.back()">Trở về</button>
                     <button type="button" id="btn-submit" class="btn btn-primary" ng-click="EditOperatorCtrl.submit()">Hoàn tất</button>
                     <input type="hidden" name="is_edit_operator" value="1"/>
+                    <input type="hidden" class="form-control" name="operator_id" ng-model="EditOperatorCtrl.operator_id" ng-init="EditOperatorCtrl.operator_id='<?php echo trim($operator['id']) ?>'" />
                 </li>
             </ul>
         </form>
