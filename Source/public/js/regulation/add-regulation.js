@@ -20,15 +20,13 @@
 
         this.submit = function() {
 
-            var reg_id, reg_date, reg_percent, reg_reason, flag, date_from, date_to;
+            var reg_date, reg_percent, reg_reason, flag, date_from, date_to;
 
             flag = true;
-            reg_id = new RegExp('[a-zA-Z0-9]{3,10}');
             reg_date = new RegExp('^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)[0-9]{2}$');
             reg_percent = new RegExp('(-[0-9]{1,2}|[0-9]{1,2})');
             reg_reason = new RegExp('^([a-zA-Z ]{0,}[^\u0000-\u007F]{0,})+$');
 
-            removeNotification('#add-regulation-id');
             removeNotification('#add-regulation-date-from');
             removeNotification('#add-regulation-date-to');
             removeNotification('#add-regulation-percent');
@@ -36,11 +34,6 @@
 
             date_from = $('#add-regulation-date-from').val();
             date_to = $('#add-regulation-date-to').val();
-
-            if (reg_id.test(this.regulation_id) == false || reg_id.exec(this.regulation_id)[0] !=  this.regulation_id) {
-                showNotification('#add-regulation-id', 'Mã hãng xe không hợp lệ');
-                flag = false;
-            }
 
             if (reg_date.test(date_from) == false || reg_date.exec(date_from)[0] !=  date_from) {
                 showNotification('#add-regulation-date-from', 'Ngày bắt đầu không hợp lệ');
@@ -68,7 +61,31 @@
             }
 
             if (flag) {
-                $('#btn-submit').prop('type', 'submit');
+                $.ajax({
+                    type: "POST",
+                    url: "/syn/addregulation",
+                    data: {
+                        regulation_date_from: date_from,
+                        regulation_date_to: date_to,
+                        regulation_percent: this.regulation_percent,
+                        regulation_reason: this.regulation_reason
+                    }
+                }).done(function(message) {
+                    var pattern, reg_err, match, index;
+
+                    pattern = /\[(.*?)\]/igm;
+                    reg_err = new RegExp(pattern);
+
+                    if (reg_err.test(message)) {
+                        while (match = pattern.exec(message)) {
+                            index = pattern.lastIndex;
+                        }
+                        $('#error-content').html(message.substring(index, message.length).trim());
+                        $('#add-modal').modal();
+                    } else {
+                        window.location.href = '/admin/regulation';
+                    }
+                });
             }
         };
     })

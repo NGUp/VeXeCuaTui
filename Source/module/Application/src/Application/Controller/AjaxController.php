@@ -12,6 +12,7 @@ namespace Application\Controller;
 
 use Application\Model\AdminModel;
 use Application\Model\AjaxModel;
+use Application\Model\RegulationModel;
 use Application\Model\RouteModel;
 use Application\System\CustomException;
 
@@ -157,6 +158,23 @@ class AjaxController extends BaseController
             print_r($result[0]);
             die();
         } catch(CustomException $e) {
+            $e->getError();
+        }
+    }
+
+    public function addRegulationAction()
+    {
+        try {
+            $regulation = new RegulationModel();
+
+            $date_from = $this->post('regulation_date_from');
+            $date_to = $this->post('regulation_date_to');
+            $percent = $this->post('regulation_percent');
+            $reason = $this->post('regulation_reason');
+
+            $regulation->createRegulation($date_from, $date_to, $percent, $reason);
+            die();
+        } catch (CustomException $e) {
             $e->getError();
         }
     }

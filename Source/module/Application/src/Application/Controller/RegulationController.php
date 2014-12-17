@@ -110,26 +110,12 @@ class RegulationController extends BaseController
      */
     public function addAction()
     {
-        $permission = $this->post('is_add_regulation');
+        $page = $this->createPage('add-regulation');
+        $page->permission = 'Administrator';
 
-        if (!is_null($permission)) {
-            $id = $this->post('regulation_id');
-            $date_from = $this->post('regulation_date_from');
-            $date_to = $this->post('regulation_date_to');
-            $percent = $this->post('regulation_percent');
-            $reason = $this->post('regulation_reason');
+        $this->angular('administrator-add-regulation');
 
-            $this->regulation->createRegulation($id, $date_from, $date_to, $percent, $reason);
-
-            $this->go('/admin/regulation');
-        } else {
-            $page = $this->createPage('add-regulation');
-            $page->permission = 'Administrator';
-
-            $this->angular('administrator-add-regulation');
-
-            return $page;
-        }
+        return $page;
     }
 
     /**

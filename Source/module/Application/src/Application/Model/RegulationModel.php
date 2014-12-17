@@ -10,6 +10,7 @@
  */
 namespace Application\Model;
 
+use Application\System\CustomException;
 use Application\System\Model;
 
 /**
@@ -35,18 +36,17 @@ class RegulationModel extends Model
     /**
      * Create new Regulation
      *
-     * @param $id string
      * @param $dateFrom string
      * @param $dateTo string
      * @param $percent int
      * @param $reason string
      */
-    public function createRegulation($id, $dateFrom, $dateTo, $percent, $reason)
+    public function createRegulation($dateFrom, $dateTo, $percent, $reason)
     {
-        if (is_null($reason)) {
-            $this->non('usp_createRegulation', array("'$id'", "'$dateFrom'", "'$dateTo'", "$percent", 'NULL'));
-        } else {
-            $this->non('usp_createRegulation', array("'$id'", "'$dateFrom'", "'$dateTo'", "$percent", "N'$reason'"));
+        try {
+            $this->non('usp_createRegulation', array("'$dateFrom'", "'$dateTo'", "$percent", "N'$reason'"));
+        } catch(CustomException $e) {
+            $e->getError();
         }
     }
 
