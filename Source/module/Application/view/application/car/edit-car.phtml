@@ -1,0 +1,46 @@
+<div class="main-contain" ng-controller="editCarController as editCarCtrl">
+    <div class="sub-contain center-screen">
+        <ul>
+            <li class="sub-contain-title">
+                Bảng số xe: <h2 id="edit-car-id"><?php echo $car[0]['BangSoXe'] ?></h2>
+            </li>
+            <li class="sub-contain-title">Loại xe</li>
+            <li id="edit-car-type">
+                <select class="combobox" name="car_type" id="car-type">
+                    <option value="1">Giường nằm</option>
+                    <option value="2">Ghế thường</option>
+                </select>
+            </li>
+            <li class="sub-contain-title">Tuyến</li>
+            <li id="edit-car-route">
+                <select class="combobox" name="car_route" id="car-route">
+                    <?php foreach ($routes as $route) : ?>
+                        <option value="<?php echo $route['MaLT'] ?>"><?php echo $route['NoiDi'] . ' - ' . $route['NoiDen'] ?></option>
+                    <?php endforeach ?>
+                </select>
+            </li>
+            <li class="sub-contain-button">
+                <button type="button" class="btn btn-default" ng-click="editCarCtrl.back()">Trở về</button>
+                <button type="button" id="btn-submit" class="btn btn-primary" ng-click="editCarCtrl.submit()">Hoàn tất</button>
+                <input type="hidden" name="operator_id" id="operator-id" value="" />
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Thông báo</h4>
+            </div>
+            <div class="modal-body">
+                <h5 id="error-content"></h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>

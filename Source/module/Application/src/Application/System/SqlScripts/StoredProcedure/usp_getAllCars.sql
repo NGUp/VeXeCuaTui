@@ -6,7 +6,7 @@ Create Procedure usp_getAllCars
 	@operator nchar(10)
 As
 Begin
-	Select xe.BangSoXe, loai.TenLoai, hang.TenHangXe, lich.NoiDi, lich.NoiDen
-	From (Xe xe join LichTrinh lich On xe.LichTrinh = lich.MaLT) join LoaiXe loai on xe.LoaiXe = loai.MaLoai, HangXe hang
-	Where hang.MaHangXe = @operator And xe.HangXe = @operator
+	Select x.BangSoXe, loai.TenLoai, lich.NoiDi, lich.NoiDen, hang.TenHangXe
+	From ((Xe x Join LoaiXe loai on x.LoaiXe = loai.MaLoai) Join LichTrinh lich on x.LichTrinh = lich.MaLT) Join HangXe hang on x.HangXe = hang.MaHangXe
+	Where x.HangXe = @operator
 End

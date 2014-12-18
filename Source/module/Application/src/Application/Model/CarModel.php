@@ -35,6 +35,11 @@ use Application\System\Model;
          return $this->more('usp_getAllCars', array("'$id'"));
      }
 
+     public function getCar($id)
+     {
+         return $this->more('usp_findCars', array("'BangSoXe'", "'$id'"));
+     }
+
      /**
       * Create new car
       *
@@ -49,6 +54,24 @@ use Application\System\Model;
      {
          try {
              $this->non('usp_createCar', array("'$id'", "$type", "'$operator'", "'$route'"));
+         } catch (CustomException $e) {
+             throw $e;
+         }
+     }
+
+     /**
+      * Update car
+      *
+      * @param $id string
+      * @param $type int
+      * @param $route string
+      * @throws CustomException SqlException
+      * @throws \Exception
+      */
+     public function updateCar($id, $type, $route)
+     {
+         try {
+             $this->non('usp_updateCar', array("'$id'", "$type", "'$route'"));
          } catch (CustomException $e) {
              throw $e;
          }

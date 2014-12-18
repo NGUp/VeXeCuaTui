@@ -208,6 +208,11 @@ class AjaxController extends BaseController
         }
     }
 
+    /**
+     * Add Car
+     *
+     * @throws CustomException SqlException
+     */
     public function addCarAction()
     {
         try {
@@ -219,6 +224,27 @@ class AjaxController extends BaseController
             $route = $this->post('car_route');
 
             $car->createCar($id, $type, $operator, $route);
+            die();
+        } catch (CustomException $e) {
+            $e->getError();
+        }
+    }
+
+    /**
+     * Edit Car
+     *
+     * @throws CustomException SqlException
+     */
+    public function editCarAction()
+    {
+        try {
+            $car = new CarModel();
+
+            $id = $this->post('car_id');
+            $type = $this->post('car_type');
+            $route = $this->post('car_route');
+
+            $car->updateCar($id, $type, $route);
             die();
         } catch (CustomException $e) {
             $e->getError();

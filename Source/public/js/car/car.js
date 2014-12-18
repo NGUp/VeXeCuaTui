@@ -5,6 +5,8 @@
     var app = angular.module("moderator-car", ["header", "mod-sidebar", "search-car"]);
 
     app.controller("carController", function() {
+        this.operator_id = operator;
+
         this.addCar = function() {
             event.preventDefault();
 
@@ -19,5 +21,9 @@
 
             newForm.submit();
         }
+
+        $('.btn-function').click(function() {
+            $('.car-id').val($($(this).parents()[1]).find('.col-id')[0].innerHTML.trim());
+        });
     });
 })();

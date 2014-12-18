@@ -53,6 +53,7 @@ use Application\System\Auth;
              'backend/admin',
              'car/search-car',
              'car/add-car',
+             'car/edit-car',
              'car/car'
          );
 
@@ -93,6 +94,11 @@ use Application\System\Auth;
          return $page;
      }
 
+     /**
+      * Edit Car Page
+      *
+      * @return \Zend\View\Model\ViewModel
+      */
      public function addAction()
      {
          $page = $this->createPage('add-car');
@@ -109,6 +115,28 @@ use Application\System\Auth;
 
          $this->angular('moderator-add-car');
          $this->js('operator', "'$id'");
+
+         return $page;
+     }
+
+     public function editAction()
+     {
+         $page = $this->createPage('edit-car');
+
+         $page->permission = 'Moderator';
+         $id = $this->post('car_id');
+         $operator_id = $this->post('operator_id');
+         $view = $this->getContentView($page);
+
+         $operator = new OperatorModel();
+         $view->operators = $operator->getAll();
+
+         $route = new RouteModel();
+         $view->routes = $route->getAll();
+         $view->car = $this->car->getCar($id);
+
+         $this->angular('moderator-edit-car');
+         $this->js('operator', "'$operator_id'");
 
          return $page;
      }

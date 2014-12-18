@@ -2,16 +2,11 @@
 
     'use strict';
 
-    var app = angular.module('moderator-add-car', ['header', "mod-sidebar"]);
+    var app = angular.module('moderator-edit-car', ['header', "mod-sidebar"]);
 
-    app.controller('addCarController', function() {
+    app.controller('editCarController', function() {
         $('.combobox').combobox();
         $('.combobox').addClass('form-control');
-
-        $('#tab-manager').addClass('backend-side-bar-active');
-        $('#tab-operator').removeClass('backend-side-bar-active');
-
-        this.show = true
 
         this.back = function() {
             event.preventDefault();
@@ -29,49 +24,32 @@
         };
 
         this.submit = function() {
-            var reg_id, id, type, operator_id, route, flag;
+            var type, route, flag;
+
+            removeNotification('#edit-car-type');
+            removeNotification('#edit-car-route');
 
             flag = true;
-            reg_id = new RegExp('([0-9]{2})[A-Z]-([0-9]{4}|[0-9]{3}.[0-9]{2})');
-
-            removeNotification('#add-car-id');
-            removeNotification('#add-car-type');
-            removeNotification('#add-car-operator');
-            removeNotification('#add-car-route');
-
-            id = this.car_id;
             type = $('#car-type').val();
-            operator_id = $('#car-operator').val();
             route = $('#car-route').val();
 
-            if (reg_id.test(id) == false || reg_id.exec(id)[0] != id) {
-                showNotification('#add-car-id', 'Bảng số xe không hợp lệ');
-                flag = false;
-            }
-
             if (type == null) {
-                showNotification('#add-car-type', 'Loại xe không được để trống');
-                flag = false;
-            }
-
-            if (operator_id == null) {
-                showNotification('#add-car-operator', 'Hãng xe không được để trống');
+                showNotification('#edit-car-type', 'Loại xe không được để trống');
                 flag = false;
             }
 
             if (route == null) {
-                showNotification('#add-car-route', 'Tuyến xe không được để trống');
+                showNotification('#edit-car-route', 'Tuyến xe không được để trống');
                 flag = false;
             }
 
             if (flag) {
                 $.ajax({
                     type: "POST",
-                    url: "/syn/addcar",
+                    url: "/syn/editcar",
                     data: {
-                        car_id: id,
+                        car_id: $('#edit-car-id').html(),
                         car_type: type,
-                        car_operator: operator_id,
                         car_route: route
                     }
                 }).done(function(message) {
@@ -85,7 +63,7 @@
                             index = pattern.lastIndex;
                         }
                         $('#error-content').html(message.substring(index, message.length).trim());
-                        $('#add-modal').modal();
+                        $('#edit-modal').modal();
                     } else {
                         event.preventDefault();
 
@@ -103,5 +81,5 @@
                 });
             }
         }
-    })
+    });
 })();
