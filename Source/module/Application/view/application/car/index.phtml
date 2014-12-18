@@ -86,7 +86,7 @@
 <div class="modal fade" id="remove-car-modal" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
-            <form action="/admin/car/delete" method="post">
+            <form action="/admin/car/delete" method="post" ng-controller="deleteCarController as DeleteCarCtrl">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title" id="modal-title">Thông báo</h4>
@@ -95,9 +95,9 @@
                     Bạn có chắc chắn muốn xóa chứ?
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden" name="car_id" class="car-id"/>
+                    <input type="hidden" name="car_id" class="car-id" />
                     <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
-                    <button type="submit" class="btn btn-primary">Đồng ý</button>
+                    <button type="button" class="btn btn-primary" ng-click="DeleteCarCtrl.submitDelete()">Đồng ý</button>
                 </div>
             </form>
         </div>

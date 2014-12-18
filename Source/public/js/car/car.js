@@ -2,7 +2,7 @@
 
     'use strict';
 
-    var app = angular.module("moderator-car", ["header", "mod-sidebar", "search-car"]);
+    var app = angular.module("moderator-car", ["header", "mod-sidebar", "search-car", "delete-car"]);
 
     app.controller("carController", function() {
         this.operator_id = operator;

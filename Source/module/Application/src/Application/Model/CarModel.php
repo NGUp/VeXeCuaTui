@@ -76,4 +76,19 @@ use Application\System\Model;
              throw $e;
          }
      }
+
+     /**
+      * Delete Car
+      *
+      * @param $id
+      * @throws CustomException SqlException
+      */
+     public function deleteCar($id)
+     {
+         try {
+             $this->non('usp_deleteCar', array("'$id'"));
+         } catch (CustomException $e) {
+             throw $e;
+         }
+     }
  }

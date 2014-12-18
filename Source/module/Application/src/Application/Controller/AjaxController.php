@@ -250,4 +250,23 @@ class AjaxController extends BaseController
             $e->getError();
         }
     }
+
+    /**
+     * Delete Car
+     *
+     * @throws CustomException SqlException
+     */
+    public function deleteCarAction()
+    {
+        try {
+            $car = new CarModel();
+
+            $id = $this->post('car_id');
+
+            $car->deleteCar($id);
+            die();
+        } catch (CustomException $e) {
+            $e->getError();
+        }
+    }
 } 

@@ -8,6 +8,7 @@
  *  Nam Vo <vhnam2504@gmail.com>
  *
  */
+
 namespace Application\Controller;
 
 use Application\Model\CarModel;
@@ -54,6 +55,7 @@ use Application\System\Auth;
              'car/search-car',
              'car/add-car',
              'car/edit-car',
+             'car/delete-car',
              'car/car'
          );
 
@@ -71,7 +73,7 @@ use Application\System\Auth;
      }
 
      /**
-      * Add Car Page
+      * Index Car Page
       *
       * @return array|\Zend\View\Model\ViewModel
       */
@@ -95,7 +97,7 @@ use Application\System\Auth;
      }
 
      /**
-      * Edit Car Page
+      * Add Car Page
       *
       * @return \Zend\View\Model\ViewModel
       */
@@ -119,6 +121,11 @@ use Application\System\Auth;
          return $page;
      }
 
+     /**
+      * Edit Car Page
+      *
+      * @return \Zend\View\Model\ViewModel
+      */
      public function editAction()
      {
          $page = $this->createPage('edit-car');
