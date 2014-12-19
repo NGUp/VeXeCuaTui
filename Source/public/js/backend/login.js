@@ -10,6 +10,8 @@
         };
 
         $scope.login = function() {
+            $('#btn-submit').button('loading');
+
             $.ajax({
                 type: "POST",
                 url: "/syn/login",
@@ -20,7 +22,9 @@
             }).done(function(message) {
                 if (message.length > 0) {
                     $scope.message_error = message;
+
                     $('#login-modal').modal();
+                    $('#btn-submit').button('reset');
                 } else {
                     window.location.href = "/admin";
                 }
