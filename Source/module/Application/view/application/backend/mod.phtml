@@ -1,11 +1,12 @@
 <?php include __DIR__ . '/../gen/admin-header.phtml' ?>
 
 <div class="page-container">
-    <?php
-        if ($permission == 'Administrator') {
-            include __DIR__ . '/../admin/sidebar.phtml';
-        } else {
-            include __DIR__ . '/../mod/sidebar.phtml';
-        }
-    ?>
+    <?php include __DIR__ . '/../mod/sidebar.phtml' ?>
+
+    <div class="main-contain">
+        <h1>Khu vực dành cho Moderator</h1>
+        <div class="img-management">
+            <img src="/img/moderator-icon.png" alt="Moderator Area"/>
+        </div>
+    </div>
 </div>
