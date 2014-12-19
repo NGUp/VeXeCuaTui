@@ -15,6 +15,7 @@ use Application\Model\AjaxModel;
 use Application\Model\CarModel;
 use Application\Model\RegulationModel;
 use Application\Model\RouteModel;
+use Application\System\Auth;
 use Application\System\CustomException;
 
 /**
@@ -264,6 +265,26 @@ class AjaxController extends BaseController
             $id = $this->post('car_id');
 
             $car->deleteCar($id);
+            die();
+        } catch (CustomException $e) {
+            $e->getError();
+        }
+    }
+
+    /**
+     * Handling Login
+     */
+    public function loginAction()
+    {
+        try {
+            $user = $this->post('admin_login_user');
+            $hash = $this->post('admin_login_hash');
+
+            $auth = new Auth();
+
+            if (!$auth->login($user, $hash)) {
+                echo 'Tên đăng nhập hoặc mật khẩu không chính xác.';
+            }
             die();
         } catch (CustomException $e) {
             $e->getError();

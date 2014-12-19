@@ -132,22 +132,6 @@ class AdminController extends BaseController
     }
 
     /**
-     * Handling Login
-     *
-     */
-    public function loginAction()
-    {
-        $user = $this->post('admin_login_user');
-        $hash = $this->post('admin_login_hash');
-
-        if ($this->auth->login($user, $hash)) {
-            $this->admin = true;
-        }
-
-        $this->go('/admin');
-    }
-
-    /**
      * Handling log out
      *
      */
