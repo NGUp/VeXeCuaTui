@@ -53,6 +53,7 @@ class AdminController extends BaseController
             'encode',
             'backend/login',
             'backend/mod-sidebar',
+            'backend/admin-sidebar',
             'backend/header',
             'backend/setting',
             'backend/admin',

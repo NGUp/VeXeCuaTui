@@ -2,14 +2,13 @@
 
     'use strict';
 
-    var app = angular.module('administrator-add-manager', ['header']);
+    var app = angular.module('administrator-add-manager', ['header', "admin-sidebar"]);
 
     app.controller('addManagerController', function() {
         $('.combobox').combobox();
         $('.combobox').addClass('form-control');
 
-        $('#tab-manager').addClass('backend-side-bar-active');
-        $('#tab-operator').removeClass('backend-side-bar-active');
+        $('#tab-manager').css("color", "#fff");
 
         this.show = true
 

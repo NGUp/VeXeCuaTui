@@ -58,6 +58,7 @@ class RegulationController extends BaseController
             'components/bootstrap-datetimepicker',
             'backend/header',
             'encode',
+            'backend/admin-sidebar',
             'backend/admin',
             'regulation/regulation',
             'regulation/search-regulation',

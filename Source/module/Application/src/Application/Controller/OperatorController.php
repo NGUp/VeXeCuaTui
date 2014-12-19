@@ -56,6 +56,7 @@ class OperatorController extends BaseController
             'components/bootstrap-file-input',
             'components/bootstrap-combobox',
             'backend/mod-sidebar',
+            'backend/admin-sidebar',
             'backend/header',
             'operator/search-operator',
             'operator/operator',

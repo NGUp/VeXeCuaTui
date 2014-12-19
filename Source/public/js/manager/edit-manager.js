@@ -8,9 +8,6 @@
         $('.combobox').combobox();
         $('.combobox').addClass('form-control');
 
-        $('#tab-manager').addClass('backend-side-bar-active');
-        $('#tab-operator').removeClass('backend-side-bar-active');
-
         var options = angular.element('#manager_operator').find('option');
         var hash = new Object();
 

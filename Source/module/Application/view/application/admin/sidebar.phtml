@@ -1,13 +1,12 @@
-<div class="backend-side-bar">
+<div class="backend-side-bar" ng-controller="sidebarController as sidebarCtrl">
     <div class="backend-side-bar-inner">
         <div class="backend-side-bar-header">
             <img src="<?php echo $this->basePath() ?>/img/administrator-logo.png" class="backend-side-bar-logo backend-is-admin" alt="Administrator"/>
         </div>
         <ul class="backend-side-bar-dropdown-menu">
-            <li class="grow" id="tab-manager"><a href="/admin/manager">Quản lý nhân sự</a></li>
-            <li class="grow" id="tab-operator"><a href="/admin/operator">Quản lý hãng xe</a></li>
-            <li class="grow" id="tab-regulation"><a href="/admin/regulation">Điều tiết giá vé</a></li>
-            <li class="grow">Deployment</li>
+            <li class="grow" id="tab-manager" ng-click="sidebarCtrl.editModerators()">Quản lý nhân sự</li>
+            <li class="grow" id="tab-operator" ng-click="sidebarCtrl.editOperators()">Quản lý hãng xe</a></li>
+            <li class="grow" id="tab-regulation" ng-click="sidebarCtrl.editRegulation()">Điều tiết giá vé</li>
         </ul>
     </div>
 </div>

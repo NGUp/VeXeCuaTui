@@ -2,13 +2,12 @@
 
     'use strict';
 
-    var app = angular.module('administrator-add-operator', ['header']);
+    var app = angular.module('administrator-add-operator', ['header', "admin-sidebar"]);
 
     app.controller('addOperatorController', function() {
         $("#input-id").fileinput({'showUpload':false, 'previewFileType':'any'});
 
-        $('#tab-manager').removeClass('backend-side-bar-active');
-        $('#tab-operator').addClass('backend-side-bar-active');
+        $('#tab-operator').css("color", "#fff");
 
         this.back = function() {
             window.location = '/admin/operator';

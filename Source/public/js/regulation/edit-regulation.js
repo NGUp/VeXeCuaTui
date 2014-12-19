@@ -2,7 +2,7 @@
 
     'use strict';
 
-    var app = angular.module('administrator-edit-regulation', ['header']);
+    var app = angular.module('administrator-edit-regulation', ['header', "admin-sidebar"]);
 
     app.controller('editRegulationController', function () {
         $('.datetimepicker').datetimepicker({
@@ -10,9 +10,7 @@
             defaultDate: moment().format("DD/MM/YYYY")
         });
 
-        $('#tab-manager').removeClass('backend-side-bar-active');
-        $('#tab-operator').removeClass('backend-side-bar-active');
-        $('#tab-regulation').addClass('backend-side-bar-active');
+        $('#tab-regulation').css("color", "#fff");
 
         this.back = function() {
             window.location = '/admin/regulation';

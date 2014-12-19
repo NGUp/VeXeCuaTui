@@ -57,6 +57,7 @@ class ManagerController extends BaseController
             'components/bootstrap-combobox',
             'backend/header',
             'encode',
+            'backend/admin-sidebar',
             'backend/admin',
             'manager/search-manager',
             'manager/manager',
