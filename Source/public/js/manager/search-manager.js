@@ -6,7 +6,7 @@
 
     app.controller('searchManagerController', function() {
         this.searchID = function() {
-            window.location = '/admin/manager?condition=CMND&key=' + this.search_keyword;
+            c
         };
 
         this.searchName = function() {

@@ -84,11 +84,18 @@ use Application\System\Auth;
          }
 
          $id = $this->post('operator_id');
+         $condition = $this->post('condition');
+         $key = $this->post('key');
 
          $page = $this->createPage('index');
          $page->permission = 'Moderator';
          $view = $this->getContentView($page);
-         $view->cars = $this->car->getAllCars($id);
+
+         if (is_null($condition) && is_null($key)) {
+             $view->cars = $this->car->getAllCars($id);
+         } else {
+             $view->cars = $this->car->findCars($id, $condition, $key);
+         }
 
          $this->angular('moderator-car');
          $this->js('operator', "'$id'");
@@ -140,7 +147,7 @@ use Application\System\Auth;
 
          $route = new RouteModel();
          $view->routes = $route->getAll();
-         $view->car = $this->car->getCar($id);
+         $view->car = $this->car->getCar($operator_id, $id);
 
          $this->angular('moderator-edit-car');
          $this->js('operator', "'$operator_id'");

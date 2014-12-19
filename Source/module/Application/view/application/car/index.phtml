@@ -2,7 +2,7 @@
     <div class="contain center-screen" ng-controller="searchCarController as searchCtrl">
         <div class="col-md-6">
             <h5>Từ khóa</h5>
-            <input type="text" class="form-control" autocomplete="off" ng-model="searchCtrl.search_keyword" name="search_keyword"/>
+            <input type="text" class="form-control" autocomplete="off" ng-model="searchCtrl.search_keyword" spellcheck="false" name="search_keyword"/>
         </div>
         <div class="col-md-3">
             <h5>Tiêu chí</h5>
@@ -12,8 +12,8 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-search">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0)" ng-click="searchCtrl.searchId()">Mã lịch trình</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0)" ng-click="searchCtrl.searchTime()">Thời gian</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0)" ng-click="searchCtrl.searchId()">Bảng số xe</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0)" ng-click="searchCtrl.searchType()">Loại xe</a></li>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0)" ng-click="searchCtrl.searchRoute()">Tuyến</a></li>
                 </ul>
             </div>
@@ -33,7 +33,6 @@
                 <tr>
                     <th>Bảng số xe</th>
                     <th>Loại xe</th>
-                    <th>Hãng xe</th>
                     <th>Tuyến</th>
                     <th class="col-function">#</th> <!-- Edit Column -->
                     <th class="col-function">#</th> <!-- Remove Column -->
@@ -47,9 +46,6 @@
                         </td>
                         <td class="col-type">
                             <?php echo $car['TenLoai'] ?>
-                        </td>
-                        <td class="col-operator">
-                            <?php echo $car['TenHangXe'] ?>
                         </td>
                         <td class="col-route">
                             <?php echo $car['NoiDi'] . ' - ' . $car['NoiDen'] ?>

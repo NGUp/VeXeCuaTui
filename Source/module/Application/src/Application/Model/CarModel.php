@@ -35,9 +35,29 @@ use Application\System\Model;
          return $this->more('usp_getAllCars', array("'$id'"));
      }
 
-     public function getCar($id)
+     /**
+      * Get car
+      *
+      * @param $operator string
+      * @param $id string
+      * @return \Application\System\matrix|null
+      */
+     public function getCar($operator, $id)
      {
-         return $this->more('usp_findCars', array("'BangSoXe'", "'$id'"));
+         return $this->more('usp_findCars', array("'$operator'", "'BangSoXe'", "'$id'"));
+     }
+
+     /**
+      * Find cars with condition
+      *
+      * @param $operator string
+      * @param $condition string
+      * @param $key string
+      * @return \Application\System\matrix|null
+      */
+     public function findCars($operator, $condition, $key)
+     {
+         return $this->more('usp_findCars', array("'$operator'", "'$condition'", "N'$key'"));
      }
 
      /**
@@ -58,6 +78,7 @@ use Application\System\Model;
              throw $e;
          }
      }
+
 
      /**
       * Update car
