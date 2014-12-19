@@ -7,6 +7,8 @@
     app.controller("carController", function() {
         this.operator_id = operator;
 
+        $('#tab-car').css("color", "#fff");
+
         this.addCar = function() {
             event.preventDefault();
 

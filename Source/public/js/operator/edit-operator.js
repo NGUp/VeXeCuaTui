@@ -9,8 +9,7 @@
         this.operator_logo = $('#tmp_logo').val();
         $('body').find('.file-caption-name').html(this.operator_logo);
 
-        $('#tab-manager').removeClass('backend-side-bar-active');
-        $('#tab-operator').addClass('backend-side-bar-active');
+        $('#tab-information').css("color", "#fff");
 
         this.back = function() {
             window.location = '/admin';

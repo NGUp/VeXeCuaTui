@@ -32,6 +32,7 @@
 
         $('.combobox').combobox();
         $('.combobox').addClass('form-control');
+        $('#tab-route').css("color", "#fff");
 
         $('#add-route-stop').tagsinput({
             typeaheadjs: {

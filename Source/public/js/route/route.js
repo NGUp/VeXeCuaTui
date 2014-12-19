@@ -5,6 +5,8 @@
     var app = angular.module("moderator-route", ["header", "mod-sidebar", "search-route"]);
 
     app.controller("routeController", function() {
+        $('#tab-route').css("color", "#fff");
+
         this.addRoute = function() {
             event.preventDefault();
 

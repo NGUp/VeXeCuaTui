@@ -30,6 +30,7 @@
 
         $('.combobox').combobox();
         $('.combobox').addClass('form-control');
+        $('#tab-route').css("color", "#fff");
 
         $('#edit-route-stop').tagsinput({
             typeaheadjs: {
@@ -41,7 +42,7 @@
         });
 
         this.back = function() {
-            window.location = '/admin/route';
+            window.location.href = "/admin/route";
         };
 
         this.submit = function() {

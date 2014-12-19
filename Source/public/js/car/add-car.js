@@ -7,9 +7,7 @@
     app.controller('addCarController', function() {
         $('.combobox').combobox();
         $('.combobox').addClass('form-control');
-
-        $('#tab-manager').addClass('backend-side-bar-active');
-        $('#tab-operator').removeClass('backend-side-bar-active');
+        $('#tab-car').css("color", "#fff");
 
         this.show = true
 

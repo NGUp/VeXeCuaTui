@@ -7,6 +7,7 @@
     app.controller('editCarController', function() {
         $('.combobox').combobox();
         $('.combobox').addClass('form-control');
+        $('#tab-car').css("color", "#fff");
 
         this.back = function() {
             event.preventDefault();
