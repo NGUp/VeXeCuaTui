@@ -37,7 +37,7 @@ class IndexController extends BaseController
 		$css = array(
             'gen/header',
             'gen/footer',
-            'index/cover',
+            'index/index',
             'components/bootstrap-combobox',
             'components/bootstrap-datetimepicker',
             'index/book-ticket'

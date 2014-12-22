@@ -1,0 +1,24 @@
+.cover-image {
+    width: 100%;
+}
+
+.pnl-book-ticket {
+    color: #eee;
+    background: #b62e00;
+    height: 85px;
+    width: 800px;
+    position: absolute;
+    margin-top: -190px;
+    margin-left: 150px;
+    z-index: 888;
+    opacity: 0.9;
+}
+
+.pnl-book-ticket h5 {
+    font-weight: normal;
+}
+
+.btn-search {
+    width: 100%;
+    margin-top: 34px;
+}
