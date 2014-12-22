@@ -31,7 +31,7 @@ class IndexController extends BaseController
             'components/bootstrap-combobox',
             'moment',
             'components/bootstrap-datetimepicker',
-            'index'
+            'index/index'
         );
 
 		$css = array(
@@ -39,8 +39,7 @@ class IndexController extends BaseController
             'gen/footer',
             'index/index',
             'components/bootstrap-combobox',
-            'components/bootstrap-datetimepicker',
-            'index/book-ticket'
+            'components/bootstrap-datetimepicker'
         );
 
 		$layout = 'index';
@@ -56,6 +55,8 @@ class IndexController extends BaseController
     public function indexAction()
 	{
 		$page = $this->createPage('index');
+
+        $this->angular('index');
 
 		return $page;
 	}

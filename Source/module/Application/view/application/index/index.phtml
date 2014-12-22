@@ -1,10 +1,10 @@
 <div>
     <img src="/img/cover.jpg" alt="Cover" class="cover-image" />
-    <div class="pnl-book-ticket">
+    <div class="pnl-book-ticket" ng-controller="bookTicketController">
         <div>
             <div class="col-md-3">
                 <h5>Nơi đi</h5>
-                <select class="combobox">
+                <select class="combobox" id="location-start">                                                                                                         ass="combobox">
                     <option value="PA">Pennsylvania</option>
                     <option value="CT">Connecticut</option>
                     <option value="NY">New York</option>
@@ -14,7 +14,7 @@
             </div>
             <div class="col-md-3">
                 <h5>Nơi đến</h5>
-                <select class="combobox">
+                <select class="combobox" id="location-end">
                     <option value="PA">Pennsylvania</option>
                     <option value="CT">Connecticut</option>
                     <option value="NY">New York</option>
@@ -26,7 +26,7 @@
                 <h5>Thời gian</h5>
                 <div class="form-group">
                     <div class='input-group date' id='datetimepicker'>
-                        <input type='text' class="form-control" data-date-format="DD/MM/YYYY" />
+                        <input type='text' class="form-control" id="date" data-date-format="DD/MM/YYYY" />
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </span>
@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <button class="btn btn-success btn-search">Tìm kiếm</button>
+                <button class="btn btn-success btn-search" ng-click="submit()">Tìm kiếm</button>
             </div>
         </div>
 
