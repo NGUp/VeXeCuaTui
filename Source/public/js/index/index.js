@@ -41,6 +41,11 @@
                 flag = false;
             }
 
+            if (location_start == location_end) {
+                showNotification($($('#location-end')).siblings()[1], "Nơi đi không được trùng với nơi đến", "bottom");
+                flag = false;
+            }
+
             if (flag) {
                 window.location.href = "/express?from=" + location_start + "&to=" + location_end + "&date=" + date;
             }

@@ -9,6 +9,7 @@
  *
  */
 namespace Application\Controller;
+use Application\Model\ProvinceModel;
 
 /**
  *  Index Controller
@@ -56,6 +57,9 @@ class IndexController extends BaseController
 	{
 		$page = $this->createPage('index');
 
+        $provinces = new ProvinceModel();
+        $view = $this->getContentView($page);
+        $view->provinces  = $provinces->getAll();
         $this->angular('index');
 
 		return $page;

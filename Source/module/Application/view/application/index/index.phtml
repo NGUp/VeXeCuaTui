@@ -4,22 +4,18 @@
         <div>
             <div class="col-md-3">
                 <h5>Nơi đi</h5>
-                <select class="combobox" id="location-start">                                                                                                         ass="combobox">
-                    <option value="PA">Pennsylvania</option>
-                    <option value="CT">Connecticut</option>
-                    <option value="NY">New York</option>
-                    <option value="MD">Maryland</option>
-                    <option value="VA">Virginia</option>
+                <select class="combobox" id="location-start">
+                    <?php foreach ($provinces as $province) : ?>
+                        <option value="<?php echo $province['MaTinh'] ?>"><?php echo $province['TenTinh'] ?></option>
+                    <?php endforeach ?>
                 </select>
             </div>
             <div class="col-md-3">
                 <h5>Nơi đến</h5>
                 <select class="combobox" id="location-end">
-                    <option value="PA">Pennsylvania</option>
-                    <option value="CT">Connecticut</option>
-                    <option value="NY">New York</option>
-                    <option value="MD">Maryland</option>
-                    <option value="VA">Virginia</option>
+                    <?php foreach ($provinces as $province) : ?>
+                        <option value="<?php echo $province['MaTinh'] ?>"><?php echo $province['TenTinh'] ?></option>
+                    <?php endforeach ?>
                 </select>
             </div>
             <div class="col-md-3">

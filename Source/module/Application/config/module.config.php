@@ -13,13 +13,13 @@ return array(
                     ),
                 ),
             ),
-            'trip' => array(
+            'express' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
-                    'route'     => '/book',
+                    'route'     => '/express',
                     'defaults'  => array(
-                        'controller' => 'Application\Controller\Trip',
-                        'action'     => 'search'
+                        'controller' => 'Application\Controller\Express',
+                        'action'     => 'index'
                     ),
                 ),
             ),
@@ -204,13 +204,13 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Application\Controller\Index'      => 'Application\Controller\IndexController',
-            'Application\Controller\Trip'       => 'Application\Controller\TripController',
+            'Application\Controller\Express'    => 'Application\Controller\ExpressController',
             'Application\Controller\Admin'      => 'Application\Controller\AdminController',
             'Application\Controller\Manager'    => 'Application\Controller\ManagerController',
             'Application\Controller\Operator'   => 'Application\Controller\OperatorController',
             'Application\Controller\Regulation' => 'Application\Controller\RegulationController',
             'Application\Controller\Route'      => 'Application\Controller\RouteController',
-            'Application\Controller\Car'      => 'Application\Controller\CarController',
+            'Application\Controller\Car'        => 'Application\Controller\CarController',
             'Application\Controller\Ajax'       => 'Application\Controller\AjaxController',
         ),
     ),

@@ -11,7 +11,7 @@
 namespace Application\Controller;
 
 /**
- *  Trip Controller
+ *  Express Controller
  *
  * @category   VeXeCuaTui Project
  * @package    Application\Controller
@@ -19,7 +19,7 @@ namespace Application\Controller;
  * @copyright  Never Give Up Team
  * @license    Education
  */
-class TripController extends BaseController
+class ExpressController extends BaseController
 {
     /**
      * Constructor
@@ -42,23 +42,23 @@ class TripController extends BaseController
             'components/bootstrap-combobox',
             'components/bootstrap-datetimepicker',
             'components/bootstrap-tagsinput',
-            'trip/search-form',
-            'trip/search-result',
-            'trip/book',
-            'trip/payment'
+            'express/search-form',
+            'express/search-result',
+            'express/book',
+            'express/payment'
         );
 
-        $layout = 'trip';
+        $layout = 'express';
 
         $this->setLayout($layout, $css, $js);
     }
 
     /**
-     * Searching Trip
+     * Finding available Trip
      *
      * @return array|\Zend\View\Model\ViewModel
      */
-    public function searchAction()
+    public function indexAction()
     {
         $page = $this->createPage('search');
 
