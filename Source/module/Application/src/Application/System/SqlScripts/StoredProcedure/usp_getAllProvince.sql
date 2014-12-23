@@ -4,6 +4,6 @@
 Create Procedure usp_getAllProvinces
 As
 Begin
-	Select TenTinh
+	Select MaTinh, TenTinh
 	From TinhThanh
 End
