@@ -50,12 +50,16 @@ class OperatorModel extends Model
         );
     }
 
+    /**
+     * Finding Operator
+     *
+     * @param $condition string
+     * @param $key string
+     * @return \Application\System\matrix|array|null
+     */
     public function findOperator($condition, $key)
     {
-        $pattern = '/[\';]/';
-
-        if (preg_match($pattern, $condition, $matches, PREG_OFFSET_CAPTURE) == false &&
-            preg_match($pattern, $key, $matches, PREG_OFFSET_CAPTURE) == false) {
+        if (Regex::checkSqlInjection($condition) && Regex::checkSqlInjection($key)) {
             $result = $this->more('usp_findOperator', array("'$condition'", "N'$key'"));
 
             if (empty($result)) {

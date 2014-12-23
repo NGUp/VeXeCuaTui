@@ -12,6 +12,7 @@ namespace Application\Model;
 
 use Application\System\CustomException;
 use Application\System\Model;
+use Application\System\Regex;
 
 /**
  *  Regulation Model
@@ -87,10 +88,7 @@ class RegulationModel extends Model
      */
     public function findRegulation($condition, $key)
     {
-        $pattern = '/[\';]/';
-
-        if (preg_match($pattern, $condition, $matches, PREG_OFFSET_CAPTURE) == false &&
-            preg_match($pattern, $key, $matches, PREG_OFFSET_CAPTURE) == false) {
+        if (Regex::checkSqlInjection($condition) && Regex::checkSqlInjection($key)) {
             $result = $this->more('usp_findRegulation', array("'$condition'", "N'$key'"));
 
             if (empty($result)) {

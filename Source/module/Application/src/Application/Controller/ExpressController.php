@@ -60,6 +60,11 @@ class ExpressController extends BaseController
      */
     public function indexAction()
     {
+        $from = $this->get('from');
+        $to = $this->get('to');
+        $date = $this->get('date');
+
+
         $page = $this->createPage('search');
 
         return $page;

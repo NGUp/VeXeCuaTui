@@ -12,6 +12,7 @@ namespace Application\Model;
 
 use Application\System\CustomException;
 use Application\System\Model;
+use Application\System\Regex;
 
 /**
  *  Car Model
@@ -57,7 +58,17 @@ use Application\System\Model;
       */
      public function findCars($operator, $condition, $key)
      {
-         return $this->more('usp_findCars', array("'$operator'", "'$condition'", "N'$key'"));
+         if (Regex::checkSqlInjection($condition) && Regex::checkSqlInjection($key)) {
+             $result = $this->more('usp_findCars', array("'$operator'", "'$condition'", "N'$key'"));
+
+             if (empty($result)) {
+                 $result = array();
+             }
+         } else {
+             $result = array();
+         }
+
+         return $result;
      }
 
      /**
