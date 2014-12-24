@@ -9,6 +9,8 @@
  *
  */
 namespace Application\Controller;
+use Application\Model\ExpressModel;
+use Application\System\Regex;
 
 /**
  *  Express Controller
@@ -21,6 +23,11 @@ namespace Application\Controller;
  */
 class ExpressController extends BaseController
 {
+    /**
+     * @var ExpressModel
+     */
+    public $express;
+
     /**
      * Constructor
      *
@@ -48,6 +55,7 @@ class ExpressController extends BaseController
             'express/payment'
         );
 
+        $this->express = new ExpressModel();
         $layout = 'express';
 
         $this->setLayout($layout, $css, $js);
@@ -64,8 +72,12 @@ class ExpressController extends BaseController
         $to = $this->get('to');
         $date = $this->get('date');
 
-
         $page = $this->createPage('search');
+        $view = $this->getContentView($page);
+        $view->trips = $this->express->findTrip($from, $to, $date);
+        $view->from = $this->express->getName($from);
+        $view->to = $this->express->getName($to);
+        $view->date = $date;
 
         return $page;
     }

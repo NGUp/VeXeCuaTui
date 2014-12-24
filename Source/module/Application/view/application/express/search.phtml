@@ -4,15 +4,15 @@
             <div class="search-information-content-layout">
                 <ul class="search-information-content">
                     <li>
-                        <h4>Tp.Hồ Chí Minh</h4>
+                        <h4><?php echo $from[0] ?></h4>
                     </li>
                     <li class="glyphicon glyphicon-chevron-down">
                     </li>
                     <li>
-                        <h4>Tp.Cần Thơ</h4>
+                        <h4><?php echo $to[0] ?></h4>
                     </li>
                     <li class="search-information-time">
-                        <span class="glyphicon glyphicon-time icon-time"></span><h5>01/11/2014</h5>
+                        <span class="glyphicon glyphicon-time icon-time"></span><h5><?php echo $date ?></h5>
                     </li>
                 </ul>
             </div>
@@ -25,7 +25,7 @@
             <li>Thanh toán</li>
         </ol>
         <div id="trip-book-content">
-            <div id="step-1" hidden>
+            <div id="step-1">
                 <table class="table">
                     <thead>
                     <tr>
@@ -41,8 +41,8 @@
                     <tbody></tbody>
                 </table>
             </div>
-            <?php include __DIR__ . '/../express/book.phtml' ?>
-            <?php include __DIR__ . '/../express/payment.phtml' ?>
+            <?php //include __DIR__ . '/../express/book.phtml' ?>
+            <?php //include __DIR__ . '/../express/payment.phtml' ?>
         </div>
     </div>
 </div>
