@@ -1,4 +1,4 @@
-<div id="step-2" hidden>
+<div id="step-2" hidden ng-controller="BookTicketController">
     <div class="col-md-5">
         <fieldset>
             <legend>Sơ đồ vị trí</legend>
@@ -30,10 +30,10 @@
         </fieldset>
         <ul class="book-buttons">
             <li>
-                <button class="btn btn-default">Hủy</button>
+                <button type="button" class="btn btn-default" ng-click="back()">Hủy</button>
             </li>
             <li class="btn-book-ticket-bound">
-                <button class="btn btn-primary"><span class="glyphicon glyphicon-credit-card icon-credit-card"></span>Thanh toán</button>
+                <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-credit-card icon-credit-card"></span>Thanh toán</button>
             </li>
         </ul>
     </div>

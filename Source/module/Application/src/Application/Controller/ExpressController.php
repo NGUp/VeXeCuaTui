@@ -43,6 +43,7 @@ class ExpressController extends BaseController
             'components/bootstrap-tagsinput-angular',
             'express/search-bar',
             'express/search-result',
+            'express/book-ticket',
             'express/express'
         );
 
