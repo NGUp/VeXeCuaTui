@@ -42,7 +42,8 @@ class ExpressController extends BaseController
             'components/bootstrap-tagsinput',
             'components/bootstrap-tagsinput-angular',
             'express/search-bar',
-            'express/search-result'
+            'express/search-result',
+            'express/express'
         );
 
         $css = array(

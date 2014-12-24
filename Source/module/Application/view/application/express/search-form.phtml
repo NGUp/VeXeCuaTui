@@ -4,14 +4,14 @@
             <li class="search-form-form">
                 <select class="combobox" id="search-from">
                     <?php foreach ($provinces as $province) : ?>
-                        <option value="<?php echo $province['MaTinh'] ?>"><?php echo $province['TenTinh'] ?></option>
+                        <option value="<?php echo $province['MaTinh'] ?>"><?php echo trim($province['TenTinh']) ?></option>
                     <?php endforeach ?>
                 </select>
             </li>
             <li class="search-form-form">
                 <select class="combobox" id="search-to">
                     <?php foreach ($provinces as $province) : ?>
-                        <option value="<?php echo $province['MaTinh'] ?>"><?php echo $province['TenTinh'] ?></option>
+                        <option value="<?php echo $province['MaTinh'] ?>"><?php echo trim($province['TenTinh']) ?></option>
                     <?php endforeach ?>
                 </select>
             </li>

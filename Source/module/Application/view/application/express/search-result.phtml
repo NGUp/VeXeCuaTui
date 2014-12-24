@@ -1,4 +1,4 @@
-<div id="step-1">
+<div id="step-1" ng-controller="FindingTripController">
     <table class="table table-hover">
         <thead>
         <tr>
@@ -32,8 +32,11 @@
                     <td>
                         <?php echo number_format($trip['Gia'],0) . ' VND' ?>
                     </td>
+                    <td class="hidden car-id">
+                        <?php echo trim($trip['BangSoXe']) ?>
+                    </td>
                     <td>
-                        <button class="btn btn-success">Đặt vé</button>
+                        <button type="button" class="btn btn-primary btn-book-ticket"">Đặt vé</button>
                     </td>
                 </tr>
             <?php endforeach ?>

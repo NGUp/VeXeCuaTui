@@ -19,7 +19,7 @@ Begin
 	From TinhThanh
 	Where MaTinh = @_to
 
-	Select TenHangXe, NoiDi, NoiDen, GioDi, TenLoai, Gia
+	Select TenHangXe, NoiDi, NoiDen, GioDi, TenLoai, Gia, BangSoXe
 	From ((HangXe hang join LichTrinh lich on hang.MaHangXe = lich.MaHangXe) join Xe car on car.LichTrinh = lich.MaLT) join LoaiXe loaixe on car.LoaiXe = loaixe.MaLoai
 	Where NoiDi = @from And NoiDen = @to And NgayDi = @date
 End
