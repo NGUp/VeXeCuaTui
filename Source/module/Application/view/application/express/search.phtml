@@ -1,18 +1,21 @@
+<?php include __DIR__ . '/../express/search-form.phtml' ?>
+
 <div class="app-standard center-screen book-panel">
     <div class="col-md-2 search-information-trip">
         <div class="search-information-trip-panel">
             <div class="search-information-content-layout">
                 <ul class="search-information-content">
                     <li>
-                        <h4><?php echo $from[0] ?></h4>
+                        <h4 id="from"><?php echo $from[0] ?></h4>
                     </li>
                     <li class="glyphicon glyphicon-chevron-down">
                     </li>
                     <li>
-                        <h4><?php echo $to[0] ?></h4>
+                        <h4 id="to"><?php echo $to[0] ?></h4>
                     </li>
                     <li class="search-information-time">
-                        <span class="glyphicon glyphicon-time icon-time"></span><h5><?php echo $date ?></h5>
+                        <span class="glyphicon glyphicon-time icon-time"></span>
+                        <h5 id="date"><?php echo $date ?></h5>
                     </li>
                 </ul>
             </div>
@@ -25,22 +28,7 @@
             <li>Thanh toán</li>
         </ol>
         <div id="trip-book-content">
-            <div id="step-1">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Hãng xe</th>
-                        <th>Nơi đi</th>
-                        <th>Nơi đến</th>
-                        <th>Giờ đi</th>
-                        <th>Loại xe</th>
-                        <th>Giá vé</th>
-                        <th></th> <!-- Nút Đặt vé -->
-                    </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
+            <?php include __DIR__ . '/../express/search-result.phtml' ?>
             <?php //include __DIR__ . '/../express/book.phtml' ?>
             <?php //include __DIR__ . '/../express/payment.phtml' ?>
         </div>

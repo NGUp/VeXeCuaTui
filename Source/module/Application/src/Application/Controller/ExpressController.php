@@ -10,6 +10,7 @@
  */
 namespace Application\Controller;
 use Application\Model\ExpressModel;
+use Application\Model\ProvinceModel;
 use Application\System\Regex;
 
 /**
@@ -40,7 +41,8 @@ class ExpressController extends BaseController
             'components/bootstrap-datetimepicker',
             'components/bootstrap-tagsinput',
             'components/bootstrap-tagsinput-angular',
-            'book'
+            'express/search-bar',
+            'express/search-result'
         );
 
         $css = array(
@@ -72,12 +74,16 @@ class ExpressController extends BaseController
         $to = $this->get('to');
         $date = $this->get('date');
 
+        $provinces = new ProvinceModel();
         $page = $this->createPage('search');
         $view = $this->getContentView($page);
         $view->trips = $this->express->findTrip($from, $to, $date);
         $view->from = $this->express->getName($from);
         $view->to = $this->express->getName($to);
         $view->date = $date;
+        $view->provinces = $provinces->getAll();
+
+        $this->angular('express');
 
         return $page;
     }

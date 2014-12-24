@@ -1,0 +1,42 @@
+<div id="step-1">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Hãng xe</th>
+            <th>Nơi đi</th>
+            <th>Nơi đến</th>
+            <th>Giờ đi</th>
+            <th>Loại xe</th>
+            <th>Giá vé</th>
+            <th></th> <!-- Book Ticket button -->
+        </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($trips as  $trip) : ?>
+                <tr>
+                    <td>
+                        <?php echo $trip['TenHangXe'] ?>
+                    </td>
+                    <td>
+                        <?php echo $trip['NoiDi'] ?>
+                    </td>
+                    <td>
+                        <?php echo $trip['NoiDen'] ?>
+                    </td>
+                    <td>
+                        <?php echo $trip['GioDi'] ?>
+                    </td>
+                    <td>
+                        <?php echo $trip['TenLoai'] ?>
+                    </td>
+                    <td>
+                        <?php echo number_format($trip['Gia'],0) . ' VND' ?>
+                    </td>
+                    <td>
+                        <button class="btn btn-success">Đặt vé</button>
+                    </td>
+                </tr>
+            <?php endforeach ?>
+        </tbody>
+    </table>
+</div>
