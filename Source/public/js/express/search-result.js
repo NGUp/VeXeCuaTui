@@ -19,6 +19,13 @@
                 if (typeof(data) === 'object') {
                     obj = data[0];
 
+                    $("#result-operator").html(data[0].TenHangXe);
+                    $("#result-date").html(data[0].NgayDi);
+                    $("#result-from").html(data[0].NoiDi);
+                    $("#result-to").html(data[0].NoiDen);
+                    $("#result-price").html(data[0].Gia + " VND");
+                    $("#result-logo").attr("src", "/img/Operators/" + data[0].Logo);
+
                     if (type == "Giường Nằm") {
                         $("#book-bed").show();
                         $("#book-seat").hide();
