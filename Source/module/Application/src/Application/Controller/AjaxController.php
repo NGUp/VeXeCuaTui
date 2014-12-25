@@ -13,6 +13,7 @@ namespace Application\Controller;
 use Application\Model\AdminModel;
 use Application\Model\AjaxModel;
 use Application\Model\CarModel;
+use Application\Model\ExpressModel;
 use Application\Model\RegulationModel;
 use Application\Model\RouteModel;
 use Application\System\Auth;
@@ -294,7 +295,11 @@ class AjaxController extends BaseController
     public function getTripInfoAction()
     {
         try {
+            $trip = $this->post('trip_id');
+            $car = $this->post('car_id');
 
+            $express = new ExpressModel();
+            return $this->json($express->getTripInfo($trip, $car), true);
         } catch (CustomException $e) {
             $e->getError();
         }
