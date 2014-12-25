@@ -3,7 +3,8 @@
 
     app.controller("FindingTripController", function($scope) {
         $(".btn-book-ticket").click(function() {
-            $("#trip-id").val($($($(this).parents()[1]).children()[6]).html().trim());
+            $("#car-id").val($($($(this).parents()[1]).children()[6]).html().trim());
+            $("#route-id").val($($($(this).parents()[1]).children()[7]).html().trim());
 
             var type = $($($(this).parents()[1]).children()[4]).html().trim();
 
@@ -15,8 +16,17 @@
                 $("#book-seat").show();
             }
 
-            $("#step-2").fadeIn("slow");
-            $("#step-1").fadeOut("slow");
+            //$("#step-2").fadeIn("slow");
+            //$("#step-1").fadeOut("slow");
+
+            $.ajax({
+                type: "POST",
+                url: "/syn/gettripinfo",
+                data: {
+                }
+            }).done(function(message) {
+                console.log(message);
+            });
         });
     })
 })();

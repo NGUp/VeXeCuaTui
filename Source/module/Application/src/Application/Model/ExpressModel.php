@@ -46,8 +46,26 @@ class ExpressModel extends Model
         return $result;
     }
 
+    /**
+     * Get Province Name
+     *
+     * @param $name string Province Id
+     * @return bool|null|object
+     */
     public function getName($name)
     {
         return $this->one('uf_getProvinceName', array("$name"));
+    }
+
+    /**
+     * Get Trip information
+     *
+     * @param $trip string
+     * @param $car string
+     * @return \Application\System\matrix|null
+     */
+    public function getTripInfo($trip, $car)
+    {
+        return $this->more('usp_getTripInfo', array("'$trip'", "'$car'"));
     }
 }

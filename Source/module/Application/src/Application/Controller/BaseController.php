@@ -14,6 +14,7 @@ namespace Application\Controller;
 use Application\System\Auth;
 use Zend\Http\Header\ContentType;
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\View\Model\JsonModel;
 use Zend\View\Model\ViewModel;
 
 /**
@@ -36,7 +37,7 @@ abstract class BaseController extends AbstractActionController
 
     /**
      * Sets of css
-     *
+     *-
      * @var array cascading style sheet array
      */
     public $css;
@@ -302,6 +303,39 @@ abstract class BaseController extends AbstractActionController
     public function getMethod()
     {
         return $this->getRequest()->getMethod();
+    }
+
+    /**
+     * JSON
+     * Support for JSON Data (one or multi dimesional)
+     *
+     * @author: Loi Nguyen <loint@penlook.com>
+     * @param $data
+     * @param bool $model
+     * @return JsonModel|null|string
+     */
+    public function json($data, $model = true)
+    {
+        $result = null;
+
+        if ($model) {
+            // return JSON Response, e.g ajax request
+            $result = new JsonModel($data);
+        } else {
+            if (is_array($data[0])) {
+                $tmp = array();
+                foreach ($data as $row)
+                    $tmp[] = $row;
+                $data = $tmp;
+            }
+
+            $result = json_encode($data);
+
+            //$result = preg_replace("/\\\\u([a-f0-9]{4})/e", "iconv('UCS-4LE','UTF-8',pack('V', hexdec('U$1')))", json_encode($data));
+        }
+
+        // Return json string
+        return $result;
     }
 
     /**

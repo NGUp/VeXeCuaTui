@@ -290,4 +290,13 @@ class AjaxController extends BaseController
             $e->getError();
         }
     }
+
+    public function getTripInfoAction()
+    {
+        try {
+
+        } catch (CustomException $e) {
+            $e->getError();
+        }
+    }
 } 
