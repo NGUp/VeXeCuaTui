@@ -1,5 +1,6 @@
 .book-panel {
-    height: 700px;
+    min-height: 300px;
+    display: table;
     margin-top: 20px;
     margin-bottom: 30px;
 }

@@ -14,7 +14,5 @@
         this.addManager = function() {
             window.location = '/admin/manager/add';
         };
-
-
     });
 })();
