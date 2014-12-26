@@ -4,6 +4,8 @@
         <label>Tầng 1</label>
         <table class="book-seat">
             <?php
+            $index = 1;
+
             for ($i = 0; $i < 5; $i++) {
 
                 echo '<tr>';
@@ -11,8 +13,8 @@
                 $k = 0;
                 for ($j = 0; $j < 5; $j++) {
                     if ($j % 2 == 0) {
-                        echo "<td class='seat-available' id='1$j$i'>1$k$i</td>";
-                        $k++;
+                        echo "<td id='seat-bed-$index'>$index</td>";
+                        $index++;
                     } else {
                         echo '<td></td>';
                     }
@@ -34,8 +36,8 @@
                 $k = 0;
                 for ($j = 0; $j < 5; $j++) {
                     if ($j % 2 == 0) {
-                        echo "<td class='seat-available' id='2$j$i'>2$k$i</td>";
-                        $k++;
+                        echo "<td id='seat-bed-$index'>$index</td>";
+                        $index++;
                     } else {
                         echo '<td></td>';
                     }
@@ -49,10 +51,10 @@
     <div>
         <ul class="book-seat-information">
             <li>
-                <span>Tổng số ghế:</span> 30
+                <span>Tổng số ghế: </span>30
             </li>
             <li>
-                <span>Số ghế trống:</span> 20
+                <span>Số ghế trống: </span><span class="count-available-seat"></span>
             </li>
         </ul>
     </div>

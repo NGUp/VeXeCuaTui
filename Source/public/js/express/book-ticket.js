@@ -12,5 +12,10 @@
             $("#step-2").fadeOut();
             $("#step-1").fadeIn();
         };
+
+        $(".book-seat td").click(function() {
+            var seat = $(this);
+            console.log(seat);
+        })
     })
 })();

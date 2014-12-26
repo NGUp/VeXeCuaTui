@@ -30,12 +30,25 @@ abbr[title] {
 .book-seat td {
     width: 40px;
     height: 40px;
+    text-align: center;
     border: 1px solid #aaa;
 }
 
+.seat-booked {
+    background: #428bca;
+    color: #eee;
+    cursor: not-allowed;
+}
+
+.seat-checked {
+    color: #ddd;
+    background: #5cb85c;
+    cursor: pointer;
+}
+
 .seat-available {
-    text-align: center;
-    background: #ddd;
+    color: #1c1d1e;
+    background: #f2f2f2;
     cursor: pointer;
 }
 
