@@ -17,8 +17,9 @@
                 var index;
 
                 for (index = 1; index < 31; index++) {
-                    $("#seat-bed-" + index).removeClass();
-                    $("#seat-bed-" + index).addClass("seat-booked");
+                    $("#seat-bed-" + index)
+                        .removeClass()
+                        .addClass("seat-booked");
                 }
             };
 
@@ -26,8 +27,9 @@
                 var index;
 
                 for (index = 1; index < 46; index++) {
-                    $("#seat-" + index).removeClass();
-                    $("#seat-" + index).addClass("seat-booked");
+                    $("#seat-" + index)
+                        .removeClass()
+                        .addClass("seat-booked");
                 }
             };
 
@@ -35,8 +37,9 @@
                 var res = data.split(",");
 
                 res.forEach(function(seat) {
-                    $("#seat-" + seat).removeClass();
-                    $("#seat-" + seat).addClass("seat-available");
+                    $("#seat-" + seat)
+                        .removeClass()
+                        .addClass("seat-available");
                 });
             };
 
@@ -44,8 +47,9 @@
                 var res = data.split(",");
 
                 res.forEach(function(seat) {
-                    $("#seat-bed-" + seat).removeClass();
-                    $("#seat-bed-" + seat).addClass("seat-available");
+                    $("#seat-bed-" + seat)
+                        .removeClass()
+                        .addClass("seat-available");
                 });
             };
 

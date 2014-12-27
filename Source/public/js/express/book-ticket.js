@@ -29,18 +29,21 @@
             }
         });
 
-        $("#list-seats").on("beforeItemRemove", function(event) {
-            $("#seat-" + event.item).removeClass();
-            $("#seat-" + event.item).addClass("seat-available");
-        });
-
-        $("#list-seats").on("beforeItemAdd", function(event) {
-            if ($("#seat-" + event.item)[0].className == "seat-booked") {
-                event.cancel = true;
-            } else {
-                $("#seat-" + event.item).removeClass();
-                $("#seat-" + event.item).addClass("seat-checked");
+        $("#list-seats")
+            .on("beforeItemRemove", function(event) {
+                $("#seat-" + event.item)
+                    .removeClass()
+                    .addClass("seat-available");
+            })
+            .on("beforeItemAdd", function(event) {
+                if ($("#seat-" + event.item)[0].className == "seat-booked") {
+                    event.cancel = true;
+                } else {
+                    $("#seat-" + event.item)
+                        .removeClass()
+                        .addClass("seat-checked");
+                }
             }
-        });
+        );
     })
 })();

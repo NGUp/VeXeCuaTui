@@ -4,14 +4,16 @@
     app.controller("SearchBarController", function($scope) {
         var today = new Date();
 
-        $('#datetimepicker').datetimepicker({
-            pickTime: false,
-            defaultDate: today
-        });
-        $('#datetimepicker').data("DateTimePicker").setMinDate(today);
+        $('#datetimepicker')
+            .datetimepicker({
+                pickTime: false,
+                defaultDate: today
+            })
+            .data("DateTimePicker").setMinDate(today);
 
-        $('.combobox').combobox();
-        $('.combobox').addClass('form-control');
+        $('.combobox')
+            .combobox()
+            .addClass('form-control');
 
         $('#search-date').val($('#date').html());
 
