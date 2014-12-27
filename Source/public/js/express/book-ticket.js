@@ -2,8 +2,6 @@
     var app = angular.module("book-ticket", []);
 
     app.controller("BookTicketController", function($scope) {
-        var seats = [];
-
         $scope.back = function() {
             $("#result-operator").empty();
             $("#result-date").empty();
@@ -23,14 +21,26 @@
             if (seat.className == "seat-available") {
                 $(seat).removeClass();
                 $(seat).addClass("seat-checked");
-                seats.push(seat.innerHTML);
+                $("#list-seats").tagsinput("add", seat.innerHTML);
             } else if (seat.className == "seat-checked") {
                 $(seat).removeClass();
                 $(seat).addClass("seat-available");
-                seats.splice(seats.indexOf(seat.innerHTML), 1);
+                $("#list-seats").tagsinput("remove", seat.innerHTML);
             }
+        });
 
-            console.log(seats);
-        })
+        $("#list-seats").on("beforeItemRemove", function(event) {
+            $("#seat-" + event.item).removeClass();
+            $("#seat-" + event.item).addClass("seat-available");
+        });
+
+        $("#list-seats").on("beforeItemAdd", function(event) {
+            if ($("#seat-" + event.item)[0].className == "seat-booked") {
+                event.cancel = true;
+            } else {
+                $("#seat-" + event.item).removeClass();
+                $("#seat-" + event.item).addClass("seat-checked");
+            }
+        });
     })
 })();

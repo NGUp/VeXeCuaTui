@@ -41,7 +41,7 @@ abbr[title] {
 }
 
 .seat-checked {
-    color: #ddd;
+    color: #f2f2f2;
     background: #5cb85c;
     cursor: pointer;
 }

@@ -44,7 +44,6 @@
                 var res = data.split(",");
 
                 res.forEach(function(seat) {
-                    console.log(seat);
                     $("#seat-bed-" + seat).removeClass();
                     $("#seat-bed-" + seat).addClass("seat-available");
                 });
