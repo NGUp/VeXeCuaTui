@@ -55,7 +55,7 @@
                     "phone" : $scope.phone,
                     "email" : $scope.email,
                     "tickets" : $("#list-seats").val(),
-                    "car" : $("car-id").val()
+                    "car" : $("#car-id").val()
                 }
             }).done(function(message) {
                 var pattern, reg_err, match, index;
@@ -70,7 +70,8 @@
                     $('#error-content').html(message.substring(index, message.length).trim());
                     $('#error-modal').modal();
                 } else {
-                    window.location.href = '/admin/route';
+                    $("#step-2").fadeOut();
+                    $("#step-3").fadeIn();
                 }
             });
         }
