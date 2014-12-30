@@ -27,15 +27,15 @@
                 <ul class="book-customer-information">
                     <li>Tên khách hàng (<abbr title="Bắt buộc">*</abbr>)</li>
                     <li>
-                        <input type="text" class="form-control" required="Tên khách hàng không được bỏ trống"/>
+                        <input type="text" class="form-control" ng-model="customer" spellcheck="false" required="Tên khách hàng không được bỏ trống" />
                     </li>
                     <li>Điện thoại (<abbr title="Bắt buộc">*</abbr>)</li>
                     <li>
-                        <input type="text" class="form-control" required="Số điện thoại không được bỏ trống"/>
+                        <input type="text" class="form-control" ng-model="phone" spellcheck="false" required="Số điện thoại không được bỏ trống" />
                     </li>
                     <li>Email (<abbr title="Bắt buộc">*</abbr>)</li>
                     <li>
-                        <input type="text" class="form-control" required="Email không được bỏ trống"/>
+                        <input type="text" class="form-control" ng-model="email" required="Email không được bỏ trống" />
                     </li>
                     <li>Danh sách vé</li>
                     <li>
@@ -48,9 +48,28 @@
                     <button type="button" class="btn btn-default" ng-click="back()">Hủy</button>
                 </li>
                 <li class="btn-book-ticket-bound">
-                    <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-credit-card icon-credit-card"></span>Thanh toán</button>
+                    <button type="button" class="btn btn-primary" ng-click="pay()">
+                        <span class="glyphicon glyphicon-credit-card icon-credit-card"></span>Thanh toán
+                    </button>
                 </li>
             </ul>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Thông báo</h4>
+            </div>
+            <div class="modal-body">
+                <h5 id="error-content"></h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">OK</button>
+            </div>
         </div>
     </div>
 </div>

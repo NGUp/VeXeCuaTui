@@ -292,6 +292,10 @@ class AjaxController extends BaseController
         }
     }
 
+    /**
+     * Get trip information
+     *
+     */
     public function getTripInfoAction()
     {
         try {
@@ -300,6 +304,27 @@ class AjaxController extends BaseController
 
             $express = new ExpressModel();
             return $this->json($express->getTripInfo($trip, $car), true);
+        } catch (CustomException $e) {
+            $e->getError();
+        }
+    }
+
+    /**
+     * Book Ticket(s)
+     *
+     */
+    public function bookTicketsAction()
+    {
+        try {
+            $customer = $this->post('customer');
+            $phone = $this->post('phone');
+            $email = $this->post('email');
+            $tickets = $this->post('tickets');
+            $car = $this->post('car');
+            $express = new ExpressModel();
+
+            $express->bookTickets($customer, $phone, $email, $tickets, $car);
+            die();
         } catch (CustomException $e) {
             $e->getError();
         }

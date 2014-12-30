@@ -45,5 +45,34 @@
                 }
             }
         );
+
+        $scope.pay = function() {
+            $.ajax({
+                type: "POST",
+                url: "/syn/booktickets",
+                data: {
+                    "customer" : $scope.customer,
+                    "phone" : $scope.phone,
+                    "email" : $scope.email,
+                    "tickets" : $("#list-seats").val(),
+                    "car" : $("car-id").val()
+                }
+            }).done(function(message) {
+                var pattern, reg_err, match, index;
+
+                pattern = /\[(.*?)\]/igm;
+                reg_err = new RegExp(pattern);
+
+                if (reg_err.test(message)) {
+                    while (match = pattern.exec(message)) {
+                        index = pattern.lastIndex;
+                    }
+                    $('#error-content').html(message.substring(index, message.length).trim());
+                    $('#error-modal').modal();
+                } else {
+                    window.location.href = '/admin/route';
+                }
+            });
+        }
     })
 })();

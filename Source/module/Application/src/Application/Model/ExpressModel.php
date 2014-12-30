@@ -9,6 +9,8 @@
  *
  */
 namespace Application\Model;
+
+use Application\System\CustomException;
 use Application\System\Model;
 use Application\System\Regex;
 
@@ -67,5 +69,25 @@ class ExpressModel extends Model
     public function getTripInfo($trip, $car)
     {
         return $this->more('usp_getTripInfo', array("'$trip'", "'$car'"));
+    }
+
+    /**
+     * Book ticket(s)
+     *
+     * @param $customer string
+     * @param $phone string
+     * @param $email string
+     * @param $tickets string
+     * @param $car string
+     * @throws CustomException
+     * @throws \Exception
+     */
+    public function bookTickets($customer, $phone, $email, $tickets, $car)
+    {
+        try {
+            $this->non('usp_bookTickets', array("N'$customer'", "'$phone'", "'$email'", "'$tickets,'", "'$car'"));
+        } catch (CustomException $exception) {
+            throw $exception;
+        }
     }
 }
