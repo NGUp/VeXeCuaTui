@@ -36,7 +36,7 @@
                     .addClass("seat-available");
             })
             .on("beforeItemAdd", function(event) {
-                if ($("#seat-" + event.item)[0].className == "seat-booked") {
+                if ($("#seat-" + event.item)[0] == undefined || $("#seat-" + event.item)[0].className == "seat-booked") {
                     event.cancel = true;
                 } else {
                     $("#seat-" + event.item)

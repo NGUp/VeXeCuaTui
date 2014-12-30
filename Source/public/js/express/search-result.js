@@ -19,7 +19,7 @@
                 for (index = 1; index < 31; index++) {
                     $("#seat-bed-" + index)
                         .removeClass()
-                        .addClass("seat-booked");
+                        .addClass("seat-available");
                 }
             };
 
@@ -29,28 +29,32 @@
                 for (index = 1; index < 46; index++) {
                     $("#seat-" + index)
                         .removeClass()
-                        .addClass("seat-booked");
+                        .addClass("seat-available");
                 }
             };
 
-            checkAvailableSeat = function(data) {
-                var res = data.split(",");
+            checkBookedSeat = function(data) {
+                if (data != null) {
+                    var res = data.split(",");
 
-                res.forEach(function(seat) {
-                    $("#seat-" + seat)
-                        .removeClass()
-                        .addClass("seat-available");
-                });
+                    res.forEach(function(seat) {
+                        $("#seat-" + seat)
+                            .removeClass()
+                            .addClass("seat-booked");
+                    });
+                }
             };
 
-            checkAvailableBed = function(data) {
-                var res = data.split(",");
+            checkBookedBed = function(data) {
+                if (data != null) {
+                    var res = data.split(",");
 
-                res.forEach(function(seat) {
-                    $("#seat-bed-" + seat)
-                        .removeClass()
-                        .addClass("seat-available");
-                });
+                    res.forEach(function(seat) {
+                        $("#seat-bed-" + seat)
+                            .removeClass()
+                            .addClass("seat-booked");
+                    });
+                }
             };
 
             $.ajax({
@@ -62,27 +66,32 @@
                 }
             }).done(function(data) {
                 if (typeof(data) === 'object') {
+                    var obj, count;
+
                     obj = data[0];
 
-                    $("#result-operator").html(data[0].TenHangXe);
-                    $("#result-date").html(data[0].NgayDi);
-                    $("#result-from").html(data[0].NoiDi);
-                    $("#result-to").html(data[0].NoiDen);
-                    $("#result-price").html(data[0].Gia.format() + " VND");
-                    $("#result-logo").attr("src", "/img/Operators/" + data[0].Logo);
-                    $('.count-available-seat').html(data[0].DanhSachGheTrong.split(",").length);
+                    $("#result-operator").html(obj.TenHangXe);
+                    $("#result-date").html(obj.NgayDi);
+                    $("#result-from").html(obj.NoiDi);
+                    $("#result-to").html(obj.NoiDen);
+                    $("#result-price").html(obj.Gia.format() + " VND");
+                    $("#result-logo").attr("src", "/img/Operators/" + obj.Logo);
 
                     if (type == "Giường Nằm") {
+                        count = 30;
                         initBed();
-                        checkAvailableBed(data[0].DanhSachGheTrong);
+                        checkBookedBed(obj.GheDaDat);
                         $("#book-bed").show();
                         $("#book-seat").hide();
                     } else {
+                        count = 40;
                         initSeat();
-                        checkAvailableSeat(data[0].DanhSachGheTrong);
+                        checkBookedSeat(obj.GheDaDat);
                         $("#book-bed").hide();
                         $("#book-seat").show();
                     }
+
+                    $('.count-available-seat').html(count - (obj.GheDaDat == null ? 0 : obj.GheDaDat.split(",").length));
 
                     $("#book-step-1").removeClass("badge search-step-active");
                     $("#book-step-2").addClass("badge search-step-active");
