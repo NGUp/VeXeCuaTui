@@ -9,7 +9,9 @@
             $("#result-to").empty();
             $("#result-price").empty();
 
-            seats = [];
+            $("#book-step-1").addClass("badge search-step-active");
+            $("#book-step-2").removeClass("badge search-step-active");
+            $("#book-step-3").removeClass("badge search-step-active");
 
             $("#step-2").fadeOut();
             $("#step-1").fadeIn();
@@ -70,6 +72,10 @@
                     $('#error-content').html(message.substring(index, message.length).trim());
                     $('#error-modal').modal();
                 } else {
+                    $("#book-step-1").removeClass("badge search-step-active");
+                    $("#book-step-2").removeClass("badge search-step-active");
+                    $("#book-step-3").addClass("badge search-step-active");
+
                     $("#step-2").fadeOut();
                     $("#step-3").fadeIn();
                 }

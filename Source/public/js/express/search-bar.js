@@ -11,9 +11,8 @@
             })
             .data("DateTimePicker").setMinDate(today);
 
-        $('.combobox')
-            .combobox()
-            .addClass('form-control');
+        $('.combobox').combobox();
+        $(".combobox").addClass('form-control');
 
         $('#search-date').val($('#date').html());
 

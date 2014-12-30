@@ -9,6 +9,7 @@
  *
  */
 namespace Application\Controller;
+
 use Application\Model\ExpressModel;
 use Application\Model\ProvinceModel;
 use Application\System\Regex;
@@ -44,6 +45,7 @@ class ExpressController extends BaseController
             'express/search-bar',
             'express/search-result',
             'express/book-ticket',
+            'express/payment',
             'express/express'
         );
 
