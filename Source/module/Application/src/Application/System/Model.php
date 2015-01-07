@@ -34,8 +34,6 @@ abstract class Model extends App
      * @return bool
      * @throws \Exception SqlException
      */
-
-
     public function non($sp, $parameters = null)
     {
         // Initialize query string
@@ -52,9 +50,6 @@ abstract class Model extends App
         }
 
         $sql .= '}';
-
-//        echo $sql;
-//        die();
 
         // Execute query
         $options = array('Database' => Config::db_database, 'CharacterSet' => 'UTF-8');

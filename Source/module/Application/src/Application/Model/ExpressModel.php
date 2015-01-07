@@ -37,7 +37,6 @@ class ExpressModel extends Model
     {
         if (Regex::checkSqlInjection($from) && Regex::checkSqlInjection($to) && Regex::checkSqlInjection($date)) {
             $result = $this->more('usp_findTrip', array("$from", "$to", "'$date'"));
-
             if (empty($result)) {
                 $result = array();
             }
@@ -89,5 +88,16 @@ class ExpressModel extends Model
         } catch (CustomException $exception) {
             throw $exception;
         }
+    }
+
+    /**
+     * Get Unpaid Ticket(s)
+     *
+     * @param $customer string
+     * @return \Application\System\matrix|null
+     */
+    public function getUnpaidTickets($customer)
+    {
+        return $this->param('usp_bookTickets', array("N'Harry James'", "'114'", "'luyen@gmail.com'", "'28, 31'", "'98D-2312'"));
     }
 }

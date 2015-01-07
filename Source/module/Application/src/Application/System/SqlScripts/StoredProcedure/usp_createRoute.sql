@@ -12,10 +12,14 @@ Create Procedure usp_createRoute
 	@stop nvarchar(255)
 As
 Begin
-    Declare @id nchar(10)
+	Declare @id nchar(10),
+			@_date varchar(10)
 
     Set @id = CONVERT(NVARCHAR(50),HashBytes('SHA1', Cast(GETDATE() as varchar(30))), 2)
     Set @id = SUBSTRING(@id, 1, 7)
+
+    Set @_date = CAST(@date as datetime)
+	Set @date = CONVERT(VARCHAR(10), @_date, 101)
 
     Insert Into LichTrinh(MaLT, MaHangXe, NgayDi, GioDi, NoiDi, NoiDen, GiaVe, CacDiemDung)
     Values(@id, @operator, @date, @time, @start_location, @end_location, @price, @stop)

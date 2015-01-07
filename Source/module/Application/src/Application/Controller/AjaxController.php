@@ -329,4 +329,21 @@ class AjaxController extends BaseController
             $e->getError();
         }
     }
+
+    /**
+     * Get unpaid ticket(s)
+     */
+    public function getUnpaidTicketsAction()
+    {
+        try {
+            $customer = $this->post('customer');
+            $express = new ExpressModel();
+
+            var_dump($express->getUnpaidTickets($customer));
+            die();
+            return $this->json($express->getUnpaidTickets($customer), true);
+        } catch (CustomException $e) {
+            $e->getError();
+        }
+    }
 } 

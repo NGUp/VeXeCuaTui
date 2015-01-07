@@ -72,12 +72,35 @@
                     $('#error-content').html(message.substring(index, message.length).trim());
                     $('#error-modal').modal();
                 } else {
-                    $("#book-step-1").removeClass("badge search-step-active");
-                    $("#book-step-2").removeClass("badge search-step-active");
-                    $("#book-step-3").addClass("badge search-step-active");
+                    $.ajax({
+                        type: "POST",
+                        url: "/syn/getunpaidtickets",
+                        data: {
+                            "customer" : $scope.customer
+                        }
+                    }).done(function(data) {
+                        var pattern, reg_err, match, index;
 
-                    $("#step-2").fadeOut();
-                    $("#step-3").fadeIn();
+                        pattern = /\[(.*?)\]/igm;
+                        reg_err = new RegExp(pattern);
+
+                        if (reg_err.test(data)) {
+                            while (match = pattern.exec(data)) {
+                                index = pattern.lastIndex;
+                            }
+                            $('#error-content').html(data.substring(index, data.length).trim());
+                            $('#error-modal').modal();
+                        } else {
+                            console.log(data);
+
+                            //$("#book-step-1").removeClass("badge search-step-active");
+                            //$("#book-step-2").removeClass("badge search-step-active");
+                            //$("#book-step-3").addClass("badge search-step-active");
+                            //
+                            //$("#step-2").fadeOut();
+                            //$("#step-3").fadeIn();
+                        }
+                    });
                 }
             });
         }

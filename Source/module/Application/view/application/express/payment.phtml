@@ -31,8 +31,10 @@
                         <li>1.900.000 VND</li>
                     </ul>
                     <div class="right">
-                        <button class="btn btn-default">Hủy</button>
-                        <button class="btn btn-primary"><span class="glyphicon glyphicon-credit-card icon-credit-card"></span>Thanh toán</button>
+                        <button type="button" class="btn btn-default" ng-click="back()">Hủy</button>
+                        <button type="button" class="btn btn-primary" ng-click="pay()">
+                            <span class="glyphicon glyphicon-credit-card icon-credit-card"></span>Thanh toán
+                        </button>
                     </div>
                 </div>
             </div>
@@ -40,12 +42,12 @@
     </div>
     <table class="table list-tickets">
         <thead>
-        <th>#</th>
-        <th>Mã vé</th>
-        <th>Giá tiền</th>
-        <th>--</th>
+            <th>#</th>
+            <th>Mã vé</th>
+            <th>Ghế</th>
+            <th>--</th>
         </thead>
-        <tbody>
+        <tbody id="unpaid-tickets">
         </tbody>
     </table>
 </div>

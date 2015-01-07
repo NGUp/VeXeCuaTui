@@ -25,10 +25,16 @@ Begin
 	End
 	Else If @condition = 'ThoiGian'
 	Begin
+		Declare @date varchar(10),
+				@_date datetime
+
+		Set @_date = CAST(@key as datetime)
+		Set @date = CONVERT(VARCHAR(10), @_date, 101)
+
 		Set @query =
 			'Select MaLT, MaHangXe, NgayDi, GioDi, NoiDi, NoiDen, GiaVe, CacDiemDung ' +
 			'From LichTrinh ' +
-			'Where NgayDi = ''' + @key + ''' Or GioDi = ''' + @key + ''''
+			'Where NgayDi = ''' + @date + ''' Or GioDi = ''' + @key + ''''
 	End
 
 	Exec sp_executesql @query
