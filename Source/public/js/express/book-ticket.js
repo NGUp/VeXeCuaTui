@@ -57,7 +57,8 @@
                     "phone" : $scope.phone,
                     "email" : $scope.email,
                     "tickets" : $("#list-seats").val(),
-                    "car" : $("#car-id").val()
+                    "car" : $("#car-id").val(),
+                    "route": $("#route-id").val()
                 }
             }).done(function(message) {
                 var pattern, reg_err, match, index;
@@ -72,34 +73,25 @@
                     $('#error-content').html(message.substring(index, message.length).trim());
                     $('#error-modal').modal();
                 } else {
+                    customer = message;
+
                     $.ajax({
                         type: "POST",
                         url: "/syn/getunpaidtickets",
                         data: {
-                            "customer" : $scope.customer
+                            "customer" : message
                         }
                     }).done(function(data) {
-                        var pattern, reg_err, match, index;
+                        seats = data;
 
-                        pattern = /\[(.*?)\]/igm;
-                        reg_err = new RegExp(pattern);
+                        console.log(seats);
 
-                        if (reg_err.test(data)) {
-                            while (match = pattern.exec(data)) {
-                                index = pattern.lastIndex;
-                            }
-                            $('#error-content').html(data.substring(index, data.length).trim());
-                            $('#error-modal').modal();
-                        } else {
-                            console.log(data);
+                        $("#book-step-1").removeClass("badge search-step-active");
+                        $("#book-step-2").removeClass("badge search-step-active");
+                        $("#book-step-3").addClass("badge search-step-active");
 
-                            //$("#book-step-1").removeClass("badge search-step-active");
-                            //$("#book-step-2").removeClass("badge search-step-active");
-                            //$("#book-step-3").addClass("badge search-step-active");
-                            //
-                            //$("#step-2").fadeOut();
-                            //$("#step-3").fadeIn();
-                        }
+                        $("#step-2").fadeOut();
+                        $("#step-3").fadeIn();
                     });
                 }
             });

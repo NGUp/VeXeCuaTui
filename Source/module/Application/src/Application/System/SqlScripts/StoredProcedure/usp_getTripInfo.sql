@@ -7,7 +7,7 @@ Create Procedure usp_getTripInfo
 	@car varchar(10)
 As
 Begin
-	Select TenHangXe, Logo, NgayDi, NoiDen, NoiDi, Gia, GheDaDat
-	From (HangXe hang join Xe car on hang.MaHangXe = car.HangXe) join LichTrinh lich on car.LichTrinh = lich.MaLT
-	Where BangSoXe = @car And MaLT = @trip
+	Select TenHangXe, Logo, NgayDi, NoiDen, NoiDi, car.Gia, GheDaDat
+	From ((GheDaDat ghe join Xe car on ghe.Xe = car.BangSoXe) join HangXe hang on car.HangXe = hang.MaHangXe) join LichTrinh lich on ghe.LichTrinh = lich.MaLT
+	Where ghe.Xe = @car And ghe.LichTrinh = @trip
 End

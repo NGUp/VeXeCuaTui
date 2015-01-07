@@ -13,6 +13,7 @@ namespace Application\Controller;
 use Application\Model\AdminModel;
 use Application\Model\AjaxModel;
 use Application\Model\CarModel;
+use Application\Model\CustomerModel;
 use Application\Model\ExpressModel;
 use Application\Model\RegulationModel;
 use Application\Model\RouteModel;
@@ -316,14 +317,19 @@ class AjaxController extends BaseController
     public function bookTicketsAction()
     {
         try {
-            $customer = $this->post('customer');
+            $name = $this->post('customer');
             $phone = $this->post('phone');
             $email = $this->post('email');
             $tickets = $this->post('tickets');
             $car = $this->post('car');
-            $express = new ExpressModel();
+            $route = $this->post('route');
 
-            $express->bookTickets($customer, $phone, $email, $tickets, $car);
+            $express = new ExpressModel();
+            $customer = new CustomerModel();
+
+            $id = $customer->getCustomerId();
+            $express->bookTickets($id, $name, $phone, $email, $tickets, $route, $car);
+            echo $id;
             die();
         } catch (CustomException $e) {
             $e->getError();
@@ -338,9 +344,6 @@ class AjaxController extends BaseController
         try {
             $customer = $this->post('customer');
             $express = new ExpressModel();
-
-            var_dump($express->getUnpaidTickets($customer));
-            die();
             return $this->json($express->getUnpaidTickets($customer), true);
         } catch (CustomException $e) {
             $e->getError();

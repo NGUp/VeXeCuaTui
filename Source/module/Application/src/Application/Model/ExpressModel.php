@@ -15,7 +15,7 @@ use Application\System\Model;
 use Application\System\Regex;
 
 /**
- *  Regulation Model
+ *  Express Model
  *
  * @category   VeXeCuaTui Project
  * @package    Application\Model
@@ -81,10 +81,10 @@ class ExpressModel extends Model
      * @throws CustomException
      * @throws \Exception
      */
-    public function bookTickets($customer, $phone, $email, $tickets, $car)
+    public function bookTickets($id, $customer, $phone, $email, $tickets, $route, $car)
     {
         try {
-            $this->non('usp_bookTickets', array("N'$customer'", "'$phone'", "'$email'", "'$tickets,'", "'$car'"));
+            $this->non('usp_bookTickets', array("'$id'", "N'$customer'", "'$phone'", "'$email'", "'$tickets,'", "'$route'", "'$car'"));
         } catch (CustomException $exception) {
             throw $exception;
         }
@@ -94,10 +94,16 @@ class ExpressModel extends Model
      * Get Unpaid Ticket(s)
      *
      * @param $customer string
+     * @throws CustomException
+     * @throws \Exception
      * @return \Application\System\matrix|null
      */
     public function getUnpaidTickets($customer)
     {
-        return $this->param('usp_bookTickets', array("N'Harry James'", "'114'", "'luyen@gmail.com'", "'28, 31'", "'98D-2312'"));
+        try {
+            return $this->more('usp_getUnpaidTickets', array("'$customer'"));
+        } catch (CustomException $exception) {
+            throw $exception;
+        }
     }
 }
