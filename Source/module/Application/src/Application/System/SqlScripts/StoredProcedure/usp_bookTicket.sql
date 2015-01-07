@@ -4,6 +4,7 @@
 
 Create Procedure usp_bookTicket
 	@car varchar(10),
+	@route varchar(10),
 	@customer nchar(10),
 	@seat int
 As
@@ -18,19 +19,19 @@ Begin
 	Values(@id, CONVERT(VARCHAR(10), GETDATE(), 103), @seat, @car, @customer, 'Unpaid')
 
 	Select @seats = GheDaDat
-	From Xe
-	Where BangSoXe = @car
+	From GheDaDat ghe
+	Where ghe.Xe = @car And ghe.LichTrinh = @route
 
 	If @seats = NULL
 	Begin
-		Update Xe
+		Update GheDaDat
 		Set GheDaDat = Cast(@seat as varchar(2)) + ','
-		Where BangSoXe = @car
+		Where Xe = @car And LichTrinh = @route
 	End
 	Else
 	Begin
-		Update Xe
+		Update GheDaDat
 		Set GheDaDat = @seats + Cast(@seat as varchar(2)) + ','
-		Where BangSoXe = @car
+		Where Xe = @car And LichTrinh = @route
 	End
 End
