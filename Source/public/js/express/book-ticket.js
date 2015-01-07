@@ -49,52 +49,85 @@
         );
 
         $scope.pay = function() {
-            $.ajax({
-                type: "POST",
-                url: "/syn/booktickets",
-                data: {
-                    "customer" : $scope.customer,
-                    "phone" : $scope.phone,
-                    "email" : $scope.email,
-                    "tickets" : $("#list-seats").val(),
-                    "car" : $("#car-id").val(),
-                    "route": $("#route-id").val()
-                }
-            }).done(function(message) {
-                var pattern, reg_err, match, index;
+            var reg_name, reg_phone, flag;
 
-                pattern = /\[(.*?)\]/igm;
-                reg_err = new RegExp(pattern);
+            flag = true;
+            reg_name = new RegExp('^([a-zA-Z ]{0,}[^\u0000-\u007F]{0,})+$');
+            reg_phone = new RegExp('^[0-9]{8,11}$');
 
-                if (reg_err.test(message)) {
-                    while (match = pattern.exec(message)) {
-                        index = pattern.lastIndex;
+            removeNotification("#book-name");
+            removeNotification("#book-phone");
+            removeNotification("#book-email");
+            removeNotification("#book-tickets");
+
+            if (reg_name.test($scope.customer) == false || reg_name.exec($scope.customer)[0] !=  $scope.customer) {
+                showNotification('#book-name', 'Họ tên không hợp lệ');
+                flag = false;
+            }
+
+            if (reg_phone.test($scope.phone) == false || reg_phone.exec($scope.phone)[0] !=  $scope.phone) {
+                showNotification('#book-phone', 'Số điện thoại không hợp lệ');
+                flag = false;
+            }
+
+            if ($scope.email == undefined || (/([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})/img).exec($scope.email)['0'] !=  $scope.email) {
+                showNotification('#book-email', 'Email không hợp lệ');
+                flag = false;
+            }
+
+            if ($("#list-seats").val() == "") {
+                showNotification('#book-tickets', 'Vị trí ghế không được bỏ trống');
+                flag = false;
+            }
+
+            if (flag) {
+                $.ajax({
+                    type: "POST",
+                    url: "/syn/booktickets",
+                    data: {
+                        "customer" : $scope.customer,
+                        "phone" : $scope.phone,
+                        "email" : $scope.email,
+                        "tickets" : $("#list-seats").val(),
+                        "car" : $("#car-id").val(),
+                        "route": $("#route-id").val()
                     }
-                    $('#error-content').html(message.substring(index, message.length).trim());
-                    $('#error-modal').modal();
-                } else {
-                    customer = message;
+                }).done(function(message) {
+                    var pattern, reg_err, match, index;
 
-                    $.ajax({
-                        type: "POST",
-                        url: "/syn/getunpaidtickets",
-                        data: {
-                            "customer" : message
+                    pattern = /\[(.*?)\]/igm;
+                    reg_err = new RegExp(pattern);
+
+                    if (reg_err.test(message)) {
+                        while (match = pattern.exec(message)) {
+                            index = pattern.lastIndex;
                         }
-                    }).done(function(data) {
-                        seats = data;
+                        $('#error-content').html(message.substring(index, message.length).trim());
+                        $('#error-modal').modal();
+                    } else {
+                        customer = message;
 
-                        console.log(seats);
+                        $.ajax({
+                            type: "POST",
+                            url: "/syn/getunpaidtickets",
+                            data: {
+                                "customer" : message
+                            }
+                        }).done(function(data) {
+                            seats = data;
 
-                        $("#book-step-1").removeClass("badge search-step-active");
-                        $("#book-step-2").removeClass("badge search-step-active");
-                        $("#book-step-3").addClass("badge search-step-active");
+                            console.log(seats);
 
-                        $("#step-2").fadeOut();
-                        $("#step-3").fadeIn();
-                    });
-                }
-            });
+                            $("#book-step-1").removeClass("badge search-step-active");
+                            $("#book-step-2").removeClass("badge search-step-active");
+                            $("#book-step-3").addClass("badge search-step-active");
+
+                            $("#step-2").fadeOut();
+                            $("#step-3").fadeIn();
+                        });
+                    }
+                });
+            }
         }
     })
 })();

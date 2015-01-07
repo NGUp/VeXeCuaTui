@@ -26,19 +26,19 @@
                 <legend class="book-information">Thông tin khách hàng</legend>
                 <ul class="book-customer-information">
                     <li>Tên khách hàng (<abbr title="Bắt buộc">*</abbr>)</li>
-                    <li>
+                    <li id="book-name">
                         <input type="text" class="form-control" ng-model="customer" spellcheck="false" required="Tên khách hàng không được bỏ trống" />
                     </li>
                     <li>Điện thoại (<abbr title="Bắt buộc">*</abbr>)</li>
-                    <li>
+                    <li id="book-phone">
                         <input type="text" class="form-control" ng-model="phone" spellcheck="false" required="Số điện thoại không được bỏ trống" />
                     </li>
                     <li>Email (<abbr title="Bắt buộc">*</abbr>)</li>
-                    <li>
-                        <input type="text" class="form-control" ng-model="email" required="Email không được bỏ trống" />
+                    <li id="book-email">
+                        <input type="email" class="form-control" ng-model="email" spellcheck="false" required="Email không được bỏ trống" />
                     </li>
-                    <li>Danh sách vé</li>
-                    <li>
+                    <li>Danh sách vé (<abbr title="Bắt buộc">*</abbr>)</li>
+                    <li id="book-tickets">
                         <input type="text" id="list-seats" data-role="tagsinput" />
                     </li>
                 </ul>
