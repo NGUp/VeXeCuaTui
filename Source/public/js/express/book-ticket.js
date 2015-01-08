@@ -9,6 +9,11 @@
             $("#result-to").empty();
             $("#result-price").empty();
 
+            $scope.customer = '';
+            $scope.phone = '';
+            $scope.email = '';
+            $("#list-seats").tagsinput('removeAll');
+
             $("#book-step-1").addClass("badge search-step-active");
             $("#book-step-2").removeClass("badge search-step-active");
             $("#book-step-3").removeClass("badge search-step-active");
