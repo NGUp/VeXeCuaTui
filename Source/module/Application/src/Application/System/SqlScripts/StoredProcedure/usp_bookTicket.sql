@@ -22,11 +22,10 @@ Begin
 	From GheDaDat ghe
 	Where ghe.Xe = @car And ghe.LichTrinh = @route
 
-	If @seats = NULL
+	If ISNULL(@seats, '-1') = '-1'
 	Begin
-		Update GheDaDat
-		Set GheDaDat = Cast(@seat as varchar(2)) + ','
-		Where Xe = @car And LichTrinh = @route
+		Insert Into GheDaDat(Xe, LichTrinh, GheDaDat)
+		Values(@car, @route, Cast(@seat as varchar(2)) + ',')
 	End
 	Else
 	Begin

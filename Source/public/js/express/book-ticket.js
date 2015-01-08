@@ -116,7 +116,11 @@
                         }).done(function(data) {
                             seats = data;
 
-                            console.log(seats);
+                            $("#unpaid-tickets").empty();
+
+                            seats.forEach(function(seat, index) {
+                                $("#unpaid-tickets").append("<tr><td>" + (index + 1) +"</td><td>" + seat.MaVe + "</td><td>" + seat.ViTri + "</td><td><button class='btn btn-primary' onclick='removeTicket(this)'>Hủy</button></td></tr>");
+                            });
 
                             $("#book-step-1").removeClass("badge search-step-active");
                             $("#book-step-2").removeClass("badge search-step-active");
