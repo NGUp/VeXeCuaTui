@@ -349,4 +349,20 @@ class AjaxController extends BaseController
             $e->getError();
         }
     }
+
+    public function removeTicketAction()
+    {
+        try {
+            $ticket = $this->post('ticket');
+            $car = $this->post('car');
+            $route = $this->post('route');
+            $seat = $this->post('seat');
+            $express = new ExpressModel();
+
+            $express->removeTicket($ticket, $car, $route, $seat);
+            die();
+        } catch (CustomException $e) {
+            $e->getError();
+        }
+    }
 } 

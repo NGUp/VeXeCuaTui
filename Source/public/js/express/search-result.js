@@ -70,12 +70,13 @@
 
                     obj = data[0];
 
-                    $("#result-operator").html(obj.TenHangXe);
-                    $("#result-date").html(obj.NgayDi);
-                    $("#result-from").html(obj.NoiDi);
-                    $("#result-to").html(obj.NoiDen);
-                    $("#result-price").html(obj.Gia.format() + " VND");
-                    $("#result-logo").attr("src", "/img/Operators/" + obj.Logo);
+                    $(".result-operator").html(obj.TenHangXe);
+                    $(".result-date").html(obj.NgayDi);
+                    $(".result-from").html(obj.NoiDi);
+                    $(".result-to").html(obj.NoiDen);
+                    $(".result-price").html(obj.Gia.format() + " VND");
+                    $(".result-logo").attr("src", "/img/Operators/" + obj.Logo);
+                    $("#price-ticket").val(obj.Gia);
 
                     if (type == "Giường Nằm") {
                         count = 30;

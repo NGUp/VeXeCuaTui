@@ -1,5 +1,18 @@
 <div id="step-3" hidden ng-controller="paymentController">
     <div>
+        <div class="row panel-info">
+            <div class="col-md-4 center">
+                <img src="/img/Operators/HoangLong.png" class="result-logo logo" alt="Logo" />
+            </div>
+            <div class="col-md-4">
+                <h5><small>Hãng xe: </small><span class="result-operator"></span></h5>
+                <h5><small>Ngày đi: </small><span class="result-date"></span></h5>
+            </div>
+            <div class="col-md-4">
+                <h5><small>Nơi đi: </small><span class="result-from"></span></h5>
+                <h5><small>Nơi đến: </small><span class="result-to"></span></h5>
+            </div>
+        </div>
         <div class="center-screen payment-panel">
             <div>
                 <div class="col-md-7">
@@ -28,7 +41,7 @@
                 <div class="col-md-5">
                     <ul class="payment-total">
                         <li>Tổng tiền:</li>
-                        <li>1.900.000 VND</li>
+                        <li id="total-price">1.900.000 VND</li>
                     </ul>
                     <div class="right">
                         <button type="button" class="btn btn-default" ng-click="back()">Hủy</button>
@@ -40,12 +53,12 @@
             </div>
         </div>
     </div>
-    <table class="table list-tickets">
+    <table class="table table-bordered table-hover list-tickets">
         <thead>
-            <th>#</th>
-            <th>Mã vé</th>
-            <th>Ghế</th>
-            <th>--</th>
+            <th class="center">#</th>
+            <th class="center">Mã vé</th>
+            <th class="center">Ghế</th>
+            <th class="center">--</th>
         </thead>
         <tbody id="unpaid-tickets">
         </tbody>

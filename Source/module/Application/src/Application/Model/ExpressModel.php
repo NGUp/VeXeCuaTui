@@ -106,4 +106,23 @@ class ExpressModel extends Model
             throw $exception;
         }
     }
+
+    /**
+     * Remove booked ticket
+     *
+     * @param $ticket string
+     * @param $car string
+     * @param $route string
+     * @param $seat string
+     * @throws CustomException
+     * @throws \Exception
+     */
+    public function removeTicket($ticket, $car, $route, $seat)
+    {
+        try {
+            $this->non('usp_removeTicket', array("'$ticket'", "'$car'", "'$route'", "'$seat,'"));
+        } catch (CustomException $exception) {
+            throw $exception;
+        }
+    }
 }

@@ -122,6 +122,8 @@
                                 $("#unpaid-tickets").append("<tr><td>" + (index + 1) +"</td><td>" + seat.MaVe + "</td><td>" + seat.ViTri + "</td><td><button class='btn btn-primary' onclick='removeTicket(this)'>Hủy</button></td></tr>");
                             });
 
+                            $("#total-price").html(($("#price-ticket").val() * seats.length).format() + " VND");
+
                             $("#book-step-1").removeClass("badge search-step-active");
                             $("#book-step-2").removeClass("badge search-step-active");
                             $("#book-step-3").addClass("badge search-step-active");
