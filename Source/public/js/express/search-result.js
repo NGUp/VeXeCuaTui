@@ -92,7 +92,7 @@
                         $("#book-seat").show();
                     }
 
-                    $('.count-available-seat').html(count - (obj.GheDaDat == null ? 0 : obj.GheDaDat.split(",").length));
+                    $('.count-available-seat').html(count - (obj.GheDaDat == null ? 0 : obj.GheDaDat.split(",").length - 1));
 
                     $("#book-step-1").removeClass("badge search-step-active");
                     $("#book-step-2").addClass("badge search-step-active");

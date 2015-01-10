@@ -29,7 +29,44 @@ function removeTicket(element) {
 
     app.controller("paymentController", function($scope) {
         $scope.pay = function() {
-            console.log("Pay");
+            var flag;
+
+            flag = true;
+
+            removeNotification("#credit-card");
+            removeNotification("#credit-card-id");
+
+            if (/\b(?:3[47]\d|(?:4\d|5[1-5]|65)\d{2}|6011)\d{12}\b/.test($scope.creditCard) == false) {
+                showNotification('#credit-card-id', 'Mã thẻ không hợp lệ');
+                flag = false;
+            }
+
+            if ($("#credit-card-type").val() == "") {
+                showNotification('#credit-card', 'Vui lòng chọn loại thẻ');
+                flag = false;
+            }
+
+            if (flag) {
+                var index, tickets, data, ticket;
+
+                tickets = $("#unpaid-tickets").children();
+                data = '';
+
+                for (index = 0; index < tickets.length; index++) {
+                    ticket = tickets[index];
+                    data = data + $($(ticket).children()[1]).html().trim() + ',';
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "/syn/payment",
+                    data: {
+                        "tickets" : data
+                    }
+                }).done(function(data) {
+
+                });
+            }
         }
     });
 })();

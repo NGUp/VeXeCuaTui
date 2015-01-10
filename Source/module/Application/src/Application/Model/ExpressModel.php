@@ -125,4 +125,19 @@ class ExpressModel extends Model
             throw $exception;
         }
     }
+
+    /**
+     * Pay
+     * @param $tickets string
+     * @throws CustomException
+     * @throws \Exception
+     */
+    public function payment($tickets)
+    {
+        try {
+            $this->non('usp_payment', array("'$tickets,'"));
+        } catch (CustomException $exception) {
+            throw $exception;
+        }
+    }
 }

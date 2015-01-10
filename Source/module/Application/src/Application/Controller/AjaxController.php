@@ -350,6 +350,10 @@ class AjaxController extends BaseController
         }
     }
 
+    /**
+     * Cancelling booked ticket
+     *
+     */
     public function removeTicketAction()
     {
         try {
@@ -360,6 +364,23 @@ class AjaxController extends BaseController
             $express = new ExpressModel();
 
             $express->removeTicket($ticket, $car, $route, $seat);
+            die();
+        } catch (CustomException $e) {
+            $e->getError();
+        }
+    }
+
+    /**
+     * Payment Tickets Booking
+     *
+     */
+    public function paymentAction()
+    {
+        try {
+            $tickets = $this->post('tickets');
+            $express = new ExpressModel();
+
+            $express->payment($tickets);
             die();
         } catch (CustomException $e) {
             $e->getError();
