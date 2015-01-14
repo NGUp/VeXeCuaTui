@@ -21,7 +21,7 @@ Begin
 	Where MaTinh = @_to
 
 	Set @_date = CAST(@date as datetime)
-	Set @date = CONVERT(VARCHAR(10), @_date, 101)
+	Set @date = CONVERT(VARCHAR(10), @_date, 103)
 
 	Select TenHangXe, NoiDi, NoiDen, GioDi, TenLoai, Gia, BangSoXe, MaLT, NgayDi
 	From ((Xe car join LichTrinh lich on car.LichTrinh = lich.MaLT) join HangXe hang on car.HangXe = hang.MaHangXe) join LoaiXe loai on car.LoaiXe = loai.MaLoai

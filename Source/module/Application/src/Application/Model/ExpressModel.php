@@ -36,6 +36,8 @@ class ExpressModel extends Model
     public function findTrip($from, $to, $date)
     {
         if (Regex::checkSqlInjection($from) && Regex::checkSqlInjection($to) && Regex::checkSqlInjection($date)) {
+            $_date = \DateTime::createFromFormat('d/m/Y', $date);
+            $date =  $_date->format('m/d/Y');
             $result = $this->more('usp_findTrip', array("$from", "$to", "'$date'"));
             if (empty($result)) {
                 $result = array();
