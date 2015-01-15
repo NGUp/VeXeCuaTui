@@ -13,13 +13,13 @@ Create Procedure usp_createRoute
 As
 Begin
 	Declare @id nchar(10),
-			@_date varchar(10)
-
-    Set @id = CONVERT(NVARCHAR(50),HashBytes('SHA1', Cast(GETDATE() as varchar(30))), 2)
-    Set @id = SUBSTRING(@id, 1, 7)
+			@_date datetime
 
     Set @_date = CAST(@date as datetime)
-	Set @date = CONVERT(VARCHAR(10), @_date, 101)
+	Set @date = CONVERT(VARCHAR(10), @_date, 103)
+
+	Set @id = CONVERT(NVARCHAR(50),HashBytes('SHA1', Cast(GETDATE() as varchar(30))), 2)
+    Set @id = SUBSTRING(@id, 1, 7)
 
     Insert Into LichTrinh(MaLT, MaHangXe, NgayDi, GioDi, NoiDi, NoiDen, GiaVe, CacDiemDung)
     Values(@id, @operator, @date, @time, @start_location, @end_location, @price, @stop)

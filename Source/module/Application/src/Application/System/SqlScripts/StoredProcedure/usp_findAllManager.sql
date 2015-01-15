@@ -1,11 +1,11 @@
--- Xuất danh sách các quản trị viên bao gồm Administrator và Moderator
+-- Xuất danh sách các quản trị viên phân quyền Moderator
 --
 -- exec usp_findAllManager
 
 Create Procedure usp_findAllManager
 As
 Begin
-  Select qtv.CMND, qtv.HoTen, qtv.TenDangNhap, qtv.QuanTriVien, hx.TenHangXe
-	From QuanTriVien qtv Left Join HangXe hx on qtv.HangXe = hx.MaHangXe
+	Select qtl.CMND, qtl.HoTen, qtl.TenDangNhap, qtl.QuanTriVien, hx.TenHangXe
+	From QuanTriVien qtl Left Join HangXe hx on qtl.HangXe = hx.MaHangXe
+	Where qtl.QuanTriVien = 'False'
 End
-Go

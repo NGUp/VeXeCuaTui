@@ -50,6 +50,8 @@ class RouteModel extends Model
     public function createRoute($id, $start_date, $start_time, $start_location, $end_location, $price, $stop)
     {
         try {
+            $_date = \DateTime::createFromFormat('d/m/Y', $start_date);
+            $start_date =  $_date->format('m/d/Y');
             $this->non('usp_createRoute', array("'$id'", "'$start_date'", "'$start_time'", "N'$start_location'", "N'$end_location'", "$price", "N'$stop'"));
         } catch (CustomException $e) {
             throw $e;

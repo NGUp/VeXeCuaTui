@@ -63,10 +63,30 @@ function removeTicket(element) {
                     data: {
                         "tickets" : data
                     }
-                }).done(function(data) {
+                }).done(function(message) {
+                    var pattern, reg_err, match, index;
 
+                    pattern = /\[(.*?)\]/igm;
+                    reg_err = new RegExp(pattern);
+
+                    if (reg_err.test(message)) {
+                        while (match = pattern.exec(message)) {
+                            index = pattern.lastIndex;
+                        }
+                        $("#message-content").html('');
+                        $('#error-content').html(message.substring(index, message.length).trim());
+                        $('#payment-modal').modal();
+                    } else {
+                        $("#error-content").html('');
+                        $('#message-content').html('Đã thanh toán thành công... Vé sẽ không được giao :v');
+                        $('#payment-modal').modal();
+                    }
                 });
             }
+        }
+
+        $scope.paySuccess = function() {
+            window.location.href = '/';
         }
     });
 })();

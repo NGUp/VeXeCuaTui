@@ -1,6 +1,6 @@
 -- Tìm kiếm chuyến đi
 --
--- usp_findTrip 54, 1, '24/12/2014'
+-- usp_findTrip 54, 1, '12/24/2014'
 
 Create Procedure usp_findTrip
 	@_from int,
