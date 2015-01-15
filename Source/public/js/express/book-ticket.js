@@ -41,12 +41,24 @@
                 $("#seat-" + event.item)
                     .removeClass()
                     .addClass("seat-available");
+
+                $("#seat-bed-" + event.item)
+                    .removeClass()
+                    .addClass("seat-available");
             })
             .on("beforeItemAdd", function(event) {
                 if ($("#seat-" + event.item)[0] == undefined || $("#seat-" + event.item)[0].className == "seat-booked") {
                     event.cancel = true;
                 } else {
                     $("#seat-" + event.item)
+                        .removeClass()
+                        .addClass("seat-checked");
+                }
+
+                if ($("#seat-bed-" + event.item)[0] == undefined || $("#seat-bed-" + event.item)[0].className == "seat-booked") {
+                    event.cancel = true;
+                } else {
+                    $("#seat-bed-" + event.item)
                         .removeClass()
                         .addClass("seat-checked");
                 }

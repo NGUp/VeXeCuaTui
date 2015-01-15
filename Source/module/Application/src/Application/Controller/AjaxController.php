@@ -386,4 +386,21 @@ class AjaxController extends BaseController
             $e->getError();
         }
     }
+
+    /**
+     * Cancelling
+     */
+    public function cancelAction()
+    {
+        try {
+            $customer = $this->post('customer');
+            $route = $this->post('route');
+            $express = new ExpressModel();
+
+            $express->cancel($customer, $route);
+            die();
+        } catch (CustomException $e) {
+            $e->getError();
+        }
+    }
 } 

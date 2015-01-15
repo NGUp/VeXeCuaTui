@@ -83,10 +83,23 @@ function removeTicket(element) {
                     }
                 });
             }
-        }
+        };
 
         $scope.paySuccess = function() {
             window.location.href = '/';
+        };
+
+        $scope.cancel = function() {
+            $.ajax({
+                type: "POST",
+                url: "/syn/cancel",
+                data: {
+                    "customer" : customer,
+                    "route" : $("#route-id").val()
+                }
+            }).done(function(message) {
+                window.location.href = '/';
+            });
         }
     });
 })();

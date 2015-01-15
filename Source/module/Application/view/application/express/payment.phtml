@@ -44,7 +44,7 @@
                         <li id="total-price">1.900.000 VND</li>
                     </ul>
                     <div class="right">
-                        <button type="button" class="btn btn-default" ng-click="back()">Hủy</button>
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#cancel-modal">Hủy</button>
                         <button type="button" class="btn btn-primary" ng-click="pay()">
                             <span class="glyphicon glyphicon-credit-card icon-credit-card"></span>Thanh toán
                         </button>
@@ -76,6 +76,23 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" ng-click="paySuccess()" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="cancel-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Thông báo</h4>
+                </div>
+                <div class="modal-body">
+                    Bạn có chắc muốn hủy toàn bộ vé chứ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-warning" ng-click="cancel()" data-dismiss="modal">Đồng ý</button>
                 </div>
             </div>
         </div>

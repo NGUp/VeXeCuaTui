@@ -21,7 +21,7 @@ Begin
 	Set @result = SUBSTRING(@seats, 1, @position - 1)
 	Set @result = @result + SUBSTRING(@seats, @position + LEN(@seat), LEN(@seats))
 
-	If @result = ''
+	If @result = '' Or @result = NULL
 	Begin
 		Delete From GheDaDat
 		Where Xe = @car And LichTrinh = @route
