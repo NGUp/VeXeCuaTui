@@ -1,13 +1,12 @@
 <div class="backend-side-bar" ng-controller="sidebarController as sidebarCtrl">
     <div class="backend-side-bar-inner">
         <div class="backend-side-bar-header">
-            <img src="<?php echo $this->basePath() ?>/img/Operators/MaiLinhExpress.jpg" class="backend-side-bar-logo" alt="Mai Linh Express"/>
+            <img src="<?php echo $this->basePath() ?>/img/moderator-icon.png" class="backend-side-bar-logo" alt="Mai Linh Express"/>
         </div>
         <ul class="backend-side-bar-dropdown-menu">
             <li class="grow" id="tab-information" ng-click="sidebarCtrl.editOperator()">Thông tin hãng xe</li>
             <li class="grow" id="tab-route" ng-click="sidebarCtrl.routeManagement()">Quản lý lộ trình</li>
             <li class="grow" id="tab-car" ng-click="sidebarCtrl.routeCar()">Quản lý xe</li>
-            <li class="grow" id="tab-statistic">Thống kê</li>
         </ul>
     </div>
 </div>
