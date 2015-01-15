@@ -12,14 +12,6 @@
                     <option value="2">Ghế thường</option>
                 </select>
             </li>
-            <li class="sub-contain-title">Hãng xe</li>
-            <li id="add-car-operator">
-                <select class="combobox" name="car_operator" id="car-operator">
-                    <?php foreach ($operators as $operator) : ?>
-                        <option value="<?php echo trim($operator['MaHangXe']) ?>"><?php echo $operator['TenHangXe'] ?></option>
-                    <?php endforeach ?>
-                </select>
-            </li>
             <li class="sub-contain-title">Tuyến</li>
             <li id="add-car-route">
                 <select class="combobox" name="car_route" id="car-route">

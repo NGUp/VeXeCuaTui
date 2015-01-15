@@ -39,7 +39,6 @@
 
             id = this.car_id;
             type = $('#car-type').val();
-            operator_id = $('#car-operator').val();
             route = $('#car-route').val();
 
             if (reg_id.test(id) == false || reg_id.exec(id)[0] != id) {
@@ -49,11 +48,6 @@
 
             if (type == null) {
                 showNotification('#add-car-type', 'Loại xe không được để trống');
-                flag = false;
-            }
-
-            if (operator_id == null) {
-                showNotification('#add-car-operator', 'Hãng xe không được để trống');
                 flag = false;
             }
 
@@ -69,7 +63,7 @@
                     data: {
                         car_id: id,
                         car_type: type,
-                        car_operator: operator_id,
+                        car_operator: operator,
                         car_route: route
                     }
                 }).done(function(message) {
