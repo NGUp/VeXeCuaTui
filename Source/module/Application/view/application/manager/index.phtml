@@ -34,7 +34,6 @@
                     <th>CMND</th>
                     <th>Họ tên</th>
                     <th>Tên đăng nhập</th>
-                    <th>Quản trị viên</th>
                     <th>Hãng xe</th>
                     <th class="col-function">#</th> <!-- Remove Column -->
                 </tr>
@@ -50,13 +49,6 @@
                         </td>
                         <td class="col-username">
                             <?php echo $manager['TenDangNhap'] ?>
-                        </td>
-                        <td class="col-is-admin center">
-                            <?php if ($manager['QuanTriVien'] == 1) : ?>
-                                <span class="glyphicon glyphicon-ok green"></span>
-                            <?php else : ?>
-                                <span class="glyphicon glyphicon-remove red"></span>
-                            <?php endif ?>
                         </td>
                         <td class="col-operator-name">
                             <?php echo $manager['TenHangXe'] ?>

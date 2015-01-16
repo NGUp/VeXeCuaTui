@@ -102,7 +102,7 @@ class RouteController extends BaseController
         $view = $this->getContentView($page);
 
         if (is_null($condition) && is_null($key)) {
-            $view->routes = $this->route->getAll();
+            $view->routes = $this->route->getAllByOperator($admin->getOperator());
         } else {
             $view->routes = $this->route->findRoute($condition, $key);
         }
