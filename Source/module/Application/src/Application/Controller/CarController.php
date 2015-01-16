@@ -116,11 +116,8 @@ use Application\System\Auth;
          $id = $this->post('operator_id');
          $view = $this->getContentView($page);
 
-         $operator = new OperatorModel();
-         $view->operators = $operator->getAll();
-
          $route = new RouteModel();
-         $view->routes = $route->getAll();
+         $view->routes = $route->getAllByOperator($id);
 
          $this->angular('moderator-add-car');
          $this->js('operator', "'$id'");

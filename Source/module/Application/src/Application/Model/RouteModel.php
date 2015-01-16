@@ -36,6 +36,17 @@ class RouteModel extends Model
     }
 
     /**
+     * Get all routes by Operator
+     *
+     * @param $operator
+     * @return \Application\System\matrix|null
+     */
+    public function getAllByOperator($operator)
+    {
+        return $this->more('usp_getRoutesByOperator', array("'$operator'"));
+    }
+
+    /**
      * Create new Route
      *
      * @param $id string
