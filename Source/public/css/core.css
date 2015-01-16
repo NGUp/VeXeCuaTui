@@ -5,6 +5,7 @@ body {
 }
 
 .app-standard {
+    height: inherit;
     width: 900px;
 }
 

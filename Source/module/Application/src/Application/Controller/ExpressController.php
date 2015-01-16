@@ -46,6 +46,7 @@ class ExpressController extends BaseController
             'express/search-result',
             'express/book-ticket',
             'express/payment',
+            'gen/header',
             'express/express'
         );
 

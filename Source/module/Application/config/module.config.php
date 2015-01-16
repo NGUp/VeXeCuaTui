@@ -23,6 +23,16 @@ return array(
                     ),
                 ),
             ),
+            'payment' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'     => '/payment',
+                    'defaults'  => array(
+                        'controller' => 'Application\Controller\Payment',
+                        'action'     => 'index'
+                    ),
+                ),
+            ),
             'admin' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
@@ -205,6 +215,7 @@ return array(
         'invokables' => array(
             'Application\Controller\Index'      => 'Application\Controller\IndexController',
             'Application\Controller\Express'    => 'Application\Controller\ExpressController',
+            'Application\Controller\Payment'    => 'Application\Controller\PaymentController',
             'Application\Controller\Admin'      => 'Application\Controller\AdminController',
             'Application\Controller\Manager'    => 'Application\Controller\ManagerController',
             'Application\Controller\Operator'   => 'Application\Controller\OperatorController',

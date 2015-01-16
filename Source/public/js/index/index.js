@@ -1,5 +1,5 @@
 (function() {
-    var app = angular.module("index", []);
+    var app = angular.module("index", ["header"]);
 
     app.controller("bookTicketController", function($scope) {
         var today = new Date();

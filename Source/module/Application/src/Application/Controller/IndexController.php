@@ -9,6 +9,7 @@
  *
  */
 namespace Application\Controller;
+
 use Application\Model\ProvinceModel;
 
 /**
@@ -32,6 +33,7 @@ class IndexController extends BaseController
             'components/bootstrap-combobox',
             'moment',
             'components/bootstrap-datetimepicker',
+            'gen/header',
             'index/index'
         );
 
