@@ -15,15 +15,22 @@
 
         this.submit = function() {
 
-            var reg_name, flag;
+            var reg_name, fileName, flag;
 
             flag = true;
             reg_name = new RegExp('^([a-zA-Z ]{0,}[^\u0000-\u007F]{0,})+$');
+            fileName = $("#input-id").val().split("\\");
 
             removeNotification('#add-operator-name');
+            removeNotification('#file-logo');
 
             if (reg_name.test(this.operator_name) == false || reg_name.exec(this.operator_name)[0] !=  this.operator_name) {
                 showNotification('#add-operator-name', 'Tên hãng xe không hợp lệ');
+                flag = false;
+            }
+
+            if (fileName[fileName.length - 1].length > 50) {
+                showNotification('#file-logo', 'Tên file không được quá 50 kí tự');
                 flag = false;
             }
 
