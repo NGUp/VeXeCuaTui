@@ -39,6 +39,7 @@ class ExpressController extends BaseController
         $js = array(
             'components/bootstrap-combobox',
             'moment',
+            'encode',
             'components/bootstrap-datetimepicker',
             'components/bootstrap-tagsinput',
             'components/bootstrap-tagsinput-angular',

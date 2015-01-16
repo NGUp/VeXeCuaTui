@@ -32,6 +32,7 @@ class IndexController extends BaseController
 		$js = array(
             'components/bootstrap-combobox',
             'moment',
+            'encode',
             'components/bootstrap-datetimepicker',
             'gen/header',
             'index/index'

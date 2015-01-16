@@ -389,6 +389,7 @@ class AjaxController extends BaseController
 
     /**
      * Cancelling
+     *
      */
     public function cancelAction()
     {
@@ -398,6 +399,27 @@ class AjaxController extends BaseController
             $express = new ExpressModel();
 
             $express->cancel($customer, $route);
+            die();
+        } catch (CustomException $e) {
+            $e->getError();
+        }
+    }
+
+    /**
+     * Create new Customer
+     *
+     */
+    public function createCustomerAction()
+    {
+        try {
+            $id = $this->post('id');
+            $name = $this->post('name');
+            $email = $this->post('email');
+            $phone = $this->post('phone');
+            $pass = $this->post('pass');
+
+            $customer = new CustomerModel();
+            $customer->createCustomer($id, $name, $email, $phone, $pass);
             die();
         } catch (CustomException $e) {
             $e->getError();
