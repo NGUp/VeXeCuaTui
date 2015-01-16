@@ -25,5 +25,5 @@ Begin
 
 	Select TenHangXe, NoiDi, NoiDen, GioDi, TenLoai, Gia, BangSoXe, MaLT, NgayDi
 	From ((Xe car join LichTrinh lich on car.LichTrinh = lich.MaLT) join HangXe hang on car.HangXe = hang.MaHangXe) join LoaiXe loai on car.LoaiXe = loai.MaLoai
-	Where car.HangXe = lich.MaHangXe And NoiDi = @from And NoiDen = @to And NgayDi = @date
+	Where NoiDi = @from And NoiDen = @to And NgayDi = @date
 End
