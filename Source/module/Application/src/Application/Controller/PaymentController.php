@@ -9,6 +9,7 @@
  *
  */
 namespace Application\Controller;
+use Application\Model\ExpressModel;
 
 
 /**
@@ -51,9 +52,12 @@ class PaymentController extends BaseController
      */
     public function indexAction()
     {
+        $customer = $this->post('customer');
         $page = $this->createPage('index');
 
+        $express = new ExpressModel();
         $view = $this->getContentView($page);
+        $view->tickets = $express->getUnpaidTickets($customer);
         $this->angular('payment');
 
         return $page;

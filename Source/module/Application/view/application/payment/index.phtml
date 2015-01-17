@@ -1,1 +1,92 @@
-Hello World
+<div class="app-standard center-screen payment-pnl" ng-controller="paymentController">
+    <div class="table-responsive table-space">
+        <h3 class="payment-title">Danh sách vé chưa thanh toán</h3>
+        <table class="table table-bordered table-hover center">
+            <thead>
+            <tr>
+                <th class="center">Mã</th>
+                <th class="center">Nơi đi</th>
+                <th class="center">Nơi đến</th>
+                <th class="center">Ngày đi</th>
+                <th class="center">Hãng xe</th>
+                <th class="center">Số ghế</th>
+                <th class="center">Giá tiền</th>
+                <th class="col-function center">#</th> <!-- Remove Column -->
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($tickets as $ticket) : ?>
+                <tr>
+                    <td class="col-id">
+                        <?php echo $ticket['MaVe'] ?>
+                    </td>
+                    <td>
+                        <?php echo $ticket['NoiDi'] ?>
+                    </td>
+                    <td>
+                        <?php echo $ticket['NoiDen'] ?>
+                    </td>
+                    <td>
+                        <?php echo $ticket['NgayDi'] ?>
+                    </td>
+                    <td>
+                        <?php echo $ticket['TenHangXe'] ?>
+                    </td>
+                    <td>
+                        <?php echo $ticket['ViTri'] ?>
+                    </td>
+                    <td>
+                        <?php echo $ticket['GiaVe'] ?>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-function" data-toggle="modal" data-target="#remove-ticket-modal">
+                            <span class="glyphicon glyphicon-remove"></span> Xóa
+                        </button>
+                        <button type="button" class="btn btn-primary btn-function" data-toggle="modal" data-target="#payment-ticket-modal">
+                            <span class="glyphicon glyphicon-credit-card"></span> Thanh Toán
+                        </button>
+                        <input type="hidden" name="manager_id" class="manager-id"/>
+                    </td>
+                </tr>
+            <?php endforeach ?>
+            </tbody>
+            <input type="hidden" ng-model="ticket_id"/>
+        </table>
+    </div>
+
+    <div class="modal fade" id="payment-ticket-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Thông báo</h4>
+                </div>
+                <div class="modal-body">
+                    Bạn vui lòng xác nhận thanh toán vé này.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary" ng-click="pay()">Xác nhận</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="remove-ticket-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Thông báo</h4>
+                </div>
+                <div class="modal-body">
+                    Bạn có chắc chắn muốn xóa chứ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger" ng-click="remove()">Đồng ý</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

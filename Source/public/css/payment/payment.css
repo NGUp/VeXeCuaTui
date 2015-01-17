@@ -1,0 +1,9 @@
+.payment-pnl {
+    min-height: 500px;
+    margin-top: 40px;
+}
+
+.payment-title {
+    text-align: center;
+    padding-bottom: 20px;
+}

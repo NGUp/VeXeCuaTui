@@ -166,6 +166,16 @@ angular.module("header", [])
         });
 
         $("#header-menu-payment").click(function() {
-            window.location.href = '/payment';
+            event.preventDefault();
+
+            var newForm = jQuery("<form>", {
+                "action": "/payment",
+                "method": "post"
+            }).append(jQuery("<input>", {
+                "name": "customer",
+                "value": window.localStorage.ID,
+                "type": "hidden"
+            }));
+            newForm.submit();
         });
     });
