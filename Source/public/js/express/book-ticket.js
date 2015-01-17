@@ -74,31 +74,10 @@
             );
 
             $scope.pay = function() {
-                var reg_name, reg_phone, flag;
+                var flag;
 
                 flag = true;
-                reg_name = new RegExp('^([a-zA-Z ]{0,}[^\u0000-\u007F]{0,})+$');
-                reg_phone = new RegExp('^[0-9]{8,11}$');
-
-                removeNotification("#book-name");
-                removeNotification("#book-phone");
-                removeNotification("#book-email");
                 removeNotification("#book-tickets");
-
-                if (reg_name.test($scope.customer) == false || reg_name.exec($scope.customer)[0] !=  $scope.customer) {
-                    showNotification('#book-name', 'Họ tên không hợp lệ');
-                    flag = false;
-                }
-
-                if (reg_phone.test($scope.phone) == false || reg_phone.exec($scope.phone)[0] !=  $scope.phone) {
-                    showNotification('#book-phone', 'Số điện thoại không hợp lệ');
-                    flag = false;
-                }
-
-                if ($scope.email == undefined || (/([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})/img).exec($scope.email)['0'] !=  $scope.email) {
-                    showNotification('#book-email', 'Email không hợp lệ');
-                    flag = false;
-                }
 
                 if ($("#list-seats").val() == "") {
                     showNotification('#book-tickets', 'Vị trí ghế không được bỏ trống');
@@ -128,24 +107,40 @@
                             $('#error-content').html(message.substring(index, message.length).trim());
                             $('#error-modal').modal();
                         } else {
-                            customer = message;
+                            function formattedDate(date) {
+                                var d = new Date(date || Date.now()),
+                                    month = '' + (d.getMonth() + 1),
+                                    day = '' + d.getDate(),
+                                    year = d.getFullYear();
+
+                                if (month.length < 2) month = '0' + month;
+                                if (day.length < 2) day = '0' + day;
+
+                                return [day, month, year].join('/');
+                            }
 
                             $.ajax({
                                 type: "POST",
                                 url: "/syn/getunpaidtickets",
                                 data: {
-                                    "customer" : message
+                                    "customer" : window.localStorage.ID,
+                                    "car" : $("#car-id").val(),
+                                    "date_register" : formattedDate(),
+                                    "date_start" : $(".result-date").html()
                                 }
                             }).done(function(data) {
                                 seats = data;
+
+                                var price = 0;
 
                                 $("#unpaid-tickets").empty();
 
                                 seats.forEach(function(seat, index) {
                                     $("#unpaid-tickets").append("<tr><td>" + (index + 1) +"</td><td>" + seat.MaVe + "</td><td>" + seat.ViTri + "</td><td><button class='btn btn-primary' onclick='removeTicket(this)'>Hủy</button></td></tr>");
+                                    price += seat.GiaVe;
                                 });
 
-                                $("#total-price").html(($("#price-ticket").val() * seats.length).format() + " VND");
+                                $("#total-price").html(price.format() + " VND");
 
                                 $("#book-step-1").removeClass("badge search-step-active");
                                 $("#book-step-2").removeClass("badge search-step-active");

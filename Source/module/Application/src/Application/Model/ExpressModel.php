@@ -75,18 +75,17 @@ class ExpressModel extends Model
     /**
      * Book ticket(s)
      *
-     * @param $customer string
-     * @param $phone string
-     * @param $email string
+     * @param $id string
      * @param $tickets string
+     * @param $route string
      * @param $car string
      * @throws CustomException
      * @throws \Exception
      */
-    public function bookTickets($id, $customer, $phone, $email, $tickets, $route, $car)
+    public function bookTickets($id, $tickets, $route, $car)
     {
         try {
-            $this->non('usp_bookTickets', array("'$id'", "N'$customer'", "'$phone'", "'$email'", "'$tickets,'", "'$route'", "'$car'"));
+            $this->non('usp_bookTickets', array("'$id'", "'$tickets,'", "'$route'", "'$car'"));
         } catch (CustomException $exception) {
             throw $exception;
         }
@@ -104,6 +103,25 @@ class ExpressModel extends Model
     {
         try {
             return $this->more('usp_getUnpaidTickets', array("'$customer'"));
+        } catch (CustomException $exception) {
+            throw $exception;
+        }
+    }
+
+    /**
+     * Get unpaid tickets by Car
+     *
+     * @param $customer string
+     * @param $car string
+     * @param $date_register string
+     * @param $date_start string
+     * @throws CustomException
+     * @throws \Exception
+     */
+    public function getUnpaidTicketsByCar($customer, $car, $date_register, $date_start)
+    {
+        try {
+            return $this->more('usp_getUnpaidTicketsByCar', array("'$customer'", "'$car'", "'$date_register'", "'$date_start'"));
         } catch (CustomException $exception) {
             throw $exception;
         }

@@ -317,19 +317,13 @@ class AjaxController extends BaseController
     public function bookTicketsAction()
     {
         try {
-            $name = $this->post('customer');
-            $phone = $this->post('phone');
-            $email = $this->post('email');
+            $id = $this->post('customer');
             $tickets = $this->post('tickets');
             $car = $this->post('car');
             $route = $this->post('route');
 
             $express = new ExpressModel();
-            $customer = new CustomerModel();
-
-            $id = $customer->getCustomerId();
-            $express->bookTickets($id, $name, $phone, $email, $tickets, $route, $car);
-            echo $id;
+            $express->bookTickets($id, $tickets, $route, $car);
             die();
         } catch (CustomException $e) {
             $e->getError();
@@ -338,6 +332,7 @@ class AjaxController extends BaseController
 
     /**
      * Get unpaid ticket(s)
+     *
      */
     public function getUnpaidTicketsAction()
     {
@@ -345,6 +340,24 @@ class AjaxController extends BaseController
             $customer = $this->post('customer');
             $express = new ExpressModel();
             return $this->json($express->getUnpaidTickets($customer), true);
+        } catch (CustomException $e) {
+            $e->getError();
+        }
+    }
+
+    /**
+     * Get unpaid ticket(s) by Car
+     *
+     */
+    public function getUnpaidTicketsByCarAction()
+    {
+        try {
+            $customer = $this->post('customer');
+            $car = $this->post('car');
+            $date_register = $this->post('date_register');
+            $date_start = $this->post('date_start');
+            $express = new ExpressModel();
+            return $this->json($express->getUnpaidTicketsByCar($customer, $car, $date_register, $date_start), true);
         } catch (CustomException $e) {
             $e->getError();
         }

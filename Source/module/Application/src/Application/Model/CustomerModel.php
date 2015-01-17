@@ -23,11 +23,6 @@ use Application\System\Model;
  */
 class CustomerModel extends Model
 {
-    public function getCustomerId()
-    {
-        return $this->one('uf_getCustomerId');
-    }
-
     public function createCustomer($id, $name, $email, $phone, $pass)
     {
         $this->non('usp_createCustomer', array("'$id'", "N'$name'", "'$email'", "'$phone'", "'$pass'"));
