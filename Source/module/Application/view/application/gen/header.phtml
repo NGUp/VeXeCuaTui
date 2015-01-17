@@ -1,12 +1,21 @@
 <header ng-controller="headerController">
     <div class="app-standard center-screen">
-        <a href="/">
-            <img src="<?php echo $this->basePath() ?>/img/logo.png" alt="Logo" class="header-logo"/>
-            <h1 class="hidden">Vé Xe Của Tui</h1>
-        </a>
         <div class="header-user" data-toggle="modal" data-target="#user-modal">
             <span class="glyphicon glyphicon-user"></span> Thành viên
         </div>
+        <a href="/" class="right">
+            <img src="<?php echo $this->basePath() ?>/img/logo.png" alt="Logo" class="header-logo"/>
+            <h1 class="hidden">Vé Xe Của Tui</h1>
+        </a>
+        <div class="header-user-menu">
+            <ul class="nav">
+                <li class="subnav-menu-item" id="header-menu-payment">
+                    <span class="glyphicon glyphicon-cog"></span> Thanh toán
+                </li>
+                <li class="subnav-menu-item" id="header-menu-logout">
+                    <span class="glyphicon glyphicon-log-out"></span> Thoát
+                </li>
+            </ul>
         </div>
     </div>
     <div class="modal fade" tabindex="-1" id="user-modal" role="dialog" aria-labelledby="LogInModal" aria-hidden="true">
@@ -27,10 +36,10 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="recipient-name" class="control-label">Mật khẩu:</label>
-                                    <input type="text" class="form-control" ng-model="password" spellcheck="false" autocomplete="off">
+                                    <input type="password" class="form-control" ng-model="password" spellcheck="false" autocomplete="off">
                                 </div>
                             </form>
-                            <button type="button" class="btn btn-primary" ng-click="payment()">Xác nhận</button>
+                            <button type="button" class="btn btn-primary" ng-click="login()">Xác nhận</button>
                         </div>
                         <div class="col-md-6">
                             <h4>Nếu bạn chưa là thành viên</h4>

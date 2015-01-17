@@ -11,7 +11,7 @@ Create Procedure usp_createCustomer
 As
 Begin
 
-    Set @pass = dbo.uf_encodePassword(@id, @pass, 'True')
+    Set @pass = dbo.uf_encodePassword(@id, @pass, NULL)
 
     Insert Into KhachHang(MaKH, HoTen, Email, DienThoai, MatKhau)
     Values(@id, @name, @email, @phone, @pass)

@@ -32,4 +32,9 @@ class CustomerModel extends Model
     {
         $this->non('usp_createCustomer', array("'$id'", "N'$name'", "'$email'", "'$phone'", "'$pass'"));
     }
+
+    public function login($id, $hash)
+    {
+        return $this->more('usp_loginCustomer', array("'$id'", "'$hash'"));
+    }
 }

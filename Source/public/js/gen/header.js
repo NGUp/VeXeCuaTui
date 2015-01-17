@@ -1,10 +1,5 @@
 angular.module("header", [])
     .controller("headerController", function($scope) {
-        $scope.payment = function() {
-            //window.localStorage.setItem("UserID", $scope.user_id);
-
-        };
-
         $scope.register = function() {
             var reg_name, reg_phone, reg_id, flag;
 
@@ -74,15 +69,53 @@ angular.module("header", [])
                         $('#error-content').html(data.substring(index, data.length).trim());
                         $('#error-modal').modal();
                     } else {
-                        $('#user-modal').modal('hide');
                         window.localStorage.setItem("ID", $scope.user_id);
                         window.localStorage.setItem("Name", $scope.user_name);
                         window.localStorage.setItem("Email", $scope.user_email);
                         window.localStorage.setItem("Phone", $scope.user_phone);
-                        $('.header-user').html('<span class="glyphicon glyphicon-bell"></span> Thanh toán');
+                        $('.header-user')
+                            .html('<span class="glyphicon glyphicon-user"></span> ' + window.localStorage.Name)
+                            .removeAttr('data-toggle')
+                            .removeAttr('data-target')
+                            .addClass('header-menu');
+
+                        location.reload();
                     }
                 });
             }
+        };
+
+        $scope.login = function() {
+            $.ajax({
+                type: "POST",
+                url: "/syn/logincustomer",
+                data: {
+                    "id": $scope.id,
+                    "hash" : hash($scope.password)
+                }
+            }).done(function(data) {
+                if (typeof(data) === 'object') {
+                    var obj = data[0];
+                    window.localStorage.setItem("ID", obj.MaKH);
+                    window.localStorage.setItem("Name", obj.HoTen);
+                    window.localStorage.setItem("Email", obj.Email);
+                    window.localStorage.setItem("Phone", obj.DienThoai);
+                    location.reload();
+                } else {
+                    var pattern, reg_err, match, index;
+
+                    pattern = /\[(.*?)\]/igm;
+                    reg_err = new RegExp(pattern);
+
+                    if (reg_err.test(data)) {
+                        while (match = pattern.exec(data)) {
+                            index = pattern.lastIndex;
+                        }
+                        $('#error-content').html(data.substring(index, data.length).trim());
+                        $('#error-modal').modal();
+                    }
+                }
+            });
         };
 
         var hash = function(password) {
@@ -107,8 +140,25 @@ angular.module("header", [])
 
         if (window.localStorage.ID !== undefined) {
             $('.header-user')
-                .html('<span class="glyphicon glyphicon-bell"></span> Thanh toán')
+                .html('<span class="glyphicon glyphicon-user"></span> ' + window.localStorage.Name)
                 .removeAttr('data-toggle')
-                .removeAttr('data-target');
+                .removeAttr('data-target')
+                .addClass('header-menu');
         }
+
+        $(".header-menu").click(function() {
+            $('.header-user-menu').toggle();
+        });
+
+        $("#header-menu-logout").click(function() {
+            window.localStorage.removeItem("ID");
+            window.localStorage.removeItem("Email");
+            window.localStorage.removeItem("Name");
+            window.localStorage.removeItem("Phone");
+            location.reload();
+        });
+
+        $("#header-menu-payment").click(function() {
+            window.location.href = '/payment';
+        });
     });

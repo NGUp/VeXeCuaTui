@@ -416,11 +416,28 @@ class AjaxController extends BaseController
             $name = $this->post('name');
             $email = $this->post('email');
             $phone = $this->post('phone');
-            $pass = $this->post('pass');
+            $pass = $this->post('password');
 
             $customer = new CustomerModel();
             $customer->createCustomer($id, $name, $email, $phone, $pass);
             die();
+        } catch (CustomException $e) {
+            $e->getError();
+        }
+    }
+
+    /**
+     * Customer's login Function
+     *
+     */
+    public function loginCustomerAction()
+    {
+        try {
+            $id = $this->post('id');
+            $hash = $this->post('hash');
+
+            $customer = new CustomerModel();
+            return $this->json($customer->login($id, $hash), true);
         } catch (CustomException $e) {
             $e->getError();
         }
