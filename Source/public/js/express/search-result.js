@@ -70,36 +70,46 @@
 
                     obj = data[0];
 
-                    $(".result-operator").html(obj.TenHangXe);
-                    $(".result-date").html(obj.NgayDi);
-                    $(".result-from").html(obj.NoiDi);
-                    $(".result-to").html(obj.NoiDen);
-                    $(".result-price").html(obj.Gia.format() + " VND");
-                    $(".result-logo").attr("src", "/img/Operators/" + obj.Logo);
-                    $("#price-ticket").val(obj.Gia);
+                    try {
+                        $(".result-operator").html(obj.TenHangXe);
+                        $(".result-date").html(obj.NgayDi);
+                        $(".result-from").html(obj.NoiDi);
+                        $(".result-to").html(obj.NoiDen);
+                        $(".result-price").html(obj.Gia.format() + " VND");
+                        $(".result-logo").attr("src", "/img/Operators/" + obj.Logo);
+                        $("#price-ticket").val(obj.Gia);
 
-                    if (type == "Giường Nằm") {
-                        count = 30;
-                        initBed();
-                        checkBookedBed(obj.GheDaDat);
-                        $("#book-bed").show();
-                        $("#book-seat").hide();
-                    } else {
-                        count = 40;
-                        initSeat();
-                        checkBookedSeat(obj.GheDaDat);
-                        $("#book-bed").hide();
-                        $("#book-seat").show();
+                        if (type == "Giường Nằm") {
+                            count = 30;
+                            initBed();
+                            checkBookedBed(obj.GheDaDat);
+                            $("#book-bed").show();
+                            $("#book-seat").hide();
+                        } else {
+                            count = 40;
+                            initSeat();
+                            checkBookedSeat(obj.GheDaDat);
+                            $("#book-bed").hide();
+                            $("#book-seat").show();
+                        }
+
+                        $('.count-available-seat').html(count - (obj.GheDaDat == null ? 0 : obj.GheDaDat.split(",").length - 1));
+
+                        $("#book-step-1").removeClass("badge search-step-active");
+                        $("#book-step-2").addClass("badge search-step-active");
+                        $("#book-step-3").removeClass("badge search-step-active");
+
+                        $("#step-2").fadeIn("slow");
+                        $("#step-1").fadeOut("slow");
+                    } catch(err) {
+                        $('#error-content').html('Có vấn đề xảy ra. Vui lòng nhấn F5.');
+                        $('#err-modal').modal();
+
+                        setTimeout(function() {
+                            location.reload();
+                        }, 1500);
                     }
 
-                    $('.count-available-seat').html(count - (obj.GheDaDat == null ? 0 : obj.GheDaDat.split(",").length - 1));
-
-                    $("#book-step-1").removeClass("badge search-step-active");
-                    $("#book-step-2").addClass("badge search-step-active");
-                    $("#book-step-3").removeClass("badge search-step-active");
-
-                    $("#step-2").fadeIn("slow");
-                    $("#step-1").fadeOut("slow");
                 } else {
                     var pattern, match, index;
 
@@ -109,7 +119,7 @@
                         index = pattern.lastIndex;
                     }
                     $('#error-content').html(data.substring(index, data.length).trim());
-                    $('#add-modal').modal();
+                    $('#err-modal').modal();
                 }
             });
         });

@@ -5,4 +5,5 @@ As
 	Select @id = BangSoXe
 	From Deleted
 
+    Delete From GheDaDat Where Xe = @id
 	Delete From Ve Where Xe = @id
