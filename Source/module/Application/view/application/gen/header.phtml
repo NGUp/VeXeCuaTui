@@ -39,33 +39,33 @@
                                     <input type="password" class="form-control" ng-model="password" spellcheck="false" autocomplete="off">
                                 </div>
                             </form>
-                            <button type="button" class="btn btn-primary" ng-click="login()">Xác nhận</button>
+                            <button type="button" class="btn btn-primary" id="btn-login" ng-click="login()">Xác nhận</button>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 customer-line">
                             <h4>Nếu bạn chưa là thành viên</h4>
                             <form>
                                 <div class="form-group">
-                                    <label for="recipient-name" class="control-label">CMND:</label>
+                                    <label for="recipient-name" class="control-label">CMND:</label> (<abbr title="Bắt buộc">*</abbr>)
                                     <input type="text" class="form-control" id="header-register-id" ng-model="user_id" spellcheck="false" autocomplete="off">
                                 </div>
                                 <div class="form-group">
-                                    <label for="recipient-name" class="control-label">Họ tên:</label>
+                                    <label for="recipient-name" class="control-label">Họ tên:</label> (<abbr title="Bắt buộc">*</abbr>)
                                     <input type="text" class="form-control" id="header-register-name" ng-model="user_name" spellcheck="false" autocomplete="off">
                                 </div>
                                 <div class="form-group">
-                                    <label for="recipient-name" class="control-label">Email:</label>
+                                    <label for="recipient-name" class="control-label">Email:</label> (<abbr title="Bắt buộc">*</abbr>)
                                     <input type="email" class="form-control" id="header-register-email" ng-model="user_email" spellcheck="false" autocomplete="off">
                                 </div>
                                 <div class="form-group">
-                                    <label for="recipient-name" class="control-label">Điện thoại:</label>
+                                    <label for="recipient-name" class="control-label">Điện thoại:</label> (<abbr title="Bắt buộc">*</abbr>)
                                     <input type="text" class="form-control" id="header-register-phone" ng-model="user_phone" spellcheck="false" autocomplete="off">
                                 </div>
                                 <div class="form-group">
-                                    <label for="recipient-name" class="control-label">Mật khẩu:</label>
+                                    <label for="recipient-name" class="control-label">Mật khẩu:</label> (<abbr title="Bắt buộc">*</abbr>)
                                     <input type="password" class="form-control" id="header-register-password" ng-model="user_password" spellcheck="false" autocomplete="off">
                                 </div>
                                 <div class="form-group">
-                                    <label for="recipient-name" class="control-label">Xác nhận mật khẩu:</label>
+                                    <label for="recipient-name" class="control-label">Xác nhận mật khẩu:</label> (<abbr title="Bắt buộc">*</abbr>)
                                     <input type="password" class="form-control" id="header-register-confirm" ng-model="user_confirm" spellcheck="false" autocomplete="off">
                                 </div>
                             </form>

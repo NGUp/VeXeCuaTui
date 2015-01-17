@@ -44,3 +44,7 @@ body {
 .popover {
     color: #d9534f;
 }
+
+.hidden-panel {
+    display: none;
+}

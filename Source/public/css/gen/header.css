@@ -56,3 +56,7 @@ header {
     cursor: pointer;
     background-color: #d6d6d6;
 }
+
+.customer-line {
+    border-left: 1px solid #ccc;
+}

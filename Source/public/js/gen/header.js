@@ -94,13 +94,19 @@ angular.module("header", [])
                     "hash" : hash($scope.password)
                 }
             }).done(function(data) {
+                removeNotification('#btn-login');
+
                 if (typeof(data) === 'object') {
-                    var obj = data[0];
-                    window.localStorage.setItem("ID", obj.MaKH);
-                    window.localStorage.setItem("Name", obj.HoTen);
-                    window.localStorage.setItem("Email", obj.Email);
-                    window.localStorage.setItem("Phone", obj.DienThoai);
-                    location.reload();
+                    if (data.length == 0) {
+                        showNotification('#btn-login', 'Tên Đăng Nhập hoặc Mật Khẩu không đúng', 'bottom');
+                    } else {
+                        var obj = data[0];
+                        window.localStorage.setItem("ID", obj.MaKH);
+                        window.localStorage.setItem("Name", obj.HoTen);
+                        window.localStorage.setItem("Email", obj.Email);
+                        window.localStorage.setItem("Phone", obj.DienThoai);
+                        location.reload();
+                    }
                 } else {
                     var pattern, reg_err, match, index;
 
@@ -129,6 +135,7 @@ angular.module("header", [])
             removeNotification('#header-register-phone');
             removeNotification('#header-register-password');
             removeNotification('#header-register-confirm');
+            removeNotification('#btn-login');
 
             $scope.user_id = '';
             $scope.user_name = '';

@@ -23,37 +23,33 @@
             </fieldset>
         </div>
         <div class="col-md-7">
-            <fieldset>
-                <legend class="book-information">Thông tin khách hàng</legend>
-                <ul class="book-customer-information">
-                    <li>Tên khách hàng (<abbr title="Bắt buộc">*</abbr>)</li>
-                    <li id="book-name">
-                        <input type="text" class="form-control" ng-model="customer" spellcheck="false" required="Tên khách hàng không được bỏ trống" />
+            <div id="customer-information" class="hidden-panel">
+                <fieldset>
+                    <legend class="book-information">Thông tin khách hàng</legend>
+                    <ul class="book-customer-information">
+                        <li>Danh sách vé (<abbr title="Bắt buộc">*</abbr>)</li>
+                        <li id="book-tickets">
+                            <input type="text" id="list-seats" data-role="tagsinput" />
+                        </li>
+                    </ul>
+                </fieldset>
+                <ul class="book-buttons">
+                    <li>
+                        <button type="button" class="btn btn-default" ng-click="back()">Hủy</button>
                     </li>
-                    <li>Điện thoại (<abbr title="Bắt buộc">*</abbr>)</li>
-                    <li id="book-phone">
-                        <input type="text" class="form-control" ng-model="phone" spellcheck="false" required="Số điện thoại không được bỏ trống" />
-                    </li>
-                    <li>Email (<abbr title="Bắt buộc">*</abbr>)</li>
-                    <li id="book-email">
-                        <input type="email" class="form-control" ng-model="email" spellcheck="false" required="Email không được bỏ trống" />
-                    </li>
-                    <li>Danh sách vé (<abbr title="Bắt buộc">*</abbr>)</li>
-                    <li id="book-tickets">
-                        <input type="text" id="list-seats" data-role="tagsinput" />
+                    <li class="btn-book-ticket-bound">
+                        <button type="button" class="btn btn-primary" ng-click="pay()">
+                            <span class="glyphicon glyphicon-credit-card icon-credit-card"></span>Thanh toán
+                        </button>
                     </li>
                 </ul>
-            </fieldset>
-            <ul class="book-buttons">
-                <li>
-                    <button type="button" class="btn btn-default" ng-click="back()">Hủy</button>
-                </li>
-                <li class="btn-book-ticket-bound">
-                    <button type="button" class="btn btn-primary" ng-click="pay()">
-                        <span class="glyphicon glyphicon-credit-card icon-credit-card"></span>Thanh toán
-                    </button>
-                </li>
-            </ul>
+            </div>
+            <div id="customer-required" class="hidden-panel">
+                <div>
+                    <h5>Bạn vui lòng Đăng Nhập hoặc Đăng Ký để có thể đặt vé</h5>
+                    <button type="button" class="btn btn-primary" ng-click="accept()">Xác nhận</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
