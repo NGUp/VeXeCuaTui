@@ -39,6 +39,9 @@ header {
     background-color: #f2f2f2;
     width: 250px;
     display: none;
+    border: 1px solid #ccc;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
 }
 
 .subnav-menu-item {

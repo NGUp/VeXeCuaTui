@@ -161,10 +161,34 @@ class ExpressModel extends Model
         }
     }
 
+    /**
+     * Cancelling all chosen tickets
+     *
+     * @param $customer string
+     * @param $route string
+     * @throws CustomException
+     * @throws \Exception
+     */
     public function cancel($customer, $route)
     {
         try {
             $this->non('usp_cancelTicket', array("'$customer'", "'$route'"));
+        } catch (CustomException $exception) {
+            throw $exception;
+        }
+    }
+
+    /**
+     * Cancel ticket
+     *
+     * @param $ticket string
+     * @throws CustomException
+     * @throws \Exception
+     */
+    public function cancelTicket($ticket)
+    {
+        try {
+            $this->non('usp_cancelTicketCustomer', array("'$ticket'"));
         } catch (CustomException $exception) {
             throw $exception;
         }

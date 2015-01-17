@@ -17,7 +17,7 @@
             <tbody>
             <?php foreach ($tickets as $ticket) : ?>
                 <tr>
-                    <td class="col-id">
+                    <td class="col-id" id="col-<?php echo trim($ticket['MaVe']) ?>">
                         <?php echo $ticket['MaVe'] ?>
                     </td>
                     <td>
@@ -85,6 +85,23 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
                     <button type="button" class="btn btn-danger" ng-click="remove()">Đồng ý</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Thông báo</h4>
+                </div>
+                <div class="modal-body">
+                    <h5 id="error-content"></h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">OK</button>
                 </div>
             </div>
         </div>
