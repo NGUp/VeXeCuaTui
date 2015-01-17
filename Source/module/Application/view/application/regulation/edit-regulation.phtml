@@ -26,11 +26,11 @@
                 </li>
                 <li class="sub-contain-title">Phần trăm</li>
                 <li>
-                    <input type="text" id="edit-regulation-percent" class="form-control" name="regulation_percent" ng-model="EditRegulationCtrl.regulation_percent" ng-init="EditRegulationCtrl.regulation_percent='<?php echo $regulation[0]['PhanTram'] ?>'" autocomplete="off"/>
+                    <input type="text" id="edit-regulation-percent" class="form-control" name="regulation_percent" ng-model="EditRegulationCtrl.regulation_percent" ng-init="EditRegulationCtrl.regulation_percent='<?php echo $regulation[0]['PhanTram'] ?>'" autocomplete="off" spellcheck="false"/>
                 </li>
                 <li class="sub-contain-title">Lý do</li>
                 <li>
-                    <input type="text" id="edit-regulation-reason" class="form-control" name="regulation_reason" ng-model="EditRegulationCtrl.regulation_reason" ng-init="EditRegulationCtrl.regulation_reason='<?php echo $regulation[0]['LyDo'] ?>'" autocomplete="off"/>
+                    <input type="text" id="edit-regulation-reason" class="form-control" name="regulation_reason" ng-model="EditRegulationCtrl.regulation_reason" ng-init="EditRegulationCtrl.regulation_reason='<?php echo $regulation[0]['LyDo'] ?>'" autocomplete="off" spellcheck="false"/>
                 </li>
                 <li class="sub-contain-button">
                     <button type="button" class="btn btn-default" ng-click="EditRegulationCtrl.back()">Trở về</button>
