@@ -472,4 +472,21 @@ class AjaxController extends BaseController
             $e->getError();
         }
     }
+
+    /**
+     * Payment Ticket
+     *
+     */
+    public function payTicketAction()
+    {
+        try {
+            $ticket = $this->post('ticket');
+
+            $express = new ExpressModel();
+            $express->payTicket($ticket);
+            die();
+        } catch (CustomException $e) {
+            $e->getError();
+        }
+    }
 } 

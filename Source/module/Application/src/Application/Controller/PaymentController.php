@@ -53,6 +53,11 @@ class PaymentController extends BaseController
     public function indexAction()
     {
         $customer = $this->post('customer');
+
+        if ($customer == null) {
+            $this->error('405', 'Method Not Allowed');
+        }
+
         $page = $this->createPage('index');
 
         $express = new ExpressModel();
